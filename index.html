@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geo Alert — Nunca mais perca seu ponto.</title>
+  <meta name="description" content="Registre um lugar. Esqueça. O app te avisa quando estiver perto. Alertas por geofencing com múltiplos raios, vibração e alarme." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F7F7F7;
+      --text: #111111;
+      --muted: #666666;
+      --subtle: #999999;
+      --primary: #111111;
+      --accent: #4F46E5;
+      --accent-light: #EEF2FF;
+      --success: #22C55E;
+      --danger: #EF4444;
+      --border: #EBEBEB;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
+    .nav-logo span { font-size: 24px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--primary); color: #fff; border: none; padding: 10px 22px;
+      border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, #F8F9FF 0%, #FFFFFF 100%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-light); color: var(--accent);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 720px; margin: 0 auto 20px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #4F46E5, #7C3AED, #EC4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 520px;
+      margin: 0 auto 36px; line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: #fff; padding: 14px 28px;
+      border-radius: 100px; font-size: 16px; font-weight: 600;
+      text-decoration: none; transition: all .15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg); color: var(--text); padding: 14px 28px;
+      border-radius: 100px; font-size: 16px; font-weight: 600;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: all .15s;
+    }
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 56px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-value { font-size: 28px; font-weight: 800; }
+    .stat-label { font-size: 13px; color: var(--subtle); font-weight: 500; margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 17px; color: var(--muted); max-width: 560px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .step {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 32px 28px; position: relative;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.06); }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 700; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.05); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .fi-blue { background: #EEF2FF; }
+    .fi-green { background: #F0FDF4; }
+    .fi-purple { background: #FAF5FF; }
+    .fi-orange { background: #FFF7ED; }
+    .fi-red { background: #FEF2F2; }
+    .fi-gray { background: #F3F4F6; }
+
+    /* ── USE CASES ── */
+    .usecases {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .usecase {
+      background: var(--bg); border-radius: var(--radius);
+      padding: 24px; border: 1.5px solid var(--border);
+      text-align: center; transition: all .2s;
+    }
+    .usecase:hover { border-color: var(--accent); background: var(--accent-light); }
+    .usecase-emoji { font-size: 36px; margin-bottom: 12px; }
+    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .usecase p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── HIGHLIGHT SECTION ── */
+    .highlight-section {
+      background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+      color: #fff; border-radius: 24px; padding: 64px 48px;
+      margin: 0 24px;
+    }
+    .highlight-section .section-label { color: #A78BFA; }
+    .highlight-section .section-title { color: #fff; }
+    .highlight-section .section-subtitle { color: rgba(255,255,255,.6); }
+    .highlight-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .highlight-item {
+      text-align: center; padding: 24px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .highlight-item .hi-icon { font-size: 32px; margin-bottom: 12px; }
+    .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .highlight-item p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+    /* ── COMPARISON TABLE ── */
+    .comparison-wrap { overflow-x: auto; }
+    .comparison {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; min-width: 600px;
+    }
+    .comparison th {
+      text-align: left; padding: 14px 16px;
+      font-weight: 700; border-bottom: 2px solid var(--border);
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .comparison th:last-child { text-align: center; }
+    .comparison td {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+    }
+    .comparison td:last-child { text-align: center; }
+    .check { color: var(--success); font-weight: 700; font-size: 18px; }
+    .cross { color: #ccc; font-size: 18px; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-q {
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+    }
+    .faq-q::after { content: '+'; font-size: 20px; color: var(--subtle); transition: transform .2s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      text-align: center; padding: 80px 24px;
+      background: linear-gradient(180deg, #fff 0%, #F8F9FF 100%);
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--subtle);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 120px 20px 60px; }
+      .hero-stats { gap: 24px; }
+      .highlight-section { margin: 0 12px; padding: 40px 24px; border-radius: 16px; }
+      section { padding: 60px 20px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .animate { animation: fadeUp .6s ease-out forwards; opacity: 0; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span>📍</span> Geo Alert</a>
+    <div class="nav-links">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#features">Features</a>
+      <a href="#casos-de-uso">Usos</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#download" class="nav-cta">Baixar o App</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🚀 MVP 1.0 — iOS &amp; Android</div>
+  <h1 class="animate">Nunca mais perca<br>seu <span class="gradient">ponto de parada.</span></h1>
+  <p class="animate delay-1">Registre um lugar. Esqueça. O app te avisa quando estiver perto — com vibração, alarme e raios configuráveis.</p>
+  <div class="hero-buttons animate delay-2">
+    <a href="#download" class="btn-primary">📱 Baixar APK Android</a>
+    <a href="#features" class="btn-secondary">Ver funcionalidades →</a>
+  </div>
+  <div class="hero-stats animate delay-3">
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Raios por lugar</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Tipos de alerta</div></div>
+    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">Lugares monitorados</div></div>
+    <div class="stat"><div class="stat-value">0</div><div class="stat-label">Dados na nuvem</div></div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="container">
+    <span class="section-label">Como funciona</span>
+    <h2 class="section-title">3 passos. Sem complicação.</h2>
+    <p class="section-subtitle">Configure uma vez, funcione para sempre. Sem cadastro, sem internet constante, sem servidores.</p>
+    <div class="steps">
+      <div class="step animate">
+        <div class="step-num">1</div>
+        <h3>Registre o lugar</h3>
+        <p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto (ônibus, casa, tarefa).</p>
+      </div>
+      <div class="step animate delay-1">
+        <div class="step-num">2</div>
+        <h3>Configure os raios</h3>
+        <p>Defina até 5 raios com distâncias diferentes (500m a 10km). Cada raio pode vibrar ou tocar alarme alto.</p>
+      </div>
+      <div class="step animate delay-2">
+        <div class="step-num">3</div>
+        <h3>Esqueça e viva</h3>
+        <p>O app monitora em segundo plano. Quando você se aproximar, os alertas disparam — mesmo com o app fechado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background: var(--surface);">
+  <div class="container">
+    <span class="section-label">Funcionalidades</span>
+    <h2 class="section-title">Tudo que você precisa.<br>Nada que não precisa.</h2>
+    <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
+    <div class="features-grid">
+      <div class="feature-card animate">
+        <div class="feature-icon fi-blue">📍</div>
+        <h3>Múltiplos raios por lugar</h3>
+        <p>Até 5 raios concêntricos com distâncias diferentes. O primeiro pode vibrar, o último tocar alarme. Você decide.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-red">🔔</div>
+        <h3>Alarme que fura silencioso</h3>
+        <p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android. Impossível ignorar.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📦</div>
+        <h3>Templates prontos</h3>
+        <p>Ônibus, casa, tarefa — comece com um template e ajuste. Ideal para quem quer criar alertas em 10 segundos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🗂️</div>
+        <h3>Grupos inteligentes</h3>
+        <p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos inteiros com um toque.</p>
+      </div>
+      <div class="feature-card animate delay-4">
+        <div class="feature-icon fi-orange">🔁</div>
+        <h3>Único ou recorrente</h3>
+        <p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre — perfeito para casa e trabalho.</p>
+      </div>
+      <div class="feature-card animate">
+        <div class="feature-icon fi-gray">🌙</div>
+        <h3>Tema claro e escuro</h3>
+        <p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-blue">🌍</div>
+        <h3>Português e Inglês</h3>
+        <p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📊</div>
+        <h3>Histórico de alertas</h3>
+        <p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🔒</div>
+        <h3>100% local e privado</h3>
+        <p>Seus dados ficam no celular. Zero servidores. Zero rastreamento. Sua localização nunca sai do dispositivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACIDADE -->
+<div class="highlight-section">
+  <div class="container">
+    <span class="section-label">Privacidade primeiro</span>
+    <h2 class="section-title">Seus dados são seus. Ponto.</h2>
+    <p class="section-subtitle">Diferente de outros apps de localização, o Geo Alert não envia nada para servidores externos.</p>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <div class="hi-icon">📱</div>
+        <h4>Armazenamento local</h4>
+        <p>Tudo fica no AsyncStorage do seu celular. Sem banco de dados na nuvem.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🛡️</div>
+        <h4>Zero rastreamento</h4>
+        <p>Sem analytics, sem pixels, sem coleta de dados. Você é o dono.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">📡</div>
+        <h4>Funciona offline</h4>
+        <p>O geofencing usa GPS nativo. Não precisa de internet para monitorar.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🔋</div>
+        <h4>Bateria mínima</h4>
+        <p>Usa APIs nativas de geofencing — sem polling, sem GPS constante.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASOS DE USO -->
+<section id="casos-de-uso">
+  <div class="container">
+    <span class="section-label">Quem usa</span>
+    <h2 class="section-title">Para quem é o Geo Alert?</h2>
+    <p class="section-subtitle">Qualquer pessoa que precisa lembrar de algo quando chegar em algum lugar.</p>
+    <div class="usecases">
+      <div class="usecase animate">
+        <div class="usecase-emoji">🚌</div>
+        <h4>Passageiro de ônibus</h4>
+        <p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p>
+      </div>
+      <div class="usecase animate delay-1">
+        <div class="usecase-emoji">🛒</div>
+        <h4>Tarefas no caminho</h4>
+        <p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p>
+      </div>
+      <div class="usecase animate delay-2">
+        <div class="usecase-emoji">💊</div>
+        <h4>Farmácia / Saúde</h4>
+        <p>Alerta quando estiver perto da farmácia, clínica ou hospital. Nunca esqueça.</p>
+      </div>
+      <div class="usecase animate delay-3">
+        <div class="usecase-emoji">🏠</div>
+        <h4>Chegando em casa</h4>
+        <p>Notifique a família que está chegando. Automaticamente, sem enviar mensagem.</p>
+      </div>
+      <div class="usecase animate delay-4">
+        <div class="usecase-emoji">💼</div>
+        <h4>Reuniões presenciais</h4>
+        <p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p>
+      </div>
+      <div class="usecase animate">
+        <div class="usecase-emoji">⛽</div>
+        <h4>Abastecer / Parar</h4>
+        <p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARAÇÃO -->
+<section style="background: var(--surface);">
+  <div class="container">
+    <span class="section-label">Diferencial</span>
+    <h2 class="section-title">Por que Geo Alert?</h2>
+    <p class="section-subtitle">Comparado com lembretes genéricos e outros apps de localização.</p>
+    <div class="comparison-wrap">
+      <table class="comparison">
+        <thead>
+          <tr>
+            <th>Funcionalidade</th>
+            <th style="text-align: center;">Geo Alert</th>
+            <th style="text-align: center;">Lembretes iOS/Android</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Múltiplos raios por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Tipos de alerta (vibração + toque)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alertas únicos (auto-desliga)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Grupos de lugares</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>100% privado (sem servidores)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Gratuito</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label">Perguntas frequentes</span>
+    <h2 class="section-title" style="text-align: center;">Dúvidas?</h2>
+    <br>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Precisa de internet pra funcionar?</div>
+        <div class="faq-a">Não. O monitoramento usa GPS nativo do celular. Você só precisa de internet para buscar endereços na hora de cadastrar um lugar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Gasta muita bateria?</div>
+        <div class="faq-a">Não. O Geo Alert usa a API nativa de geofencing do iOS e Android, que é ultra-eficiente. Sem polling de GPS constante.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona com o app fechado?</div>
+        <div class="faq-a">Sim! O geofencing roda em segundo plano. Mesmo com o app fechado, os alertas disparam normalmente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Meus dados vão para algum servidor?</div>
+        <div class="faq-a">Não. Todos os dados ficam no seu celular. Não temos servidores, não coletamos nada. Privacidade total.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quantos lugares posso monitorar?</div>
+        <div class="faq-a">No Android, sem limite prático. No iOS, o sistema permite até 20 geofences simultâneos (limitação da Apple).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso compartilhar o APK com amigos?</div>
+        <div class="faq-a">Sim! O APK Android pode ser enviado diretamente. Para iOS, o app precisa ser instalado via Xcode ou TestFlight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="download">
+  <h2>Pronto pra nunca mais<br>perder seu ponto? 📍</h2>
+  <p>Baixe agora e configure seu primeiro alerta em menos de 30 segundos.</p>
+  <div class="hero-buttons">
+    <a href="#" class="btn-primary">📱 Baixar APK (Android)</a>
+    <a href="#" class="btn-secondary">🍎 Em breve na App Store</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Geo Alert v1.0.0 — Feito com ❤️ no Brasil</p>
+  <p style="margin-top: 8px;">Privacidade · Termos · <a href="mailto:contato@geoalert.app">Contato</a></p>
+</footer>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
