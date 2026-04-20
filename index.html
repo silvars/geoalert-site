@@ -4,185 +4,199 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Geo Alert — Nunca mais perca seu ponto.</title>
-  <meta name="description" content="Registre um lugar. Esqueça. O app te avisa quando estiver perto. Alertas com múltiplos raios, vibração e alarme." />
+  <meta name="description" content="Registre um lugar. Esqueça. O app te avisa quando estiver perto. Alertas por geofencing com múltiplos raios, vibração e alarme." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
     :root {
-      --bg: #0D0D0D; --surface: #1A1A1A; --surface2: #252525;
-      --text: #F5F5F5; --muted: #A0A0A0; --subtle: #666666;
-      --primary: #FFFFFF; --accent: #6B8AFF;
+      --bg: #0D0D0D;
+      --surface: #1A1A1A;
+      --surface2: #252525;
+      --text: #F5F5F5;
+      --muted: #A0A0A0;
+      --subtle: #666666;
+      --primary: #FFFFFF;
+      --accent: #6B8AFF;
       --accent-dim: rgba(107,138,255,0.15);
-      --success: #34D399; --danger: #F87171; --warning: #FB923C;
-      --border: #333333; --radius: 16px; --radius-sm: 10px;
-    }
-    body {
-      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-      color: var(--text); background: var(--bg);
-      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      --success: #34D399;
+      --success-dim: rgba(52,211,153,0.15);
+      --danger: #F87171;
+      --warning: #FB923C;
+      --border: #333333;
+      --radius: 16px;
+      --radius-sm: 10px;
     }
 
-    /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(13,13,13,0.85); border-bottom: 1px solid var(--border); padding: 0 24px; }
-    .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
+      background: rgba(13,13,13,0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
     .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
     .nav-logo span { font-size: 24px; }
     .nav-links { display: flex; gap: 32px; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
-    .nav-cta { background: var(--accent); color: #fff; border: none; padding: 10px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform .15s, box-shadow .15s; }
+    .nav-cta {
+      background: var(--accent); color: #fff; border: none; padding: 10px 22px;
+      border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+    }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(107,138,255,.35); }
 
-    /* HERO */
-    .hero { padding: 150px 24px 90px; text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%); }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); color: var(--accent); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 28px; border: 1px solid rgba(107,138,255,0.2); }
-    .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; max-width: 720px; margin: 0 auto 20px; }
-    .hero h1 .gradient { background: linear-gradient(135deg, #6B8AFF, #A78BFA, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
-    .store-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
-    .store-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--primary); color: #000; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: none; }
+    /* ── HERO ── */
+    .hero {
+      padding: 150px 24px 90px;
+      text-align: center;
+      background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-dim); color: var(--accent);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 28px;
+      border: 1px solid rgba(107,138,255,0.2);
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 720px; margin: 0 auto 20px;
+      color: var(--text);
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #6B8AFF, #A78BFA, #F472B6);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 520px;
+      margin: 0 auto 40px; line-height: 1.7;
+    }
+
+    /* ── STORE BADGES ── */
+    .store-badges {
+      display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+    .store-badge {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: var(--primary); color: #000; padding: 0 24px;
+      border-radius: 12px; height: 56px;
+      text-decoration: none; transition: all .2s;
+      border: none;
+    }
     .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,.12); }
     .store-badge svg { flex-shrink: 0; }
     .store-badge-text { text-align: left; }
     .store-badge-text .small { font-size: 10px; font-weight: 500; letter-spacing: 0.02em; opacity: 0.7; display: block; line-height: 1.2; }
     .store-badge-text .big { font-size: 17px; font-weight: 700; display: block; line-height: 1.2; }
-    .store-badge-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: var(--text); padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: 1.5px solid var(--border); }
+
+    .store-badge-outline {
+      display: inline-flex; align-items: center; gap: 12px;
+      background: transparent; color: var(--text); padding: 0 24px;
+      border-radius: 12px; height: 56px;
+      text-decoration: none; transition: all .2s;
+      border: 1.5px solid var(--border);
+    }
     .store-badge-outline:hover { border-color: var(--muted); transform: translateY(-2px); }
     .store-badge-outline svg { flex-shrink: 0; }
     .store-badge-outline .store-badge-text .small { color: var(--muted); }
-    .hero-secondary-link { display: inline-block; margin-top: 16px; color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s; }
+
+    .hero-secondary-link {
+      display: inline-block; margin-top: 16px;
+      color: var(--accent); font-size: 14px; font-weight: 600;
+      text-decoration: none; transition: color .2s;
+    }
     .hero-secondary-link:hover { color: #A78BFA; }
-    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-top: 64px; flex-wrap: wrap; }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 64px; flex-wrap: wrap;
+    }
     .stat { text-align: center; }
-    .stat-value { font-size: 32px; font-weight: 800; }
+    .stat-value { font-size: 32px; font-weight: 800; color: var(--text); }
     .stat-label { font-size: 13px; color: var(--subtle); font-weight: 500; margin-top: 4px; }
 
-    /* SECTIONS */
+    /* ── SECTIONS ── */
     section { padding: 80px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-label { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
-    .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
-    .section-subtitle { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
+    .section-label {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+      color: var(--text);
+    }
+    .section-subtitle {
+      font-size: 17px; color: var(--muted); max-width: 560px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
 
-    /* STEPS */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .step { background: var(--surface); border-radius: var(--radius); padding: 32px 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+    .step {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 32px 28px; position: relative;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
     .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
-    .step-num { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .step-num {
+      width: 40px; height: 40px; border-radius: 12px;
+      background: var(--accent); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 16px; font-weight: 700; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
     .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
-    /* ═══ APP SHOWCASE — LIGHT THEME MOCKUPS ═══ */
-    .showcase-section { padding: 80px 24px; background: linear-gradient(180deg, var(--bg) 0%, rgba(107,138,255,0.04) 50%, var(--bg) 100%); overflow: hidden; }
-    .showcase-section .section-label, .showcase-section .section-title, .showcase-section .section-subtitle { text-align: center; }
-    .showcase-section .section-subtitle { margin-left: auto; margin-right: auto; }
-    .phones-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
-    .phone-wrap { flex-shrink: 0; text-align: center; }
-    .phone-wrap .phone-title { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
-    .phone-device { width: 280px; height: 606px; border-radius: 36px; overflow: hidden; border: 3px solid #444; background: #FFFFFF; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.06); }
-    .phone-screen { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; font-family: 'Inter', sans-serif; font-size: 12px; }
-    .phone-screen::-webkit-scrollbar { display: none; }
-
-    /* Light theme vars */
-    .lt { --lbg:#FFFFFF; --lsurface:#F5F5F5; --lsurface2:#EBEBEB; --lborder:#E0E0E0; --ltext:#111; --lmuted:#777; --lsubtle:#AAA; --laccent:#4F46E5; --lsuccess:#22C55E; --lorange:#F97316; --lred:#EF4444; }
-    .lt-status { display:flex; justify-content:space-between; align-items:center; padding:6px 20px 0; height:36px; background:#fff; }
-    .lt-status .t { font-size:13px; font-weight:600; color:var(--ltext); }
-    .lt-status .icons { display:flex; gap:4px; align-items:center; }
-    .lt-status .batt { width:20px; height:9px; border:1.5px solid #333; border-radius:2px; position:relative; }
-    .lt-status .batt::after { content:''; position:absolute; left:2px; top:2px; width:12px; height:3px; background:var(--lsuccess); border-radius:1px; }
-    .lt-home-hdr { padding:12px 20px 8px; }
-    .lt-home-hdr h2 { font-size:22px; font-weight:800; color:var(--ltext); margin:0; }
-    .lt-monitor { display:flex; align-items:center; gap:5px; margin-top:3px; }
-    .lt-monitor .dot { width:7px; height:7px; border-radius:50%; background:var(--lsuccess); }
-    .lt-monitor span { font-size:11px; color:var(--lmuted); }
-    .lt-group { display:flex; align-items:center; justify-content:space-between; background:var(--lsurface2); padding:8px 20px; }
-    .lt-group .lbl { font-size:10px; font-weight:700; color:var(--lsubtle); letter-spacing:.5px; }
-    .lt-group .cnt { font-size:10px; color:var(--lsubtle); margin-left:auto; margin-right:10px; }
-    .lt-sw { width:34px; height:20px; border-radius:10px; position:relative; flex-shrink:0; display:inline-block; }
-    .lt-sw.on { background:var(--lsuccess); }
-    .lt-sw.off { background:#D1D1D1; }
-    .lt-sw::after { content:''; width:16px; height:16px; border-radius:50%; background:#fff; position:absolute; top:2px; box-shadow:0 1px 3px rgba(0,0,0,.15); }
-    .lt-sw.on::after { left:16px; }
-    .lt-sw.off::after { left:2px; }
-    .lt-place { display:flex; align-items:flex-start; padding:10px 20px; gap:10px; border-bottom:1px solid var(--lborder); }
-    .lt-emoji { width:38px; height:38px; border-radius:10px; background:var(--lsurface); display:flex; align-items:center; justify-content:center; font-size:18px; flex-shrink:0; }
-    .lt-pinfo { flex:1; min-width:0; }
-    .lt-pinfo .nm { font-size:13px; font-weight:600; color:var(--ltext); }
-    .lt-pinfo .addr { font-size:10px; color:var(--lmuted); margin-top:1px; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
-    .lt-rings { display:flex; gap:8px; margin-top:4px; }
-    .lt-rings .r { display:flex; align-items:center; gap:3px; font-size:10px; color:var(--lmuted); }
-    .lt-rings .rdot { width:6px; height:6px; border-radius:50%; }
-    .lt-pright { display:flex; align-items:center; padding-top:6px; }
-    .lt-fab { position:absolute; bottom:50px; right:18px; width:48px; height:48px; border-radius:50%; background:var(--laccent); color:#fff; display:flex; align-items:center; justify-content:center; font-size:24px; font-weight:300; box-shadow:0 4px 16px rgba(79,70,229,.35); }
-    .lt-tab { position:absolute; bottom:0; left:0; right:0; height:44px; background:#fff; border-top:1px solid var(--lborder); display:flex; align-items:center; justify-content:space-around; }
-    .lt-tab span { font-size:9px; font-weight:600; color:var(--lsubtle); }
-    .lt-tab span.active { color:var(--laccent); }
-
-    /* Map */
-    .lt-map { background:linear-gradient(135deg,#e8eff7,#dde7f0,#d4dfeb); height:100%; position:relative; }
-    .lt-map-roads { position:absolute; inset:0; overflow:hidden; }
-    .lt-map-roads div { position:absolute; background:#c8d4e0; border-radius:2px; }
-    .lt-geo { position:absolute; top:50%; left:50%; transform:translate(-50%,-50%); }
-    .lt-geo .c { border-radius:50%; position:absolute; transform:translate(-50%,-50%); border-style:dashed; border-width:1.5px; }
-    .lt-pin { position:absolute; top:50%; left:50%; transform:translate(-50%,-100%); width:20px; height:20px; border-radius:50%; background:#EF4444; border:3px solid #fff; box-shadow:0 2px 8px rgba(0,0,0,.2); }
-    .lt-float { position:absolute; top:44px; left:12px; right:12px; display:flex; gap:8px; z-index:5; }
-    .lt-float-back { width:36px; height:36px; border-radius:50%; background:rgba(255,255,255,.92); display:flex; align-items:center; justify-content:center; font-size:16px; color:#333; box-shadow:0 2px 8px rgba(0,0,0,.1); }
-    .lt-float-search { flex:1; height:36px; border-radius:10px; background:rgba(255,255,255,.92); display:flex; align-items:center; padding:0 12px; font-size:12px; color:#999; box-shadow:0 2px 8px rgba(0,0,0,.1); }
-    .lt-sheet { position:absolute; bottom:0; left:0; right:0; background:#fff; border-radius:20px 20px 0 0; padding:10px 20px 24px; box-shadow:0 -4px 20px rgba(0,0,0,.08); }
-    .lt-sheet-handle { width:36px; height:4px; border-radius:2px; background:#DDD; margin:0 auto 12px; }
-    .lt-sheet-loc h4 { font-size:12px; font-weight:600; color:#111; margin-bottom:2px; }
-    .lt-sheet-loc p { font-size:10px; color:#777; margin-bottom:10px; }
-    .lt-tpls { display:flex; gap:6px; overflow-x:auto; }
-    .lt-tpls::-webkit-scrollbar { display:none; }
-    .lt-tpl { padding:6px 12px; border-radius:8px; background:#F5F5F5; font-size:10px; font-weight:600; white-space:nowrap; color:#111; flex-shrink:0; }
-
-    /* Config */
-    .lt-cfg-hdr { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--lsurface); }
-    .lt-cfg-back { width:34px; height:34px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--ltext); border:1px solid var(--lborder); }
-    .lt-cfg-hdr h3 { font-size:15px; font-weight:700; color:var(--ltext); margin:0; }
-    .lt-cfg-scroll { padding:14px; }
-    .lt-cfg-preview { display:flex; align-items:center; gap:8px; background:var(--lsurface); padding:10px; border-radius:10px; margin-bottom:14px; }
-    .lt-cfg-preview .emoji { font-size:20px; }
-    .lt-cfg-preview .nm { font-size:13px; font-weight:600; color:var(--ltext); }
-    .lt-cfg-preview .ad { font-size:10px; color:var(--lmuted); }
-    .lt-sec { font-size:9px; font-weight:700; color:var(--lsubtle); letter-spacing:1px; margin-bottom:8px; margin-top:12px; }
-    .lt-rcard { background:var(--lsurface); border-radius:10px; padding:12px; margin-bottom:10px; border:1px solid var(--lborder); }
-    .lt-rtop { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
-    .lt-rtop span { font-size:11px; font-weight:600; color:var(--ltext); }
-    .lt-rtop .x { font-size:14px; color:var(--lsubtle); }
-    .lt-rval { font-size:17px; font-weight:700; color:var(--ltext); margin-bottom:8px; }
-    .lt-slider { height:3px; border-radius:2px; background:var(--lborder); position:relative; margin-bottom:10px; }
-    .lt-slider-fill { height:100%; border-radius:2px; position:absolute; left:0; top:0; }
-    .lt-slider-thumb { width:16px; height:16px; border-radius:50%; position:absolute; top:50%; transform:translate(-50%,-50%); box-shadow:0 1px 4px rgba(0,0,0,.15); }
-    .lt-presets { display:flex; gap:5px; margin-bottom:8px; flex-wrap:wrap; }
-    .lt-preset { padding:4px 10px; border-radius:6px; font-size:9px; font-weight:600; background:var(--lsurface2); color:var(--lmuted); }
-    .lt-preset.sel { color:#fff; }
-    .lt-atypes { display:flex; gap:5px; }
-    .lt-atype { padding:4px 10px; border-radius:6px; font-size:9px; font-weight:600; background:var(--lsurface2); color:var(--lmuted); display:flex; align-items:center; gap:3px; }
-    .lt-atype.sel { color:#fff; }
-    .lt-add-ring { border:1.5px dashed var(--lborder); border-radius:10px; padding:10px; text-align:center; font-size:12px; color:var(--lmuted); margin-bottom:12px; }
-    .lt-rem-row { display:flex; gap:6px; margin-bottom:12px; }
-    .lt-rem-chip { flex:1; padding:10px; border-radius:10px; text-align:center; font-size:11px; font-weight:600; }
-    .lt-rem-chip.sel { background:var(--laccent); color:#fff; }
-    .lt-rem-chip.unsel { background:var(--lsurface2); color:var(--lmuted); }
-    .lt-gchips { display:flex; gap:5px; flex-wrap:wrap; margin-bottom:14px; }
-    .lt-gchip { padding:5px 12px; border-radius:8px; font-size:10px; font-weight:600; }
-    .lt-gchip.sel { background:var(--laccent); color:#fff; }
-    .lt-gchip.unsel { background:var(--lsurface2); color:var(--lmuted); }
-    .lt-btn-save { width:100%; padding:12px; border-radius:10px; background:var(--laccent); color:#fff; font-size:13px; font-weight:700; text-align:center; }
-
-    @media (max-width: 900px) { .phones-row { gap: 24px; } .phone-device { width: 240px; height: 520px; border-radius: 30px; } }
-    @media (max-width: 520px) { .phones-row { gap: 32px; flex-direction: column; align-items: center; } .phone-device { width: 270px; height: 585px; border-radius: 34px; } }
-
-    /* FEATURES */
+    /* ── FEATURES GRID ── */
     .features-section { background: var(--surface); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .feature-card { background: var(--surface2); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 20px;
+    }
+    .feature-card {
+      background: var(--surface2); border-radius: var(--radius);
+      padding: 28px; border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
     .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.3); border-color: rgba(107,138,255,0.3); }
-    .feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 22px; margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
     .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
     .fi-blue { background: rgba(107,138,255,0.15); }
     .fi-green { background: rgba(52,211,153,0.15); }
@@ -191,53 +205,108 @@
     .fi-red { background: rgba(248,113,113,0.15); }
     .fi-gray { background: rgba(255,255,255,0.08); }
 
-    /* USE CASES */
-    .usecases { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .usecase { background: var(--surface); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); text-align: center; transition: all .2s; }
+    /* ── USE CASES ── */
+    .usecases {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .usecase {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; border: 1px solid var(--border);
+      text-align: center; transition: all .2s;
+    }
     .usecase:hover { border-color: var(--accent); background: var(--accent-dim); }
     .usecase-emoji { font-size: 36px; margin-bottom: 12px; }
-    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
     .usecase p { font-size: 13px; color: var(--muted); line-height: 1.5; }
 
-    /* HIGHLIGHT */
-    .highlight-section { background: linear-gradient(135deg, rgba(107,138,255,0.08) 0%, rgba(167,139,250,0.06) 100%); border: 1px solid rgba(107,138,255,0.15); border-radius: 24px; padding: 64px 48px; margin: 0 24px; }
+    /* ── HIGHLIGHT SECTION ── */
+    .highlight-section {
+      background: linear-gradient(135deg, rgba(107,138,255,0.08) 0%, rgba(167,139,250,0.06) 100%);
+      border: 1px solid rgba(107,138,255,0.15);
+      border-radius: 24px; padding: 64px 48px;
+      margin: 0 24px;
+    }
     .highlight-section .section-label { color: #A78BFA; }
-    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-    .highlight-item { text-align: center; padding: 24px; background: rgba(255,255,255,0.04); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06); }
+    .highlight-section .section-title { color: var(--text); }
+    .highlight-section .section-subtitle { color: var(--muted); }
+    .highlight-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .highlight-item {
+      text-align: center; padding: 24px;
+      background: rgba(255,255,255,0.04);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,0.06);
+    }
     .highlight-item .hi-icon { font-size: 32px; margin-bottom: 12px; }
-    .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; color: var(--text); }
     .highlight-item p { font-size: 13px; color: var(--subtle); line-height: 1.5; }
 
-    /* COMPARISON */
+    /* ── COMPARISON TABLE ── */
     .comparison-section { background: var(--surface); }
     .comparison-wrap { overflow-x: auto; }
-    .comparison { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
-    .comparison th { text-align: left; padding: 14px 16px; font-weight: 700; border-bottom: 2px solid var(--border); font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .comparison {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; min-width: 600px;
+    }
+    .comparison th {
+      text-align: left; padding: 14px 16px;
+      font-weight: 700; border-bottom: 2px solid var(--border);
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;
+      color: var(--muted);
+    }
     .comparison th:last-child { text-align: center; }
-    .comparison td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .comparison td {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+      color: var(--text);
+    }
     .comparison td:last-child { text-align: center; }
     .check { color: var(--success); font-weight: 700; font-size: 18px; }
     .cross { color: var(--subtle); font-size: 18px; }
 
-    /* FAQ */
+    /* ── FAQ ── */
     .faq-list { max-width: 700px; margin: 0 auto; }
-    .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
-    .faq-q { font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-q {
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px; color: var(--text);
+    }
     .faq-q::after { content: '+'; font-size: 20px; color: var(--subtle); transition: transform .2s; }
     .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--accent); }
-    .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
     .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 
-    /* CTA */
-    .cta-section { text-align: center; padding: 80px 24px; background: radial-gradient(ellipse at 50% 100%, rgba(107,138,255,0.06) 0%, transparent 60%); }
-    .cta-section h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    /* ── CTA FINAL ── */
+    .cta-section {
+      text-align: center; padding: 80px 24px;
+      background: radial-gradient(ellipse at 50% 100%, rgba(107,138,255,0.06) 0%, transparent 60%);
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; margin-bottom: 16px;
+      letter-spacing: -0.02em; color: var(--text);
+    }
     .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
 
-    /* FOOTER */
-    footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; font-size: 13px; color: var(--subtle); }
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--subtle);
+    }
     footer a { color: var(--muted); text-decoration: none; transition: color .2s; }
     footer a:hover { color: var(--accent); }
 
+    /* ── RESPONSIVE ── */
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 120px 20px 60px; }
@@ -247,40 +316,62 @@
       .store-badge, .store-badge-outline { width: 100%; justify-content: center; }
     }
 
+    /* ── ANIMATIONS ── */
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .animate { animation: fadeUp .6s ease-out forwards; opacity: 0; }
-    .delay-1 { animation-delay: .1s; } .delay-2 { animation-delay: .2s; } .delay-3 { animation-delay: .3s; } .delay-4 { animation-delay: .4s; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
   </style>
 </head>
 <body>
 
+<!-- NAV -->
 <nav>
   <div class="nav-inner">
     <a href="#" class="nav-logo"><span>📍</span> Geo Alert</a>
     <div class="nav-links">
       <a href="#como-funciona">Como funciona</a>
-      <a href="#app-preview">O App</a>
       <a href="#features">Features</a>
+      <a href="#casos-de-uso">Usos</a>
       <a href="#faq">FAQ</a>
     </div>
     <a href="#download" class="nav-cta">Baixar o App</a>
   </div>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
+  <div class="hero-badge animate">🚀 MVP 1.0 — iOS &amp; Android</div>
   <h1 class="animate">Nunca mais perca<br>seu <span class="gradient">ponto de parada.</span></h1>
   <p class="animate delay-1">Registre um lugar. Esqueça. O app te avisa quando estiver perto — com vibração, alarme e raios configuráveis.</p>
   <div class="store-badges animate delay-2">
+    <!-- Google Play Badge -->
     <a href="#download" class="store-badge">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/>
+        <path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/>
+        <path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/>
+        <path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/>
+      </svg>
+      <div class="store-badge-text">
+        <span class="small">Disponível no</span>
+        <span class="big">Google Play</span>
+      </div>
     </a>
+    <!-- App Store Badge -->
     <a href="#download" class="store-badge-outline">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div class="store-badge-text">
+        <span class="small">Em breve na</span>
+        <span class="big">App Store</span>
+      </div>
     </a>
   </div>
-  <a href="#app-preview" class="hero-secondary-link animate delay-3">Ver o app por dentro →</a>
+  <a href="#features" class="hero-secondary-link animate delay-3">Ver funcionalidades →</a>
   <div class="hero-stats animate delay-3">
     <div class="stat"><div class="stat-value">5</div><div class="stat-label">Raios por lugar</div></div>
     <div class="stat"><div class="stat-value">2</div><div class="stat-label">Tipos de alerta</div></div>
@@ -289,194 +380,161 @@
   </div>
 </section>
 
+<!-- COMO FUNCIONA -->
 <section id="como-funciona">
   <div class="container">
     <span class="section-label">Como funciona</span>
     <h2 class="section-title">3 passos. Sem complicação.</h2>
     <p class="section-subtitle">Configure uma vez, funcione para sempre. Sem cadastro, sem internet constante, sem servidores.</p>
     <div class="steps">
-      <div class="step animate"><div class="step-num">1</div><h3>Registre o lugar</h3><p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto.</p></div>
-      <div class="step animate delay-1"><div class="step-num">2</div><h3>Configure os raios</h3><p>Defina até 5 raios com distâncias diferentes (500m a 10km). Cada raio pode vibrar ou tocar alarme alto.</p></div>
-      <div class="step animate delay-2"><div class="step-num">3</div><h3>Esqueça e viva</h3><p>O app monitora em segundo plano. Quando você se aproximar, os alertas disparam — mesmo com o app fechado.</p></div>
+      <div class="step animate">
+        <div class="step-num">1</div>
+        <h3>Registre o lugar</h3>
+        <p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto (ônibus, casa, tarefa).</p>
+      </div>
+      <div class="step animate delay-1">
+        <div class="step-num">2</div>
+        <h3>Configure os raios</h3>
+        <p>Defina até 5 raios com distâncias diferentes (500m a 10km). Cada raio pode vibrar ou tocar alarme alto.</p>
+      </div>
+      <div class="step animate delay-2">
+        <div class="step-num">3</div>
+        <h3>Esqueça e viva</h3>
+        <p>O app monitora em segundo plano. Quando você se aproximar, os alertas disparam — mesmo com o app fechado.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ APP PREVIEW — LIGHT THEME MOCKUPS ═══════════ -->
-<section class="showcase-section" id="app-preview">
-  <div class="container">
-    <span class="section-label">Veja o app</span>
-    <h2 class="section-title">Simples, bonito e direto ao ponto.</h2>
-    <p class="section-subtitle">Tema claro com interface limpa. Tudo que você precisa, na palma da mão.</p>
-    <div class="phones-row">
-
-      <!-- PHONE 1: HOME -->
-      <div class="phone-wrap animate">
-        <div class="phone-title">Meus Locais</div>
-        <div class="phone-device">
-          <div class="phone-screen lt" style="background:var(--lbg)">
-            <div class="lt-status"><span class="t">9:41</span><div class="icons"><div class="batt"></div></div></div>
-            <div class="lt-home-hdr"><h2>Meus Locais</h2><div class="lt-monitor"><div class="dot"></div><span>3 de 5 monitorando</span></div></div>
-            <div class="lt-group"><span class="lbl">▼ TRABALHO</span><span class="cnt">2/3</span><div class="lt-sw on"></div></div>
-            <div class="lt-place">
-              <div class="lt-emoji">🏢</div>
-              <div class="lt-pinfo"><div class="nm">Escritório</div><div class="addr">R. Augusta, 1200 - SP</div>
-                <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div><div class="r"><div class="rdot" style="background:#F97316"></div>1km</div><div class="r"><div class="rdot" style="background:#EF4444"></div>2km</div></div>
-              </div>
-              <div class="lt-pright"><div class="lt-sw on"></div></div>
-            </div>
-            <div class="lt-place">
-              <div class="lt-emoji">📋</div>
-              <div class="lt-pinfo"><div class="nm">Reunião Centro</div><div class="addr">Av. Paulista, 900 - SP</div>
-                <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>1km</div></div>
-              </div>
-              <div class="lt-pright"><div class="lt-sw off"></div></div>
-            </div>
-            <div class="lt-group"><span class="lbl">▼ PESSOAL</span><span class="cnt">1/2</span><div class="lt-sw on"></div></div>
-            <div class="lt-place">
-              <div class="lt-emoji">🏠</div>
-              <div class="lt-pinfo"><div class="nm">Casa</div><div class="addr">R. das Flores, 42 - SP</div>
-                <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div><div class="r"><div class="rdot" style="background:#F97316"></div>2km</div></div>
-              </div>
-              <div class="lt-pright"><div class="lt-sw on"></div></div>
-            </div>
-            <div class="lt-place">
-              <div class="lt-emoji">🚌</div>
-              <div class="lt-pinfo"><div class="nm">Ponto de ônibus</div><div class="addr">Terminal Barra Funda</div>
-                <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div></div>
-              </div>
-              <div class="lt-pright"><div class="lt-sw off"></div></div>
-            </div>
-            <div class="lt-group"><span class="lbl">▶ SAÚDE</span><span class="cnt">1/1</span><div class="lt-sw on"></div></div>
-            <div class="lt-place" style="border-bottom:none">
-              <div class="lt-emoji">💊</div>
-              <div class="lt-pinfo"><div class="nm">Farmácia</div><div class="addr">Drogasil - R. Oscar Freire</div>
-                <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>300m</div></div>
-              </div>
-              <div class="lt-pright"><div class="lt-sw on"></div></div>
-            </div>
-            <div class="lt-fab">+</div>
-            <div class="lt-tab"><span class="active">📍 Locais</span><span>🕐 Histórico</span><span>⚙️ Config</span></div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHONE 2: MAP -->
-      <div class="phone-wrap animate delay-1">
-        <div class="phone-title">Adicionar Local</div>
-        <div class="phone-device">
-          <div class="phone-screen lt lt-map">
-            <div class="lt-map-roads">
-              <div style="width:280px;height:5px;top:200px;transform:rotate(-5deg)"></div>
-              <div style="width:3px;height:606px;left:100px;transform:rotate(3deg)"></div>
-              <div style="width:3px;height:606px;left:195px;transform:rotate(-2deg)"></div>
-              <div style="width:280px;height:4px;top:370px;transform:rotate(2deg)"></div>
-              <div style="width:280px;height:3px;top:120px;transform:rotate(-1deg)"></div>
-            </div>
-            <div class="lt-geo">
-              <div class="c" style="width:200px;height:200px;border-color:rgba(239,68,68,.35);background:rgba(239,68,68,.06)"></div>
-              <div class="c" style="width:130px;height:130px;border-color:rgba(249,115,22,.35);background:rgba(249,115,22,.08)"></div>
-              <div class="c" style="width:70px;height:70px;border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.1)"></div>
-            </div>
-            <div class="lt-pin"></div>
-            <div class="lt-float"><div class="lt-float-back">‹</div><div class="lt-float-search">🔍 Buscar endereço...</div></div>
-            <div class="lt-sheet">
-              <div class="lt-sheet-handle"></div>
-              <div class="lt-sheet-loc"><h4>📍 Av. Paulista, 1578</h4><p>Bela Vista, São Paulo - SP</p></div>
-              <div class="lt-tpls"><div class="lt-tpl">🚌 Ônibus</div><div class="lt-tpl">🏠 Casa</div><div class="lt-tpl">📋 Tarefa</div><div class="lt-tpl">💼 Trabalho</div><div class="lt-tpl">💊 Saúde</div></div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- PHONE 3: CONFIGURE -->
-      <div class="phone-wrap animate delay-2">
-        <div class="phone-title">Configurar Alertas</div>
-        <div class="phone-device">
-          <div class="phone-screen lt" style="background:var(--lbg)">
-            <div class="lt-status"><span class="t">9:41</span><div class="icons"><div class="batt"></div></div></div>
-            <div class="lt-cfg-hdr"><div class="lt-cfg-back">‹</div><h3>Configurar Alertas</h3></div>
-            <div class="lt-cfg-scroll">
-              <div class="lt-cfg-preview"><span class="emoji">🏢</span><div><div class="nm">Escritório</div><div class="ad">R. Augusta, 1200 - São Paulo</div></div></div>
-              <div class="lt-sec">ALERTAS</div>
-              <div class="lt-rcard">
-                <div class="lt-rtop"><span>Alerta 1</span><span class="x">×</span></div>
-                <div class="lt-rval">500 m</div>
-                <div class="lt-slider"><div class="lt-slider-fill" style="width:25%;background:#22C55E"></div><div class="lt-slider-thumb" style="left:25%;background:#22C55E"></div></div>
-                <div class="lt-presets"><div class="lt-preset sel" style="background:#22C55E">500m</div><div class="lt-preset">1km</div><div class="lt-preset">2km</div><div class="lt-preset">5km</div><div class="lt-preset">10km</div></div>
-                <div class="lt-atypes"><div class="lt-atype sel" style="background:#22C55E">📳 Vibração</div><div class="lt-atype">🔔 Alarme</div></div>
-              </div>
-              <div class="lt-rcard">
-                <div class="lt-rtop"><span>Alerta 2</span><span class="x">×</span></div>
-                <div class="lt-rval">2 km</div>
-                <div class="lt-slider"><div class="lt-slider-fill" style="width:50%;background:#F97316"></div><div class="lt-slider-thumb" style="left:50%;background:#F97316"></div></div>
-                <div class="lt-presets"><div class="lt-preset">500m</div><div class="lt-preset">1km</div><div class="lt-preset sel" style="background:#F97316">2km</div><div class="lt-preset">5km</div><div class="lt-preset">10km</div></div>
-                <div class="lt-atypes"><div class="lt-atype">📳 Vibração</div><div class="lt-atype sel" style="background:#F97316">🔔 Alarme</div></div>
-              </div>
-              <div class="lt-add-ring">+ Adicionar alerta</div>
-              <div class="lt-sec">LEMBRETE</div>
-              <div class="lt-rem-row"><div class="lt-rem-chip sel">🔁 Recorrente</div><div class="lt-rem-chip unsel">🏁 Uma vez</div></div>
-              <div class="lt-sec">GRUPO</div>
-              <div class="lt-gchips"><div class="lt-gchip sel">Trabalho</div><div class="lt-gchip unsel">Casa</div><div class="lt-gchip unsel">Pessoal</div><div class="lt-gchip unsel">Saúde</div><div class="lt-gchip unsel">Família</div></div>
-              <div class="lt-btn-save">Criar Local</div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
-</section>
-
+<!-- FEATURES -->
 <section id="features" class="features-section">
   <div class="container">
     <span class="section-label">Funcionalidades</span>
     <h2 class="section-title">Tudo que você precisa.<br>Nada que não precisa.</h2>
     <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
     <div class="features-grid">
-      <div class="feature-card animate"><div class="feature-icon fi-blue">📍</div><h3>Múltiplos raios por lugar</h3><p>Até 5 raios concêntricos com distâncias diferentes. O primeiro pode vibrar, o último tocar alarme.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-red">🔔</div><h3>Alarme que fura silencioso</h3><p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📦</div><h3>Templates prontos</h3><p>Ônibus, casa, tarefa — comece com um template e ajuste. Crie alertas em 10 segundos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🗂️</div><h3>Grupos inteligentes</h3><p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos com um toque.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-orange">🔁</div><h3>Único ou recorrente</h3><p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre.</p></div>
-      <div class="feature-card animate"><div class="feature-icon fi-gray">🌙</div><h3>Tema claro e escuro</h3><p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-blue">🌍</div><h3>Português e Inglês</h3><p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📊</div><h3>Histórico de alertas</h3><p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🔒</div><h3>100% local e privado</h3><p>Seus dados ficam no celular. Zero servidores. Zero rastreamento. Sua localização nunca sai do dispositivo.</p></div>
+      <div class="feature-card animate">
+        <div class="feature-icon fi-blue">📍</div>
+        <h3>Múltiplos raios por lugar</h3>
+        <p>Até 5 raios concêntricos com distâncias diferentes. O primeiro pode vibrar, o último tocar alarme. Você decide.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-red">🔔</div>
+        <h3>Alarme que fura silencioso</h3>
+        <p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android. Impossível ignorar.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📦</div>
+        <h3>Templates prontos</h3>
+        <p>Ônibus, casa, tarefa — comece com um template e ajuste. Ideal para quem quer criar alertas em 10 segundos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🗂️</div>
+        <h3>Grupos inteligentes</h3>
+        <p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos inteiros com um toque.</p>
+      </div>
+      <div class="feature-card animate delay-4">
+        <div class="feature-icon fi-orange">🔁</div>
+        <h3>Único ou recorrente</h3>
+        <p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre — perfeito para casa e trabalho.</p>
+      </div>
+      <div class="feature-card animate">
+        <div class="feature-icon fi-gray">🌙</div>
+        <h3>Tema claro e escuro</h3>
+        <p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-blue">🌍</div>
+        <h3>Português e Inglês</h3>
+        <p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📊</div>
+        <h3>Histórico de alertas</h3>
+        <p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🔒</div>
+        <h3>100% local e privado</h3>
+        <p>Seus dados ficam no celular. Zero servidores. Zero rastreamento. Sua localização nunca sai do dispositivo.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- PRIVACIDADE -->
 <div class="highlight-section">
   <div class="container">
     <span class="section-label">Privacidade primeiro</span>
     <h2 class="section-title">Seus dados são seus. Ponto.</h2>
     <p class="section-subtitle">Diferente de outros apps de localização, o Geo Alert não envia nada para servidores externos.</p>
     <div class="highlight-grid">
-      <div class="highlight-item"><div class="hi-icon">📱</div><h4>Armazenamento local</h4><p>Tudo fica salvo no seu celular. Sem banco de dados na nuvem.</p></div>
-      <div class="highlight-item"><div class="hi-icon">🛡️</div><h4>Zero rastreamento</h4><p>Sem analytics, sem pixels, sem coleta de dados. Você é o dono.</p></div>
-      <div class="highlight-item"><div class="hi-icon">📡</div><h4>Funciona offline</h4><p>O monitoramento usa GPS nativo. Não precisa de internet para funcionar.</p></div>
-      <div class="highlight-item"><div class="hi-icon">🔋</div><h4>Bateria mínima</h4><p>Usa o sistema nativo do celular — sem consumo extra de bateria.</p></div>
+      <div class="highlight-item">
+        <div class="hi-icon">📱</div>
+        <h4>Armazenamento local</h4>
+        <p>Tudo fica no AsyncStorage do seu celular. Sem banco de dados na nuvem.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🛡️</div>
+        <h4>Zero rastreamento</h4>
+        <p>Sem analytics, sem pixels, sem coleta de dados. Você é o dono.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">📡</div>
+        <h4>Funciona offline</h4>
+        <p>O geofencing usa GPS nativo. Não precisa de internet para monitorar.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🔋</div>
+        <h4>Bateria mínima</h4>
+        <p>Usa APIs nativas de geofencing — sem polling, sem GPS constante.</p>
+      </div>
     </div>
   </div>
 </div>
 
+<!-- CASOS DE USO -->
 <section id="casos-de-uso">
   <div class="container">
     <span class="section-label">Quem usa</span>
     <h2 class="section-title">Para quem é o Geo Alert?</h2>
     <p class="section-subtitle">Qualquer pessoa que precisa lembrar de algo quando chegar em algum lugar.</p>
     <div class="usecases">
-      <div class="usecase animate"><div class="usecase-emoji">🚌</div><h4>Passageiro de ônibus</h4><p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p></div>
-      <div class="usecase animate delay-1"><div class="usecase-emoji">🛒</div><h4>Tarefas no caminho</h4><p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p></div>
-      <div class="usecase animate delay-2"><div class="usecase-emoji">💊</div><h4>Farmácia / Saúde</h4><p>Alerta quando estiver perto da farmácia, clínica ou hospital.</p></div>
-      <div class="usecase animate delay-3"><div class="usecase-emoji">🏠</div><h4>Chegando em casa</h4><p>Notifique a família que está chegando. Automaticamente.</p></div>
-      <div class="usecase animate delay-4"><div class="usecase-emoji">💼</div><h4>Reuniões presenciais</h4><p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p></div>
-      <div class="usecase animate"><div class="usecase-emoji">⛽</div><h4>Abastecer / Parar</h4><p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p></div>
+      <div class="usecase animate">
+        <div class="usecase-emoji">🚌</div>
+        <h4>Passageiro de ônibus</h4>
+        <p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p>
+      </div>
+      <div class="usecase animate delay-1">
+        <div class="usecase-emoji">🛒</div>
+        <h4>Tarefas no caminho</h4>
+        <p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p>
+      </div>
+      <div class="usecase animate delay-2">
+        <div class="usecase-emoji">💊</div>
+        <h4>Farmácia / Saúde</h4>
+        <p>Alerta quando estiver perto da farmácia, clínica ou hospital. Nunca esqueça.</p>
+      </div>
+      <div class="usecase animate delay-3">
+        <div class="usecase-emoji">🏠</div>
+        <h4>Chegando em casa</h4>
+        <p>Notifique a família que está chegando. Automaticamente, sem enviar mensagem.</p>
+      </div>
+      <div class="usecase animate delay-4">
+        <div class="usecase-emoji">💼</div>
+        <h4>Reuniões presenciais</h4>
+        <p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p>
+      </div>
+      <div class="usecase animate">
+        <div class="usecase-emoji">⛽</div>
+        <h4>Abastecer / Parar</h4>
+        <p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- COMPARAÇÃO -->
 <section class="comparison-section">
   <div class="container">
     <span class="section-label">Diferencial</span>
@@ -484,7 +542,13 @@
     <p class="section-subtitle">Comparado com lembretes genéricos e outros apps de localização.</p>
     <div class="comparison-wrap">
       <table class="comparison">
-        <thead><tr><th>Funcionalidade</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">Lembretes iOS/Android</th></tr></thead>
+        <thead>
+          <tr>
+            <th>Funcionalidade</th>
+            <th style="text-align: center;">Geo Alert</th>
+            <th style="text-align: center;">Lembretes iOS/Android</th>
+          </tr>
+        </thead>
         <tbody>
           <tr><td>Múltiplos raios por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
           <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
@@ -502,45 +566,661 @@
   </div>
 </section>
 
+<!-- FAQ -->
 <section id="faq">
   <div class="container">
     <span class="section-label">Perguntas frequentes</span>
-    <h2 class="section-title" style="text-align:center">Dúvidas?</h2><br>
+    <h2 class="section-title" style="text-align: center;">Dúvidas?</h2>
+    <br>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q">Precisa de internet pra funcionar?</div><div class="faq-a">Não. O monitoramento usa o GPS do seu celular. Você só precisa de internet para buscar endereços na hora de cadastrar um lugar.</div></div>
-      <div class="faq-item"><div class="faq-q">Gasta muita bateria?</div><div class="faq-a">Não. O Geo Alert usa o sistema nativo do celular para monitorar localização, que é ultra-eficiente.</div></div>
-      <div class="faq-item"><div class="faq-q">Funciona com o app fechado?</div><div class="faq-a">Sim! O monitoramento roda em segundo plano. Mesmo com o app fechado, os alertas disparam normalmente.</div></div>
-      <div class="faq-item"><div class="faq-q">Meus dados vão para algum servidor?</div><div class="faq-a">Não. Todos os dados ficam no seu celular. Não temos servidores, não coletamos nada. Privacidade total.</div></div>
-      <div class="faq-item"><div class="faq-q">Quantos lugares posso monitorar?</div><div class="faq-a">No Android, sem limite prático. No iOS, o sistema permite até 20 locais simultâneos (limitação da Apple).</div></div>
-      <div class="faq-item"><div class="faq-q">Posso compartilhar o APK com amigos?</div><div class="faq-a">Sim! O APK Android pode ser enviado diretamente. Para iOS, o app precisa ser instalado via TestFlight.</div></div>
+      <div class="faq-item">
+        <div class="faq-q">Precisa de internet pra funcionar?</div>
+        <div class="faq-a">Não. O monitoramento usa GPS nativo do celular. Você só precisa de internet para buscar endereços na hora de cadastrar um lugar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Gasta muita bateria?</div>
+        <div class="faq-a">Não. O Geo Alert usa a API nativa de geofencing do iOS e Android, que é ultra-eficiente. Sem polling de GPS constante.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona com o app fechado?</div>
+        <div class="faq-a">Sim! O geofencing roda em segundo plano. Mesmo com o app fechado, os alertas disparam normalmente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Meus dados vão para algum servidor?</div>
+        <div class="faq-a">Não. Todos os dados ficam no seu celular. Não temos servidores, não coletamos nada. Privacidade total.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quantos lugares posso monitorar?</div>
+        <div class="faq-a">No Android, sem limite prático. No iOS, o sistema permite até 20 geofences simultâneos (limitação da Apple).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso compartilhar o APK com amigos?</div>
+        <div class="faq-a">Sim! O APK Android pode ser enviado diretamente. Para iOS, o app precisa ser instalado via Xcode ou TestFlight.</div>
+      </div>
     </div>
   </div>
 </section>
 
+<!-- CTA FINAL -->
 <section class="cta-section" id="download">
   <h2>Pronto pra nunca mais<br>perder seu ponto? 📍</h2>
   <p>Baixe agora e configure seu primeiro alerta em menos de 30 segundos.</p>
   <div class="store-badges">
     <a href="#" class="store-badge">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+      <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+        <path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/>
+        <path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/>
+        <path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/>
+        <path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/>
+      </svg>
+      <div class="store-badge-text">
+        <span class="small">Disponível no</span>
+        <span class="big">Google Play</span>
+      </div>
     </a>
     <a href="#" class="store-badge-outline">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+      </svg>
+      <div class="store-badge-text">
+        <span class="small">Em breve na</span>
+        <span class="big">App Store</span>
+      </div>
     </a>
   </div>
 </section>
 
+<!-- FOOTER -->
 <footer>
   <p>Geo Alert v1.0.0 — Feito com ❤️ no Brasil</p>
-  <p style="margin-top:8px"><a href="privacy.html">Privacidade</a> · <a href="mailto:silvars@gmail.com">Contato</a></p>
+  <p style="margin-top: 8px;"><a href="privacy.html">Privacidade</a> · <a href="mailto:silvars@gmail.com">Contato</a></p>
 </footer>
 
 <script>
+  // FAQ toggle
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
   });
+
+  // Scroll animations
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Geo Alert — Nunca mais perca seu ponto.</title>
+  <meta name="description" content="Registre um lugar. Esqueça. O app te avisa quando estiver perto. Alertas por geofencing com múltiplos raios, vibração e alarme." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+    :root {
+      --bg: #FFFFFF;
+      --surface: #F7F7F7;
+      --text: #111111;
+      --muted: #666666;
+      --subtle: #999999;
+      --primary: #111111;
+      --accent: #4F46E5;
+      --accent-light: #EEF2FF;
+      --success: #22C55E;
+      --danger: #EF4444;
+      --border: #EBEBEB;
+      --radius: 16px;
+      --radius-sm: 10px;
+    }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      background: rgba(255,255,255,0.85);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px; margin: 0 auto;
+      display: flex; align-items: center; justify-content: space-between;
+      height: 64px;
+    }
+    .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
+    .nav-logo span { font-size: 24px; }
+    .nav-links { display: flex; gap: 32px; }
+    .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--primary); color: #fff; border: none; padding: 10px 22px;
+      border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: transform .15s, box-shadow .15s;
+    }
+    .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 16px rgba(0,0,0,.15); }
+
+    /* ── HERO ── */
+    .hero {
+      padding: 140px 24px 80px;
+      text-align: center;
+      background: linear-gradient(180deg, #F8F9FF 0%, #FFFFFF 100%);
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: var(--accent-light); color: var(--accent);
+      padding: 6px 14px; border-radius: 100px;
+      font-size: 13px; font-weight: 600;
+      margin-bottom: 24px;
+    }
+    .hero h1 {
+      font-size: clamp(36px, 6vw, 64px);
+      font-weight: 900; line-height: 1.08;
+      letter-spacing: -0.03em;
+      max-width: 720px; margin: 0 auto 20px;
+    }
+    .hero h1 .gradient {
+      background: linear-gradient(135deg, #4F46E5, #7C3AED, #EC4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .hero p {
+      font-size: 18px; color: var(--muted); max-width: 520px;
+      margin: 0 auto 36px; line-height: 1.7;
+    }
+    .hero-buttons { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+    .btn-primary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--primary); color: #fff; padding: 14px 28px;
+      border-radius: 100px; font-size: 16px; font-weight: 600;
+      text-decoration: none; transition: all .15s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(0,0,0,.15); }
+    .btn-secondary {
+      display: inline-flex; align-items: center; gap: 8px;
+      background: var(--bg); color: var(--text); padding: 14px 28px;
+      border-radius: 100px; font-size: 16px; font-weight: 600;
+      text-decoration: none; border: 1.5px solid var(--border);
+      transition: all .15s;
+    }
+    .btn-secondary:hover { border-color: var(--text); }
+
+    .hero-stats {
+      display: flex; justify-content: center; gap: 48px;
+      margin-top: 56px; flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-value { font-size: 28px; font-weight: 800; }
+    .stat-label { font-size: 13px; color: var(--subtle); font-weight: 500; margin-top: 2px; }
+
+    /* ── SECTIONS ── */
+    section { padding: 80px 24px; }
+    .container { max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      display: inline-block; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.08em;
+      color: var(--accent); margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; line-height: 1.15;
+      letter-spacing: -0.02em; margin-bottom: 16px;
+    }
+    .section-subtitle {
+      font-size: 17px; color: var(--muted); max-width: 560px;
+      line-height: 1.7; margin-bottom: 48px;
+    }
+
+    /* ── HOW IT WORKS ── */
+    .steps {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 32px;
+    }
+    .step {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 32px 28px; position: relative;
+      border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.06); }
+    .step-num {
+      width: 36px; height: 36px; border-radius: 50%;
+      background: var(--primary); color: #fff;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 15px; font-weight: 700; margin-bottom: 16px;
+    }
+    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
+    .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+
+    /* ── FEATURES GRID ── */
+    .features-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 24px;
+    }
+    .feature-card {
+      background: var(--surface); border-radius: var(--radius);
+      padding: 28px; border: 1px solid var(--border);
+      transition: transform .2s, box-shadow .2s;
+    }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.05); }
+    .feature-icon {
+      width: 48px; height: 48px; border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 24px; margin-bottom: 16px;
+    }
+    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
+    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    .fi-blue { background: #EEF2FF; }
+    .fi-green { background: #F0FDF4; }
+    .fi-purple { background: #FAF5FF; }
+    .fi-orange { background: #FFF7ED; }
+    .fi-red { background: #FEF2F2; }
+    .fi-gray { background: #F3F4F6; }
+
+    /* ── USE CASES ── */
+    .usecases {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+    .usecase {
+      background: var(--bg); border-radius: var(--radius);
+      padding: 24px; border: 1.5px solid var(--border);
+      text-align: center; transition: all .2s;
+    }
+    .usecase:hover { border-color: var(--accent); background: var(--accent-light); }
+    .usecase-emoji { font-size: 36px; margin-bottom: 12px; }
+    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .usecase p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+
+    /* ── HIGHLIGHT SECTION ── */
+    .highlight-section {
+      background: linear-gradient(135deg, #111 0%, #1a1a2e 100%);
+      color: #fff; border-radius: 24px; padding: 64px 48px;
+      margin: 0 24px;
+    }
+    .highlight-section .section-label { color: #A78BFA; }
+    .highlight-section .section-title { color: #fff; }
+    .highlight-section .section-subtitle { color: rgba(255,255,255,.6); }
+    .highlight-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 24px;
+    }
+    .highlight-item {
+      text-align: center; padding: 24px;
+      background: rgba(255,255,255,.06);
+      border-radius: var(--radius-sm);
+      border: 1px solid rgba(255,255,255,.08);
+    }
+    .highlight-item .hi-icon { font-size: 32px; margin-bottom: 12px; }
+    .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .highlight-item p { font-size: 13px; color: rgba(255,255,255,.5); line-height: 1.5; }
+
+    /* ── COMPARISON TABLE ── */
+    .comparison-wrap { overflow-x: auto; }
+    .comparison {
+      width: 100%; border-collapse: collapse;
+      font-size: 14px; min-width: 600px;
+    }
+    .comparison th {
+      text-align: left; padding: 14px 16px;
+      font-weight: 700; border-bottom: 2px solid var(--border);
+      font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em;
+    }
+    .comparison th:last-child { text-align: center; }
+    .comparison td {
+      padding: 12px 16px; border-bottom: 1px solid var(--border);
+    }
+    .comparison td:last-child { text-align: center; }
+    .check { color: var(--success); font-weight: 700; font-size: 18px; }
+    .cross { color: #ccc; font-size: 18px; }
+
+    /* ── FAQ ── */
+    .faq-list { max-width: 700px; margin: 0 auto; }
+    .faq-item {
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+    }
+    .faq-q {
+      font-size: 16px; font-weight: 700; cursor: pointer;
+      display: flex; justify-content: space-between; align-items: center;
+      gap: 16px;
+    }
+    .faq-q::after { content: '+'; font-size: 20px; color: var(--subtle); transition: transform .2s; }
+    .faq-item.open .faq-q::after { transform: rotate(45deg); }
+    .faq-a {
+      max-height: 0; overflow: hidden; transition: max-height .3s ease;
+      font-size: 14px; color: var(--muted); line-height: 1.7;
+    }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
+
+    /* ── CTA FINAL ── */
+    .cta-section {
+      text-align: center; padding: 80px 24px;
+      background: linear-gradient(180deg, #fff 0%, #F8F9FF 100%);
+    }
+    .cta-section h2 {
+      font-size: clamp(28px, 4vw, 42px);
+      font-weight: 800; margin-bottom: 16px;
+      letter-spacing: -0.02em;
+    }
+    .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 32px; max-width: 480px; margin-left: auto; margin-right: auto; }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border);
+      padding: 32px 24px; text-align: center;
+      font-size: 13px; color: var(--subtle);
+    }
+    footer a { color: var(--muted); text-decoration: none; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .nav-links { display: none; }
+      .hero { padding: 120px 20px 60px; }
+      .hero-stats { gap: 24px; }
+      .highlight-section { margin: 0 12px; padding: 40px 24px; border-radius: 16px; }
+      section { padding: 60px 20px; }
+    }
+
+    /* ── ANIMATIONS ── */
+    @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
+    .animate { animation: fadeUp .6s ease-out forwards; opacity: 0; }
+    .delay-1 { animation-delay: .1s; }
+    .delay-2 { animation-delay: .2s; }
+    .delay-3 { animation-delay: .3s; }
+    .delay-4 { animation-delay: .4s; }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-inner">
+    <a href="#" class="nav-logo"><span>📍</span> Geo Alert</a>
+    <div class="nav-links">
+      <a href="#como-funciona">Como funciona</a>
+      <a href="#features">Features</a>
+      <a href="#casos-de-uso">Usos</a>
+      <a href="#faq">FAQ</a>
+    </div>
+    <a href="#download" class="nav-cta">Baixar o App</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-badge">🚀 MVP 1.0 — iOS &amp; Android</div>
+  <h1 class="animate">Nunca mais perca<br>seu <span class="gradient">ponto de parada.</span></h1>
+  <p class="animate delay-1">Registre um lugar. Esqueça. O app te avisa quando estiver perto — com vibração, alarme e raios configuráveis.</p>
+  <div class="hero-buttons animate delay-2">
+    <a href="#download" class="btn-primary">📱 Baixar APK Android</a>
+    <a href="#features" class="btn-secondary">Ver funcionalidades →</a>
+  </div>
+  <div class="hero-stats animate delay-3">
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Raios por lugar</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Tipos de alerta</div></div>
+    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">Lugares monitorados</div></div>
+    <div class="stat"><div class="stat-value">0</div><div class="stat-label">Dados na nuvem</div></div>
+  </div>
+</section>
+
+<!-- COMO FUNCIONA -->
+<section id="como-funciona">
+  <div class="container">
+    <span class="section-label">Como funciona</span>
+    <h2 class="section-title">3 passos. Sem complicação.</h2>
+    <p class="section-subtitle">Configure uma vez, funcione para sempre. Sem cadastro, sem internet constante, sem servidores.</p>
+    <div class="steps">
+      <div class="step animate">
+        <div class="step-num">1</div>
+        <h3>Registre o lugar</h3>
+        <p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto (ônibus, casa, tarefa).</p>
+      </div>
+      <div class="step animate delay-1">
+        <div class="step-num">2</div>
+        <h3>Configure os raios</h3>
+        <p>Defina até 5 raios com distâncias diferentes (500m a 10km). Cada raio pode vibrar ou tocar alarme alto.</p>
+      </div>
+      <div class="step animate delay-2">
+        <div class="step-num">3</div>
+        <h3>Esqueça e viva</h3>
+        <p>O app monitora em segundo plano. Quando você se aproximar, os alertas disparam — mesmo com o app fechado.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section id="features" style="background: var(--surface);">
+  <div class="container">
+    <span class="section-label">Funcionalidades</span>
+    <h2 class="section-title">Tudo que você precisa.<br>Nada que não precisa.</h2>
+    <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
+    <div class="features-grid">
+      <div class="feature-card animate">
+        <div class="feature-icon fi-blue">📍</div>
+        <h3>Múltiplos raios por lugar</h3>
+        <p>Até 5 raios concêntricos com distâncias diferentes. O primeiro pode vibrar, o último tocar alarme. Você decide.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-red">🔔</div>
+        <h3>Alarme que fura silencioso</h3>
+        <p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android. Impossível ignorar.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📦</div>
+        <h3>Templates prontos</h3>
+        <p>Ônibus, casa, tarefa — comece com um template e ajuste. Ideal para quem quer criar alertas em 10 segundos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🗂️</div>
+        <h3>Grupos inteligentes</h3>
+        <p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos inteiros com um toque.</p>
+      </div>
+      <div class="feature-card animate delay-4">
+        <div class="feature-icon fi-orange">🔁</div>
+        <h3>Único ou recorrente</h3>
+        <p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre — perfeito para casa e trabalho.</p>
+      </div>
+      <div class="feature-card animate">
+        <div class="feature-icon fi-gray">🌙</div>
+        <h3>Tema claro e escuro</h3>
+        <p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p>
+      </div>
+      <div class="feature-card animate delay-1">
+        <div class="feature-icon fi-blue">🌍</div>
+        <h3>Português e Inglês</h3>
+        <p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p>
+      </div>
+      <div class="feature-card animate delay-2">
+        <div class="feature-icon fi-green">📊</div>
+        <h3>Histórico de alertas</h3>
+        <p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p>
+      </div>
+      <div class="feature-card animate delay-3">
+        <div class="feature-icon fi-purple">🔒</div>
+        <h3>100% local e privado</h3>
+        <p>Seus dados ficam no celular. Zero servidores. Zero rastreamento. Sua localização nunca sai do dispositivo.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRIVACIDADE -->
+<div class="highlight-section">
+  <div class="container">
+    <span class="section-label">Privacidade primeiro</span>
+    <h2 class="section-title">Seus dados são seus. Ponto.</h2>
+    <p class="section-subtitle">Diferente de outros apps de localização, o Geo Alert não envia nada para servidores externos.</p>
+    <div class="highlight-grid">
+      <div class="highlight-item">
+        <div class="hi-icon">📱</div>
+        <h4>Armazenamento local</h4>
+        <p>Tudo fica no AsyncStorage do seu celular. Sem banco de dados na nuvem.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🛡️</div>
+        <h4>Zero rastreamento</h4>
+        <p>Sem analytics, sem pixels, sem coleta de dados. Você é o dono.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">📡</div>
+        <h4>Funciona offline</h4>
+        <p>O geofencing usa GPS nativo. Não precisa de internet para monitorar.</p>
+      </div>
+      <div class="highlight-item">
+        <div class="hi-icon">🔋</div>
+        <h4>Bateria mínima</h4>
+        <p>Usa APIs nativas de geofencing — sem polling, sem GPS constante.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CASOS DE USO -->
+<section id="casos-de-uso">
+  <div class="container">
+    <span class="section-label">Quem usa</span>
+    <h2 class="section-title">Para quem é o Geo Alert?</h2>
+    <p class="section-subtitle">Qualquer pessoa que precisa lembrar de algo quando chegar em algum lugar.</p>
+    <div class="usecases">
+      <div class="usecase animate">
+        <div class="usecase-emoji">🚌</div>
+        <h4>Passageiro de ônibus</h4>
+        <p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p>
+      </div>
+      <div class="usecase animate delay-1">
+        <div class="usecase-emoji">🛒</div>
+        <h4>Tarefas no caminho</h4>
+        <p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p>
+      </div>
+      <div class="usecase animate delay-2">
+        <div class="usecase-emoji">💊</div>
+        <h4>Farmácia / Saúde</h4>
+        <p>Alerta quando estiver perto da farmácia, clínica ou hospital. Nunca esqueça.</p>
+      </div>
+      <div class="usecase animate delay-3">
+        <div class="usecase-emoji">🏠</div>
+        <h4>Chegando em casa</h4>
+        <p>Notifique a família que está chegando. Automaticamente, sem enviar mensagem.</p>
+      </div>
+      <div class="usecase animate delay-4">
+        <div class="usecase-emoji">💼</div>
+        <h4>Reuniões presenciais</h4>
+        <p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p>
+      </div>
+      <div class="usecase animate">
+        <div class="usecase-emoji">⛽</div>
+        <h4>Abastecer / Parar</h4>
+        <p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMPARAÇÃO -->
+<section style="background: var(--surface);">
+  <div class="container">
+    <span class="section-label">Diferencial</span>
+    <h2 class="section-title">Por que Geo Alert?</h2>
+    <p class="section-subtitle">Comparado com lembretes genéricos e outros apps de localização.</p>
+    <div class="comparison-wrap">
+      <table class="comparison">
+        <thead>
+          <tr>
+            <th>Funcionalidade</th>
+            <th style="text-align: center;">Geo Alert</th>
+            <th style="text-align: center;">Lembretes iOS/Android</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Múltiplos raios por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Tipos de alerta (vibração + toque)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alertas únicos (auto-desliga)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Grupos de lugares</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>100% privado (sem servidores)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Gratuito</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section id="faq">
+  <div class="container">
+    <span class="section-label">Perguntas frequentes</span>
+    <h2 class="section-title" style="text-align: center;">Dúvidas?</h2>
+    <br>
+    <div class="faq-list">
+      <div class="faq-item">
+        <div class="faq-q">Precisa de internet pra funcionar?</div>
+        <div class="faq-a">Não. O monitoramento usa GPS nativo do celular. Você só precisa de internet para buscar endereços na hora de cadastrar um lugar.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Gasta muita bateria?</div>
+        <div class="faq-a">Não. O Geo Alert usa a API nativa de geofencing do iOS e Android, que é ultra-eficiente. Sem polling de GPS constante.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Funciona com o app fechado?</div>
+        <div class="faq-a">Sim! O geofencing roda em segundo plano. Mesmo com o app fechado, os alertas disparam normalmente.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Meus dados vão para algum servidor?</div>
+        <div class="faq-a">Não. Todos os dados ficam no seu celular. Não temos servidores, não coletamos nada. Privacidade total.</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Quantos lugares posso monitorar?</div>
+        <div class="faq-a">No Android, sem limite prático. No iOS, o sistema permite até 20 geofences simultâneos (limitação da Apple).</div>
+      </div>
+      <div class="faq-item">
+        <div class="faq-q">Posso compartilhar o APK com amigos?</div>
+        <div class="faq-a">Sim! O APK Android pode ser enviado diretamente. Para iOS, o app precisa ser instalado via Xcode ou TestFlight.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA FINAL -->
+<section class="cta-section" id="download">
+  <h2>Pronto pra nunca mais<br>perder seu ponto? 📍</h2>
+  <p>Baixe agora e configure seu primeiro alerta em menos de 30 segundos.</p>
+  <div class="hero-buttons">
+    <a href="#" class="btn-primary">📱 Baixar APK (Android)</a>
+    <a href="#" class="btn-secondary">🍎 Em breve na App Store</a>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>Geo Alert v1.0.0 — Feito com ❤️ no Brasil</p>
+  <p style="margin-top: 8px;"><a href="privacy.html">Privacidade</a> · <a href="mailto:silvars@gmail.com">Contato</a></p>
+</footer>
+
+<script>
+  // FAQ toggle
+  document.querySelectorAll('.faq-q').forEach(q => {
+    q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
+  });
+
+  // Scroll animations
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
