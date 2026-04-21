@@ -11,21 +11,34 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
+      --bg: #FFFFFF; --surface: #F5F5F5; --surface2: #EBEBEB;
+      --text: #111111; --muted: #555555; --subtle: #999999;
+      --primary: #111111; --accent: #4F46E5;
+      --accent-dim: rgba(79,70,229,0.1);
+      --success: #16A34A; --danger: #DC2626; --warning: #EA580C;
+      --border: #E0E0E0; --radius: 16px; --radius-sm: 10px;
+      --nav-bg: rgba(255,255,255,0.85);
+      --shadow-light: rgba(0,0,0,0.06); --shadow-med: rgba(0,0,0,0.1);
+    }
+    [data-theme="dark"] {
       --bg: #0D0D0D; --surface: #1A1A1A; --surface2: #252525;
       --text: #F5F5F5; --muted: #A0A0A0; --subtle: #666666;
       --primary: #FFFFFF; --accent: #6B8AFF;
       --accent-dim: rgba(107,138,255,0.15);
       --success: #34D399; --danger: #F87171; --warning: #FB923C;
-      --border: #333333; --radius: 16px; --radius-sm: 10px;
+      --border: #333333;
+      --nav-bg: rgba(13,13,13,0.85);
+      --shadow-light: rgba(0,0,0,0.2); --shadow-med: rgba(0,0,0,0.3);
     }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text); background: var(--bg);
       line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      transition: background .3s, color .3s;
     }
 
     /* NAV */
-    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: rgba(13,13,13,0.85); border-bottom: 1px solid var(--border); padding: 0 24px; }
+    nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0 24px; transition: background .3s, border-color .3s; }
     .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
     .nav-logo span { font-size: 24px; }
@@ -34,6 +47,8 @@
     .nav-links a:hover { color: var(--text); }
     .lang-switch { font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: all .2s; }
     .lang-switch:hover { color: var(--text); border-color: var(--muted); }
+    .theme-toggle { background: none; border: 1px solid var(--border); width: 36px; height: 36px; border-radius: 50%; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; transition: all .2s; color: var(--text); }
+    .theme-toggle:hover { border-color: var(--muted); transform: scale(1.1); }
     .nav-cta { background: var(--accent); color: #fff; border: none; padding: 10px 22px; border-radius: 100px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; transition: transform .15s, box-shadow .15s; }
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(107,138,255,.35); }
 
@@ -43,8 +58,8 @@
     .hero h1 .gradient { background: linear-gradient(135deg, #6B8AFF, #A78BFA, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
     .store-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
-    .store-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--primary); color: #000; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: none; }
-    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,.12); }
+    .store-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--primary); color: var(--bg); padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: none; }
+    .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--shadow-med); }
     .store-badge svg { flex-shrink: 0; }
     .store-badge-text { text-align: left; }
     .store-badge-text .small { font-size: 10px; font-weight: 500; letter-spacing: 0.02em; opacity: 0.7; display: block; line-height: 1.2; }
@@ -70,7 +85,7 @@
     /* STEPS */
     .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
     .step { background: var(--surface); border-radius: var(--radius); padding: 32px 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
-    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(0,0,0,.3); }
+    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
     .step-num { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-bottom: 16px; }
     .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
     .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
@@ -82,7 +97,7 @@
     .phones-row { display: flex; justify-content: center; gap: 32px; flex-wrap: wrap; max-width: 1100px; margin: 0 auto; }
     .phone-wrap { flex-shrink: 0; text-align: center; }
     .phone-wrap .phone-title { font-size: 13px; font-weight: 700; color: var(--accent); text-transform: uppercase; letter-spacing: 0.06em; margin-bottom: 12px; }
-    .phone-device { width: 280px; height: 606px; border-radius: 36px; overflow: hidden; border: 3px solid #444; background: #FFFFFF; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.06); }
+    .phone-device { width: 280px; height: 606px; border-radius: 36px; overflow: hidden; border: 3px solid var(--border); background: #FFFFFF; position: relative; box-shadow: 0 20px 60px var(--shadow-med), 0 0 0 1px var(--shadow-light); }
     .phone-screen { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; font-family: 'Inter', sans-serif; font-size: 12px; }
     .phone-screen::-webkit-scrollbar { display: none; }
     .lt { --lbg:#FFFFFF; --lsurface:#F5F5F5; --lsurface2:#EBEBEB; --lborder:#E0E0E0; --ltext:#111; --lmuted:#777; --lsubtle:#AAA; --laccent:#4F46E5; --lsuccess:#22C55E; --lorange:#F97316; --lred:#EF4444; }
@@ -174,7 +189,7 @@
     .features-section { background: var(--surface); }
     .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
     .feature-card { background: var(--surface2); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
-    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(0,0,0,.3); border-color: rgba(107,138,255,0.3); }
+    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-med); border-color: rgba(107,138,255,0.3); }
     .feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
     .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
     .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
@@ -257,6 +272,7 @@
       <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
       <a href="../index.html" class="lang-switch">🇧🇷 PT</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
     </div>
     <a href="#download" class="nav-cta">Download</a>
   </div>
@@ -536,6 +552,21 @@
     entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); });
   }, { threshold: 0.1 });
   document.querySelectorAll('.animate').forEach(el => observer.observe(el));
+
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    }
+  })();
 </script>
 </body>
 </html>

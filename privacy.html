@@ -11,6 +11,17 @@
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
     :root {
+      --bg: #FFFFFF;
+      --surface: #F5F5F5;
+      --text: #111111;
+      --muted: #555555;
+      --subtle: #999999;
+      --accent: #4F46E5;
+      --border: #E0E0E0;
+      --radius: 16px;
+      --nav-bg: rgba(255,255,255,0.85);
+    }
+    [data-theme="dark"] {
       --bg: #0D0D0D;
       --surface: #1A1A1A;
       --text: #F5F5F5;
@@ -18,19 +29,20 @@
       --subtle: #666666;
       --accent: #6B8AFF;
       --border: #333333;
-      --radius: 16px;
+      --nav-bg: rgba(13,13,13,0.85);
     }
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text); background: var(--bg);
       line-height: 1.7; -webkit-font-smoothing: antialiased;
+      transition: background .3s, color .3s;
     }
     nav {
       position: fixed; top: 0; left: 0; right: 0; z-index: 100;
       backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px);
-      background: rgba(13,13,13,0.85);
+      background: var(--nav-bg);
       border-bottom: 1px solid var(--border);
-      padding: 0 24px;
+      padding: 0 24px; transition: background .3s, border-color .3s;
     }
     .nav-inner {
       max-width: 800px; margin: 0 auto;
@@ -50,6 +62,8 @@
     .nav-back:hover { opacity: 0.8; }
     .lang-switch { font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: all .2s; }
     .lang-switch:hover { color: var(--text); border-color: var(--muted); }
+    .theme-toggle { background: none; border: 1px solid var(--border); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all .2s; color: var(--text); }
+    .theme-toggle:hover { border-color: var(--muted); transform: scale(1.1); }
 
     main {
       max-width: 800px; margin: 0 auto;
@@ -101,6 +115,7 @@
     <a class="nav-logo" href="index.html"><span>📍</span> Geo Alert</a>
     <div style="display:flex;align-items:center;gap:16px">
       <a href="en/privacy.html" class="lang-switch">🇺🇸 EN</a>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">🌙</button>
       <a class="nav-back" href="index.html">← Voltar ao site</a>
     </div>
   </div>
@@ -173,6 +188,23 @@
   <p>Geo Alert v1.0.0 — Feito com ❤️ no Brasil</p>
   <p style="margin-top: 8px;"><a href="index.html">Voltar ao site</a> · <a href="mailto:silvars@gmail.com">Contato</a></p>
 </footer>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+    localStorage.setItem('theme', isDark ? 'light' : 'dark');
+  }
+  (function() {
+    const saved = localStorage.getItem('theme');
+    if (saved === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      document.querySelector('.theme-toggle').textContent = '☀️';
+    }
+  })();
+</script>
 
 </body>
 </html>
