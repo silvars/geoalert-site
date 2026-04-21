@@ -48,6 +48,8 @@
       transition: opacity .2s;
     }
     .nav-back:hover { opacity: 0.8; }
+    .lang-switch { font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: all .2s; }
+    .lang-switch:hover { color: var(--text); border-color: var(--muted); }
 
     main {
       max-width: 800px; margin: 0 auto;
@@ -97,7 +99,10 @@
 <nav>
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><span>📍</span> Geo Alert</a>
-    <a class="nav-back" href="index.html">← Voltar ao site</a>
+    <div style="display:flex;align-items:center;gap:16px">
+      <a href="en/privacy.html" class="lang-switch">🇺🇸 EN</a>
+      <a class="nav-back" href="index.html">← Voltar ao site</a>
+    </div>
   </div>
 </nav>
 
@@ -106,76 +111,61 @@
   <p class="last-updated">Última atualização: 20 de abril de 2026</p>
 
   <div class="highlight-box">
-    <p><strong>Resumo:</strong> O Geo Alert não coleta, armazena nem transmite nenhum dado pessoal para servidores externos. Todos os seus dados ficam exclusivamente no seu celular.</p>
+    <p>🔒 <strong>Versão curta:</strong> O Geo Alert não coleta nada sobre você. Todos os seus dados ficam no seu celular. Sem servidores, sem rastreamento, sem surpresas.</p>
   </div>
 
-  <h2>1. Introdução</h2>
-  <p>O Geo Alert ("nós", "nosso" ou "app") é um aplicativo de alertas baseados em localização geográfica. Esta Política de Privacidade descreve como tratamos as informações quando você usa nosso aplicativo.</p>
-  <p>Respeitamos sua privacidade. O Geo Alert foi projetado desde o início para funcionar sem servidores externos e sem coleta de dados.</p>
+  <h2>O que o Geo Alert faz</h2>
+  <p>O Geo Alert é um app de alertas por localização. Você marca um lugar no mapa, configura os raios e o app te avisa quando estiver perto. Simples assim.</p>
 
-  <h2>2. Dados que coletamos</h2>
-
-  <h3>2.1. Dados que NÃO coletamos</h3>
+  <h2>O que NÃO coletamos</h2>
+  <p>Vamos ser diretos:</p>
   <ul>
-    <li><strong>Localização:</strong> Sua posição GPS é processada apenas localmente no seu dispositivo para verificar a proximidade dos locais registrados. Nunca é enviada a servidores nossos.</li>
-    <li><strong>Informações pessoais:</strong> Não coletamos nome, e-mail, telefone ou qualquer identificador pessoal.</li>
-    <li><strong>Analytics:</strong> Não usamos ferramentas de rastreamento, analytics ou pixels de tracking.</li>
-    <li><strong>Dados de uso:</strong> Não monitoramos como você interage com o app.</li>
+    <li>🚫 <strong>Sua localização</strong> — é processada no seu celular e pronto. Não vai pra lugar nenhum.</li>
+    <li>🚫 <strong>Dados pessoais</strong> — não pedimos nome, e-mail, telefone, nada.</li>
+    <li>🚫 <strong>Analytics</strong> — sem rastreamento, sem pixels, sem nada monitorando você.</li>
+    <li>🚫 <strong>Dados de uso</strong> — não sabemos o que você faz no app. E não queremos saber.</li>
   </ul>
 
-  <h3>2.2. Dados armazenados localmente</h3>
-  <p>O app armazena os seguintes dados <strong>apenas no seu dispositivo</strong> (via AsyncStorage):</p>
+  <h2>O que fica salvo no seu celular</h2>
+  <p>O app salva alguns dados <strong>localmente no seu dispositivo</strong>:</p>
   <ul>
-    <li>Locais registrados (nome, coordenadas, configuração de raios)</li>
-    <li>Histórico de alertas disparados</li>
-    <li>Preferências (idioma, tema, endereços favoritos)</li>
-    <li>Sessão de login local (apenas o nome informado)</li>
+    <li>📍 Seus locais registrados (nome, posição, raios)</li>
+    <li>🔔 Histórico de alertas que já dispararam</li>
+    <li>⚙️ Suas preferências (idioma, tema)</li>
   </ul>
-  <p>Esses dados <strong>nunca saem do seu dispositivo</strong> e são excluídos automaticamente se você desinstalar o app.</p>
+  <p>Esses dados <strong>nunca saem do celular</strong>. Se desinstalar o app, eles são apagados automaticamente.</p>
 
-  <h2>3. Serviços de terceiros</h2>
-  <p>O Geo Alert utiliza os seguintes serviços externos exclusivamente para funcionalidades específicas:</p>
-
-  <h3>3.1. Google Places API e Google Geocoding API</h3>
+  <h2>Serviços externos</h2>
+  <p>O app usa dois serviços do Google apenas para uma coisa: buscar endereços.</p>
   <ul>
-    <li><strong>Uso:</strong> Busca de endereços e conversão de coordenadas em endereços legíveis.</li>
-    <li><strong>Quando:</strong> Apenas quando você busca um endereço ao cadastrar ou editar um local.</li>
-    <li><strong>Dados enviados:</strong> Texto da busca ou coordenadas do ponto selecionado no mapa.</li>
-    <li><strong>Política do Google:</strong> <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></li>
+    <li><strong>Google Places / Geocoding</strong> — quando você busca um endereço para cadastrar um local, o texto que digitou é enviado ao Google para encontrar o lugar. Só isso, só nessa hora.</li>
+    <li><strong>Apple Maps / Google Maps</strong> — para mostrar o mapa. Recebe apenas a região visível na tela.</li>
   </ul>
+  <p>Política de privacidade do Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
 
-  <h3>3.2. Apple Maps / Google Maps (renderização)</h3>
+  <h2>Permissões</h2>
+  <p>O app pede apenas o necessário:</p>
   <ul>
-    <li><strong>Uso:</strong> Exibição do mapa na interface do app.</li>
-    <li><strong>Dados enviados:</strong> Região do mapa visível (coordenadas do centro e zoom).</li>
+    <li>📍 <strong>Localização</strong> — para saber quando você está perto de um local registrado, mesmo com o app fechado.</li>
+    <li>🔔 <strong>Notificações</strong> — para te avisar quando um alerta disparar.</li>
+    <li>📳 <strong>Vibração</strong> — para alertas do tipo vibração.</li>
   </ul>
+  <p>Você pode revogar qualquer permissão nas configurações do seu celular a qualquer momento.</p>
 
-  <h2>4. Permissões do dispositivo</h2>
-  <p>O app solicita as seguintes permissões:</p>
-  <ul>
-    <li><strong>Localização (sempre / em uso):</strong> Necessária para monitorar geofences em segundo plano e verificar sua proximidade dos locais registrados.</li>
-    <li><strong>Notificações:</strong> Necessária para enviar alertas quando você se aproxima de um local.</li>
-    <li><strong>Vibração:</strong> Para alertas do tipo vibração.</li>
-  </ul>
-  <p>Todas as permissões podem ser revogadas a qualquer momento nas configurações do seu dispositivo.</p>
+  <h2>Segurança</h2>
+  <p>Seus dados ficam protegidos pelo sistema do celular (iOS ou Android). Recomendamos manter senha ou biometria ativada no dispositivo.</p>
 
-  <h2>5. Segurança</h2>
-  <p>Como todos os dados ficam no seu dispositivo, a segurança é gerenciada pelo sistema operacional do seu celular (iOS ou Android). Recomendamos manter o dispositivo com senha/biometria ativada.</p>
+  <h2>Crianças</h2>
+  <p>O app não é direcionado a menores de 13 anos.</p>
 
-  <h2>6. Dados de crianças</h2>
-  <p>O Geo Alert não é direcionado a menores de 13 anos. Não coletamos intencionalmente dados de crianças.</p>
+  <h2>Mudanças nesta página</h2>
+  <p>Se mudarmos algo importante aqui, vamos avisar numa atualização do app.</p>
 
-  <h2>7. Alterações nesta política</h2>
-  <p>Podemos atualizar esta Política de Privacidade ocasionalmente. Alterações significativas serão comunicadas através de uma atualização do app. A data de "Última atualização" no topo indica a versão mais recente.</p>
-
-  <h2>8. Contato</h2>
-  <p>Se você tiver dúvidas sobre esta Política de Privacidade, entre em contato:</p>
-  <ul>
-    <li><strong>E-mail:</strong> <a href="mailto:silvars@gmail.com">silvars@gmail.com</a></li>
-  </ul>
+  <h2>Contato</h2>
+  <p>Dúvidas? Manda um e-mail: <a href="mailto:silvars@gmail.com">silvars@gmail.com</a></p>
 
   <div class="highlight-box">
-    <p><strong>Em resumo:</strong> O Geo Alert é um app 100% local. Não temos servidores. Não coletamos dados. Sua localização nunca sai do seu celular. Seus dados são seus — ponto.</p>
+    <p>✅ <strong>Resumindo:</strong> O Geo Alert é 100% local. Sem servidores, sem coleta de dados, sem rastreamento. Sua localização nunca sai do seu celular. Seus dados são seus — ponto.</p>
   </div>
 </main>
 

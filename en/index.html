@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Geo Alert — Nunca mais perca seu ponto.</title>
-  <meta name="description" content="Registre um lugar. Esqueça. O app te avisa quando estiver perto. Alertas com múltiplos raios, vibração e alarme." />
+  <title>Geo Alert — Never miss your stop.</title>
+  <meta name="description" content="Save a place. Forget about it. The app alerts you when you're nearby — with vibration, alarm and configurable radius." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -29,7 +29,7 @@
     .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
     .nav-logo span { font-size: 24px; }
-    .nav-links { display: flex; gap: 32px; }
+    .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
     .lang-switch { font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: all .2s; }
@@ -39,7 +39,6 @@
 
     /* HERO */
     .hero { padding: 150px 24px 90px; text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%); }
-    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); color: var(--accent); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 28px; border: 1px solid rgba(107,138,255,0.2); }
     .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; max-width: 720px; margin: 0 auto 20px; }
     .hero h1 .gradient { background: linear-gradient(135deg, #6B8AFF, #A78BFA, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
     .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
@@ -76,7 +75,7 @@
     .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
     .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
-    /* ═══ APP SHOWCASE — LIGHT THEME MOCKUPS ═══ */
+    /* SHOWCASE */
     .showcase-section { padding: 80px 24px; background: linear-gradient(180deg, var(--bg) 0%, rgba(107,138,255,0.04) 50%, var(--bg) 100%); overflow: hidden; }
     .showcase-section .section-label, .showcase-section .section-title, .showcase-section .section-subtitle { text-align: center; }
     .showcase-section .section-subtitle { margin-left: auto; margin-right: auto; }
@@ -86,8 +85,6 @@
     .phone-device { width: 280px; height: 606px; border-radius: 36px; overflow: hidden; border: 3px solid #444; background: #FFFFFF; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,.4), 0 0 0 1px rgba(255,255,255,.06); }
     .phone-screen { width: 100%; height: 100%; overflow-y: auto; overflow-x: hidden; font-family: 'Inter', sans-serif; font-size: 12px; }
     .phone-screen::-webkit-scrollbar { display: none; }
-
-    /* Light theme vars */
     .lt { --lbg:#FFFFFF; --lsurface:#F5F5F5; --lsurface2:#EBEBEB; --lborder:#E0E0E0; --ltext:#111; --lmuted:#777; --lsubtle:#AAA; --laccent:#4F46E5; --lsuccess:#22C55E; --lorange:#F97316; --lred:#EF4444; }
     .lt-status { display:flex; justify-content:space-between; align-items:center; padding:6px 20px 0; height:36px; background:#fff; }
     .lt-status .t { font-size:13px; font-weight:600; color:var(--ltext); }
@@ -121,8 +118,6 @@
     .lt-tab { position:absolute; bottom:0; left:0; right:0; height:44px; background:#fff; border-top:1px solid var(--lborder); display:flex; align-items:center; justify-content:space-around; }
     .lt-tab span { font-size:9px; font-weight:600; color:var(--lsubtle); }
     .lt-tab span.active { color:var(--laccent); }
-
-    /* Map */
     .lt-map { background:linear-gradient(135deg,#e8eff7,#dde7f0,#d4dfeb); height:100%; position:relative; }
     .lt-map-roads { position:absolute; inset:0; overflow:hidden; }
     .lt-map-roads div { position:absolute; background:#c8d4e0; border-radius:2px; }
@@ -139,8 +134,6 @@
     .lt-tpls { display:flex; gap:6px; overflow-x:auto; }
     .lt-tpls::-webkit-scrollbar { display:none; }
     .lt-tpl { padding:6px 12px; border-radius:8px; background:#F5F5F5; font-size:10px; font-weight:600; white-space:nowrap; color:#111; flex-shrink:0; }
-
-    /* Config */
     .lt-cfg-hdr { display:flex; align-items:center; gap:10px; padding:10px 14px; background:var(--lsurface); }
     .lt-cfg-back { width:34px; height:34px; border-radius:50%; background:#fff; display:flex; align-items:center; justify-content:center; font-size:15px; color:var(--ltext); border:1px solid var(--lborder); }
     .lt-cfg-hdr h3 { font-size:15px; font-weight:700; color:var(--ltext); margin:0; }
@@ -174,7 +167,6 @@
     .lt-gchip.sel { background:var(--laccent); color:#fff; }
     .lt-gchip.unsel { background:var(--lsurface2); color:var(--lmuted); }
     .lt-btn-save { width:100%; padding:12px; border-radius:10px; background:var(--laccent); color:#fff; font-size:13px; font-weight:700; text-align:center; }
-
     @media (max-width: 900px) { .phones-row { gap: 24px; } .phone-device { width: 240px; height: 520px; border-radius: 30px; } }
     @media (max-width: 520px) { .phones-row { gap: 32px; flex-direction: column; align-items: center; } .phone-device { width: 270px; height: 585px; border-radius: 34px; } }
 
@@ -260,113 +252,110 @@
   <div class="nav-inner">
     <a href="#" class="nav-logo"><span>📍</span> Geo Alert</a>
     <div class="nav-links">
-      <a href="#como-funciona">Como funciona</a>
-      <a href="#app-preview">O App</a>
+      <a href="#how-it-works">How it works</a>
+      <a href="#app-preview">The App</a>
       <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
-      <a href="en/index.html" class="lang-switch">🇺🇸 EN</a>
+      <a href="../index.html" class="lang-switch">🇧🇷 PT</a>
     </div>
-    <a href="#download" class="nav-cta">Baixar o App</a>
+    <a href="#download" class="nav-cta">Download</a>
   </div>
 </nav>
 
 <section class="hero">
-  <h1 class="animate">Nunca mais perca<br>seu <span class="gradient">ponto de parada.</span></h1>
-  <p class="animate delay-1">Registre um lugar. Esqueça. O app te avisa quando estiver perto — com vibração, alarme e raios configuráveis.</p>
+  <h1 class="animate">Never miss your<br><span class="gradient">stop again.</span></h1>
+  <p class="animate delay-1">Save a place. Forget about it. The app alerts you when you're nearby — with vibration, alarm and configurable radius.</p>
   <div class="store-badges animate delay-2">
     <a href="https://github.com/silvars/geoalert-site/releases/download/v1.0.0/GeoAlert-release.apk" class="store-badge">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Baixar APK</span><span class="big">Android</span></div>
+      <div class="store-badge-text"><span class="small">Download APK</span><span class="big">Android</span></div>
     </a>
     <a href="#download" class="store-badge-outline">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      <div class="store-badge-text"><span class="small">Coming soon to</span><span class="big">App Store</span></div>
     </a>
   </div>
-  <a href="#app-preview" class="hero-secondary-link animate delay-3">Ver o app por dentro →</a>
+  <a href="#app-preview" class="hero-secondary-link animate delay-3">See the app in action →</a>
   <div class="hero-stats animate delay-3">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Raios por lugar</div></div>
-    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Tipos de alerta</div></div>
-    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">Lugares monitorados</div></div>
-    <div class="stat"><div class="stat-value">0</div><div class="stat-label">Dados na nuvem</div></div>
+    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Radius per place</div></div>
+    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Alert types</div></div>
+    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">Monitored places</div></div>
+    <div class="stat"><div class="stat-value">0</div><div class="stat-label">Cloud data</div></div>
   </div>
 </section>
 
-<section id="como-funciona">
+<section id="how-it-works">
   <div class="container">
-    <span class="section-label">Como funciona</span>
-    <h2 class="section-title">3 passos. Sem complicação.</h2>
-    <p class="section-subtitle">Configure uma vez, funcione para sempre. Sem cadastro, sem internet constante, sem servidores.</p>
+    <span class="section-label">How it works</span>
+    <h2 class="section-title">3 steps. No hassle.</h2>
+    <p class="section-subtitle">Set it up once, works forever. No sign-up, no constant internet, no servers.</p>
     <div class="steps">
-      <div class="step animate"><div class="step-num">1</div><h3>Registre o lugar</h3><p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto.</p></div>
-      <div class="step animate delay-1"><div class="step-num">2</div><h3>Configure os raios</h3><p>Defina até 5 raios com distâncias diferentes (500m a 10km). Cada raio pode vibrar ou tocar alarme alto.</p></div>
-      <div class="step animate delay-2"><div class="step-num">3</div><h3>Esqueça e viva</h3><p>O app monitora em segundo plano. Quando você se aproximar, os alertas disparam — mesmo com o app fechado.</p></div>
+      <div class="step animate"><div class="step-num">1</div><h3>Save a place</h3><p>Search an address or tap the map. Pick an emoji and name it — or use a ready-made template.</p></div>
+      <div class="step animate delay-1"><div class="step-num">2</div><h3>Configure the radius</h3><p>Set up to 5 radius rings with different distances (500m to 10km). Each ring can vibrate or sound a loud alarm.</p></div>
+      <div class="step animate delay-2"><div class="step-num">3</div><h3>Forget and live</h3><p>The app monitors in the background. When you get close, alerts fire — even with the app closed.</p></div>
     </div>
   </div>
 </section>
 
-<!-- ═══════════ APP PREVIEW — LIGHT THEME MOCKUPS ═══════════ -->
 <section class="showcase-section" id="app-preview">
   <div class="container">
-    <span class="section-label">Veja o app</span>
-    <h2 class="section-title">Simples, bonito e direto ao ponto.</h2>
-    <p class="section-subtitle">Tema claro com interface limpa. Tudo que você precisa, na palma da mão.</p>
+    <span class="section-label">See the app</span>
+    <h2 class="section-title">Simple, beautiful and straight to the point.</h2>
+    <p class="section-subtitle">Light theme with a clean interface. Everything you need, right in your hand.</p>
     <div class="phones-row">
 
-      <!-- PHONE 1: HOME -->
       <div class="phone-wrap animate">
-        <div class="phone-title">Meus Locais</div>
+        <div class="phone-title">My Places</div>
         <div class="phone-device">
           <div class="phone-screen lt" style="background:var(--lbg)">
             <div class="lt-status"><span class="t">9:41</span><div class="icons"><div class="batt"></div></div></div>
-            <div class="lt-home-hdr"><h2>Meus Locais</h2><div class="lt-monitor"><div class="dot"></div><span>3 de 5 monitorando</span></div></div>
-            <div class="lt-group"><span class="lbl">▼ TRABALHO</span><span class="cnt">2/3</span><div class="lt-sw on"></div></div>
+            <div class="lt-home-hdr"><h2>My Places</h2><div class="lt-monitor"><div class="dot"></div><span>3 of 5 monitoring</span></div></div>
+            <div class="lt-group"><span class="lbl">▼ WORK</span><span class="cnt">2/3</span><div class="lt-sw on"></div></div>
             <div class="lt-place">
               <div class="lt-emoji">🏢</div>
-              <div class="lt-pinfo"><div class="nm">Escritório</div><div class="addr">R. Augusta, 1200 - SP</div>
+              <div class="lt-pinfo"><div class="nm">Office</div><div class="addr">123 Main Street, NY</div>
                 <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div><div class="r"><div class="rdot" style="background:#F97316"></div>1km</div><div class="r"><div class="rdot" style="background:#EF4444"></div>2km</div></div>
               </div>
               <div class="lt-pright"><div class="lt-sw on"></div></div>
             </div>
             <div class="lt-place">
               <div class="lt-emoji">📋</div>
-              <div class="lt-pinfo"><div class="nm">Reunião Centro</div><div class="addr">Av. Paulista, 900 - SP</div>
+              <div class="lt-pinfo"><div class="nm">Meeting Downtown</div><div class="addr">456 Broadway, NY</div>
                 <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>1km</div></div>
               </div>
               <div class="lt-pright"><div class="lt-sw off"></div></div>
             </div>
-            <div class="lt-group"><span class="lbl">▼ PESSOAL</span><span class="cnt">1/2</span><div class="lt-sw on"></div></div>
+            <div class="lt-group"><span class="lbl">▼ PERSONAL</span><span class="cnt">1/2</span><div class="lt-sw on"></div></div>
             <div class="lt-place">
               <div class="lt-emoji">🏠</div>
-              <div class="lt-pinfo"><div class="nm">Casa</div><div class="addr">R. das Flores, 42 - SP</div>
+              <div class="lt-pinfo"><div class="nm">Home</div><div class="addr">789 Oak Ave, NY</div>
                 <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div><div class="r"><div class="rdot" style="background:#F97316"></div>2km</div></div>
               </div>
               <div class="lt-pright"><div class="lt-sw on"></div></div>
             </div>
             <div class="lt-place">
               <div class="lt-emoji">🚌</div>
-              <div class="lt-pinfo"><div class="nm">Ponto de ônibus</div><div class="addr">Terminal Barra Funda</div>
+              <div class="lt-pinfo"><div class="nm">Bus Stop</div><div class="addr">Central Station</div>
                 <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>500m</div></div>
               </div>
               <div class="lt-pright"><div class="lt-sw off"></div></div>
             </div>
-            <div class="lt-group"><span class="lbl">▶ SAÚDE</span><span class="cnt">1/1</span><div class="lt-sw on"></div></div>
+            <div class="lt-group"><span class="lbl">▶ HEALTH</span><span class="cnt">1/1</span><div class="lt-sw on"></div></div>
             <div class="lt-place" style="border-bottom:none">
               <div class="lt-emoji">💊</div>
-              <div class="lt-pinfo"><div class="nm">Farmácia</div><div class="addr">Drogasil - R. Oscar Freire</div>
+              <div class="lt-pinfo"><div class="nm">Pharmacy</div><div class="addr">CVS - 5th Avenue</div>
                 <div class="lt-rings"><div class="r"><div class="rdot" style="background:#22C55E"></div>300m</div></div>
               </div>
               <div class="lt-pright"><div class="lt-sw on"></div></div>
             </div>
             <div class="lt-fab">+</div>
-            <div class="lt-tab"><span class="active">📍 Locais</span><span>🕐 Histórico</span><span>⚙️ Config</span></div>
+            <div class="lt-tab"><span class="active">📍 Places</span><span>🕐 History</span><span>⚙️ Settings</span></div>
           </div>
         </div>
       </div>
 
-      <!-- PHONE 2: MAP -->
       <div class="phone-wrap animate delay-1">
-        <div class="phone-title">Adicionar Local</div>
+        <div class="phone-title">Add Place</div>
         <div class="phone-device">
           <div class="phone-screen lt lt-map">
             <div class="lt-map-roads">
@@ -382,46 +371,45 @@
               <div class="c" style="width:70px;height:70px;border-color:rgba(34,197,94,.45);background:rgba(34,197,94,.1)"></div>
             </div>
             <div class="lt-pin"></div>
-            <div class="lt-float"><div class="lt-float-back">‹</div><div class="lt-float-search">🔍 Buscar endereço...</div></div>
+            <div class="lt-float"><div class="lt-float-back">‹</div><div class="lt-float-search">🔍 Search address...</div></div>
             <div class="lt-sheet">
               <div class="lt-sheet-handle"></div>
-              <div class="lt-sheet-loc"><h4>📍 Av. Paulista, 1578</h4><p>Bela Vista, São Paulo - SP</p></div>
-              <div class="lt-tpls"><div class="lt-tpl">🚌 Ônibus</div><div class="lt-tpl">🏠 Casa</div><div class="lt-tpl">📋 Tarefa</div><div class="lt-tpl">💼 Trabalho</div><div class="lt-tpl">💊 Saúde</div></div>
+              <div class="lt-sheet-loc"><h4>📍 123 Main Street</h4><p>Downtown, New York - NY</p></div>
+              <div class="lt-tpls"><div class="lt-tpl">🚌 Bus</div><div class="lt-tpl">🏠 Home</div><div class="lt-tpl">📋 Task</div><div class="lt-tpl">💼 Work</div><div class="lt-tpl">💊 Health</div></div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- PHONE 3: CONFIGURE -->
       <div class="phone-wrap animate delay-2">
-        <div class="phone-title">Configurar Alertas</div>
+        <div class="phone-title">Configure Alerts</div>
         <div class="phone-device">
           <div class="phone-screen lt" style="background:var(--lbg)">
             <div class="lt-status"><span class="t">9:41</span><div class="icons"><div class="batt"></div></div></div>
-            <div class="lt-cfg-hdr"><div class="lt-cfg-back">‹</div><h3>Configurar Alertas</h3></div>
+            <div class="lt-cfg-hdr"><div class="lt-cfg-back">‹</div><h3>Configure Alerts</h3></div>
             <div class="lt-cfg-scroll">
-              <div class="lt-cfg-preview"><span class="emoji">🏢</span><div><div class="nm">Escritório</div><div class="ad">R. Augusta, 1200 - São Paulo</div></div></div>
-              <div class="lt-sec">ALERTAS</div>
+              <div class="lt-cfg-preview"><span class="emoji">🏢</span><div><div class="nm">Office</div><div class="ad">123 Main Street, New York</div></div></div>
+              <div class="lt-sec">ALERTS</div>
               <div class="lt-rcard">
-                <div class="lt-rtop"><span>Alerta 1</span><span class="x">×</span></div>
+                <div class="lt-rtop"><span>Alert 1</span><span class="x">×</span></div>
                 <div class="lt-rval">500 m</div>
                 <div class="lt-slider"><div class="lt-slider-fill" style="width:25%;background:#22C55E"></div><div class="lt-slider-thumb" style="left:25%;background:#22C55E"></div></div>
                 <div class="lt-presets"><div class="lt-preset sel" style="background:#22C55E">500m</div><div class="lt-preset">1km</div><div class="lt-preset">2km</div><div class="lt-preset">5km</div><div class="lt-preset">10km</div></div>
-                <div class="lt-atypes"><div class="lt-atype sel" style="background:#22C55E">📳 Vibração</div><div class="lt-atype">🔔 Alarme</div></div>
+                <div class="lt-atypes"><div class="lt-atype sel" style="background:#22C55E">📳 Vibration</div><div class="lt-atype">🔔 Alarm</div></div>
               </div>
               <div class="lt-rcard">
-                <div class="lt-rtop"><span>Alerta 2</span><span class="x">×</span></div>
+                <div class="lt-rtop"><span>Alert 2</span><span class="x">×</span></div>
                 <div class="lt-rval">2 km</div>
                 <div class="lt-slider"><div class="lt-slider-fill" style="width:50%;background:#F97316"></div><div class="lt-slider-thumb" style="left:50%;background:#F97316"></div></div>
                 <div class="lt-presets"><div class="lt-preset">500m</div><div class="lt-preset">1km</div><div class="lt-preset sel" style="background:#F97316">2km</div><div class="lt-preset">5km</div><div class="lt-preset">10km</div></div>
-                <div class="lt-atypes"><div class="lt-atype">📳 Vibração</div><div class="lt-atype sel" style="background:#F97316">🔔 Alarme</div></div>
+                <div class="lt-atypes"><div class="lt-atype">📳 Vibration</div><div class="lt-atype sel" style="background:#F97316">🔔 Alarm</div></div>
               </div>
-              <div class="lt-add-ring">+ Adicionar alerta</div>
-              <div class="lt-sec">LEMBRETE</div>
-              <div class="lt-rem-row"><div class="lt-rem-chip sel">🔁 Recorrente</div><div class="lt-rem-chip unsel">🏁 Uma vez</div></div>
-              <div class="lt-sec">GRUPO</div>
-              <div class="lt-gchips"><div class="lt-gchip sel">Trabalho</div><div class="lt-gchip unsel">Casa</div><div class="lt-gchip unsel">Pessoal</div><div class="lt-gchip unsel">Saúde</div><div class="lt-gchip unsel">Família</div></div>
-              <div class="lt-btn-save">Criar Local</div>
+              <div class="lt-add-ring">+ Add alert</div>
+              <div class="lt-sec">REMINDER</div>
+              <div class="lt-rem-row"><div class="lt-rem-chip sel">🔁 Recurring</div><div class="lt-rem-chip unsel">🏁 One-time</div></div>
+              <div class="lt-sec">GROUP</div>
+              <div class="lt-gchips"><div class="lt-gchip sel">Work</div><div class="lt-gchip unsel">Home</div><div class="lt-gchip unsel">Personal</div><div class="lt-gchip unsel">Health</div><div class="lt-gchip unsel">Family</div></div>
+              <div class="lt-btn-save">Create Place</div>
             </div>
           </div>
         </div>
@@ -433,72 +421,72 @@
 
 <section id="features" class="features-section">
   <div class="container">
-    <span class="section-label">Funcionalidades</span>
-    <h2 class="section-title">Tudo que você precisa.<br>Nada que não precisa.</h2>
-    <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
+    <span class="section-label">Features</span>
+    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+    <p class="section-subtitle">Built to be simple to use and powerful under the hood.</p>
     <div class="features-grid">
-      <div class="feature-card animate"><div class="feature-icon fi-blue">📍</div><h3>Múltiplos raios por lugar</h3><p>Até 5 raios concêntricos com distâncias diferentes. O primeiro pode vibrar, o último tocar alarme.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-red">🔔</div><h3>Alarme que fura silencioso</h3><p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📦</div><h3>Templates prontos</h3><p>Ônibus, casa, tarefa — comece com um template e ajuste. Crie alertas em 10 segundos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🗂️</div><h3>Grupos inteligentes</h3><p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos com um toque.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-orange">🔁</div><h3>Único ou recorrente</h3><p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre.</p></div>
-      <div class="feature-card animate"><div class="feature-icon fi-gray">🌙</div><h3>Tema claro e escuro</h3><p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-blue">🌍</div><h3>Português e Inglês</h3><p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📊</div><h3>Histórico de alertas</h3><p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🔒</div><h3>100% local e privado</h3><p>Seus dados ficam no celular. Zero servidores. Zero rastreamento. Sua localização nunca sai do dispositivo.</p></div>
+      <div class="feature-card animate"><div class="feature-icon fi-blue">📍</div><h3>Multiple radius per place</h3><p>Up to 5 concentric rings with different distances. The first can vibrate, the last can sound a loud alarm.</p></div>
+      <div class="feature-card animate delay-1"><div class="feature-icon fi-red">🔔</div><h3>Alarm that overrides silent</h3><p>The "Ring" alert plays loud even on silent mode (iOS) and uses alarm stream on Android.</p></div>
+      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📦</div><h3>Ready-made templates</h3><p>Bus, home, task — start from a template and customize. Create alerts in 10 seconds.</p></div>
+      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🗂️</div><h3>Smart groups</h3><p>Organize by Work, Personal, Health, Family and more. Enable/disable groups with one tap.</p></div>
+      <div class="feature-card animate delay-4"><div class="feature-icon fi-orange">🔁</div><h3>One-time or recurring</h3><p>One-time alerts auto-disable after firing. Recurring ones work forever.</p></div>
+      <div class="feature-card animate"><div class="feature-icon fi-gray">🌙</div><h3>Light and dark theme</h3><p>Switch between light and dark mode in settings. Your preference is saved.</p></div>
+      <div class="feature-card animate delay-1"><div class="feature-icon fi-blue">🌍</div><h3>English and Portuguese</h3><p>Fully translated interface in EN and PT-BR. Auto-detects your phone language.</p></div>
+      <div class="feature-card animate delay-2"><div class="feature-icon fi-green">📊</div><h3>Alert history</h3><p>See all alerts that have fired — when, where and what type. Up to 100 records saved.</p></div>
+      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple">🔒</div><h3>100% local and private</h3><p>Your data stays on your phone. Zero servers. Zero tracking. Your location never leaves the device.</p></div>
     </div>
   </div>
 </section>
 
 <div class="highlight-section">
   <div class="container">
-    <span class="section-label">Privacidade primeiro</span>
-    <h2 class="section-title">Seus dados são seus. Ponto.</h2>
-    <p class="section-subtitle">Diferente de outros apps de localização, o Geo Alert não envia nada para servidores externos.</p>
+    <span class="section-label">Privacy first</span>
+    <h2 class="section-title">Your data is yours. Period.</h2>
+    <p class="section-subtitle">Unlike other location apps, Geo Alert doesn't send anything to external servers.</p>
     <div class="highlight-grid">
-      <div class="highlight-item"><div class="hi-icon">📱</div><h4>Armazenamento local</h4><p>Tudo fica salvo no seu celular. Sem banco de dados na nuvem.</p></div>
-      <div class="highlight-item"><div class="hi-icon">🛡️</div><h4>Zero rastreamento</h4><p>Sem analytics, sem pixels, sem coleta de dados. Você é o dono.</p></div>
-      <div class="highlight-item"><div class="hi-icon">📡</div><h4>Funciona offline</h4><p>O monitoramento usa GPS nativo. Não precisa de internet para funcionar.</p></div>
-      <div class="highlight-item"><div class="hi-icon">🔋</div><h4>Bateria mínima</h4><p>Usa o sistema nativo do celular — sem consumo extra de bateria.</p></div>
+      <div class="highlight-item"><div class="hi-icon">📱</div><h4>Local storage</h4><p>Everything stays on your phone. No cloud databases.</p></div>
+      <div class="highlight-item"><div class="hi-icon">🛡️</div><h4>Zero tracking</h4><p>No analytics, no pixels, no data collection. You own it.</p></div>
+      <div class="highlight-item"><div class="hi-icon">📡</div><h4>Works offline</h4><p>Monitoring uses native GPS. No internet needed to work.</p></div>
+      <div class="highlight-item"><div class="hi-icon">🔋</div><h4>Minimal battery</h4><p>Uses the phone's native system — no extra battery drain.</p></div>
     </div>
   </div>
 </div>
 
-<section id="casos-de-uso">
+<section id="use-cases">
   <div class="container">
-    <span class="section-label">Quem usa</span>
-    <h2 class="section-title">Para quem é o Geo Alert?</h2>
-    <p class="section-subtitle">Qualquer pessoa que precisa lembrar de algo quando chegar em algum lugar.</p>
+    <span class="section-label">Who uses it</span>
+    <h2 class="section-title">Who is Geo Alert for?</h2>
+    <p class="section-subtitle">Anyone who needs a reminder when arriving somewhere.</p>
     <div class="usecases">
-      <div class="usecase animate"><div class="usecase-emoji">🚌</div><h4>Passageiro de ônibus</h4><p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p></div>
-      <div class="usecase animate delay-1"><div class="usecase-emoji">🛒</div><h4>Tarefas no caminho</h4><p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p></div>
-      <div class="usecase animate delay-2"><div class="usecase-emoji">💊</div><h4>Farmácia / Saúde</h4><p>Alerta quando estiver perto da farmácia, clínica ou hospital.</p></div>
-      <div class="usecase animate delay-3"><div class="usecase-emoji">🏠</div><h4>Chegando em casa</h4><p>Notifique a família que está chegando. Automaticamente.</p></div>
-      <div class="usecase animate delay-4"><div class="usecase-emoji">💼</div><h4>Reuniões presenciais</h4><p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p></div>
-      <div class="usecase animate"><div class="usecase-emoji">⛽</div><h4>Abastecer / Parar</h4><p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p></div>
+      <div class="usecase animate"><div class="usecase-emoji">🚌</div><h4>Bus passengers</h4><p>Never miss your stop. Set the alert and sleep peacefully on the ride.</p></div>
+      <div class="usecase animate delay-1"><div class="usecase-emoji">🛒</div><h4>Errands on the way</h4><p>"Buy bread on the way back." Set it and the app reminds you when passing by.</p></div>
+      <div class="usecase animate delay-2"><div class="usecase-emoji">💊</div><h4>Pharmacy / Health</h4><p>Alert when near the pharmacy, clinic or hospital.</p></div>
+      <div class="usecase animate delay-3"><div class="usecase-emoji">🏠</div><h4>Almost home</h4><p>Notify your family you're arriving. Automatically.</p></div>
+      <div class="usecase animate delay-4"><div class="usecase-emoji">💼</div><h4>In-person meetings</h4><p>Know when you're near the meeting spot. Get ready before arriving.</p></div>
+      <div class="usecase animate"><div class="usecase-emoji">⛽</div><h4>Gas station / Stops</h4><p>Remember to stop for gas. Set it once and the alert handles the rest.</p></div>
     </div>
   </div>
 </section>
 
 <section class="comparison-section">
   <div class="container">
-    <span class="section-label">Diferencial</span>
-    <h2 class="section-title">Por que Geo Alert?</h2>
-    <p class="section-subtitle">Comparado com lembretes genéricos e outros apps de localização.</p>
+    <span class="section-label">Comparison</span>
+    <h2 class="section-title">Why Geo Alert?</h2>
+    <p class="section-subtitle">Compared to generic reminders and other location apps.</p>
     <div class="comparison-wrap">
       <table class="comparison">
-        <thead><tr><th>Funcionalidade</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">Lembretes iOS/Android</th></tr></thead>
+        <thead><tr><th>Feature</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">iOS/Android Reminders</th></tr></thead>
         <tbody>
-          <tr><td>Múltiplos raios por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Tipos de alerta (vibração + toque)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alertas únicos (auto-desliga)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Grupos de lugares</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>100% privado (sem servidores)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Gratuito</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Multiple radius per place</td><td><span class="check">✓</span> Up to 5</td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alarm overrides silent</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alert types (vibration + ring)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>One-time alerts (auto-disable)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Place groups</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Ready-made templates</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Alert history</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+          <tr><td>Light/dark theme</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>100% private (no servers)</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          <tr><td>Free</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
         </tbody>
       </table>
     </div>
@@ -507,37 +495,37 @@
 
 <section id="faq">
   <div class="container">
-    <span class="section-label">Perguntas frequentes</span>
-    <h2 class="section-title" style="text-align:center">Dúvidas?</h2><br>
+    <span class="section-label">FAQ</span>
+    <h2 class="section-title" style="text-align:center">Questions?</h2><br>
     <div class="faq-list">
-      <div class="faq-item"><div class="faq-q">Precisa de internet pra funcionar?</div><div class="faq-a">Não. O monitoramento usa o GPS do seu celular. Você só precisa de internet para buscar endereços na hora de cadastrar um lugar.</div></div>
-      <div class="faq-item"><div class="faq-q">Gasta muita bateria?</div><div class="faq-a">Não. O Geo Alert usa o sistema nativo do celular para monitorar localização, que é ultra-eficiente.</div></div>
-      <div class="faq-item"><div class="faq-q">Funciona com o app fechado?</div><div class="faq-a">Sim! O monitoramento roda em segundo plano. Mesmo com o app fechado, os alertas disparam normalmente.</div></div>
-      <div class="faq-item"><div class="faq-q">Meus dados vão para algum servidor?</div><div class="faq-a">Não. Todos os dados ficam no seu celular. Não temos servidores, não coletamos nada. Privacidade total.</div></div>
-      <div class="faq-item"><div class="faq-q">Quantos lugares posso monitorar?</div><div class="faq-a">No Android, sem limite prático. No iOS, o sistema permite até 20 locais simultâneos (limitação da Apple).</div></div>
-      <div class="faq-item"><div class="faq-q">Posso compartilhar o APK com amigos?</div><div class="faq-a">Sim! O APK Android pode ser enviado diretamente. Para iOS, o app precisa ser instalado via TestFlight.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it need internet to work?</div><div class="faq-a">No. Monitoring uses your phone's GPS. You only need internet to search addresses when adding a place.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it drain battery?</div><div class="faq-a">No. Geo Alert uses the phone's native geofencing system, which is ultra-efficient.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it work with the app closed?</div><div class="faq-a">Yes! Monitoring runs in the background. Even with the app closed, alerts fire normally.</div></div>
+      <div class="faq-item"><div class="faq-q">Does my data go to any server?</div><div class="faq-a">No. All data stays on your phone. We have no servers, we collect nothing. Total privacy.</div></div>
+      <div class="faq-item"><div class="faq-q">How many places can I monitor?</div><div class="faq-a">On Android, no practical limit. On iOS, the system allows up to 20 simultaneous locations (Apple limitation).</div></div>
+      <div class="faq-item"><div class="faq-q">Can I share the APK with friends?</div><div class="faq-a">Yes! The Android APK can be sent directly. For iOS, the app needs to be installed via TestFlight.</div></div>
     </div>
   </div>
 </section>
 
 <section class="cta-section" id="download">
-  <h2>Pronto pra nunca mais<br>perder seu ponto? 📍</h2>
-  <p>Baixe agora e configure seu primeiro alerta em menos de 30 segundos.</p>
+  <h2>Ready to never miss<br>your stop again? 📍</h2>
+  <p>Download now and set up your first alert in under 30 seconds.</p>
   <div class="store-badges">
     <a href="https://github.com/silvars/geoalert-site/releases/download/v1.0.0/GeoAlert-release.apk" class="store-badge">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Baixar APK</span><span class="big">Android</span></div>
+      <div class="store-badge-text"><span class="small">Download APK</span><span class="big">Android</span></div>
     </a>
     <a href="#" class="store-badge-outline">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Em breve na</span><span class="big">App Store</span></div>
+      <div class="store-badge-text"><span class="small">Coming soon to</span><span class="big">App Store</span></div>
     </a>
   </div>
 </section>
 
 <footer>
-  <p>Geo Alert v1.0.0 — Feito com ❤️ no Brasil</p>
-  <p style="margin-top:8px"><a href="privacy.html">Privacidade</a> · <a href="mailto:silvars@gmail.com">Contato</a></p>
+  <p>Geo Alert v1.0.0 — Made with ❤️ in Brazil</p>
+  <p style="margin-top:8px"><a href="privacy.html">Privacy</a> · <a href="mailto:silvars@gmail.com">Contact</a></p>
 </footer>
 
 <script>
