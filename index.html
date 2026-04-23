@@ -239,13 +239,12 @@
     .highlight-item p { font-size: 13px; color: var(--subtle); line-height: 1.5; }
 
     /* VIDEOS */
-    .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1100px; margin: 48px auto 0; }
-    .video-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: transform .2s, box-shadow .2s; }
-    .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
-    .video-card .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
-    .video-card .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
-    .video-card .video-label { padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--text); text-align: center; }
-    @media (max-width: 520px) { .videos-grid { grid-template-columns: 1fr; } }
+    .video-break { max-width: 700px; margin: 0 auto; padding: 48px 20px; }
+    .video-break .video-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: transform .2s, box-shadow .2s; }
+    .video-break .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
+    .video-break .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+    .video-break .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .video-break .video-label { padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--text); text-align: center; }
 
     /* COMPARISON */
     .comparison-section { background: var(--surface); }
@@ -488,6 +487,13 @@
   </div>
 </section>
 
+<div class="video-break">
+  <div class="video-card animate">
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/r_gyDG0YCFE" title="GeoAlert - Promocional 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label">🎥 Promocional 1</div>
+  </div>
+</div>
+
 <div class="highlight-section">
   <div class="container">
     <span class="section-label">Privacidade primeiro</span>
@@ -499,6 +505,13 @@
       <div class="highlight-item"><div class="hi-icon">📡</div><h4>Funciona offline</h4><p>O monitoramento usa GPS nativo. Não precisa de internet para funcionar.</p></div>
       <div class="highlight-item"><div class="hi-icon">🔋</div><h4>Bateria mínima</h4><p>Usa o sistema nativo do celular — sem consumo extra de bateria.</p></div>
     </div>
+  </div>
+</div>
+
+<div class="video-break">
+  <div class="video-card animate">
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/rJBetotf-SQ" title="GeoAlert - Promocional 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label">🎥 Promocional 2</div>
   </div>
 </div>
 
@@ -515,23 +528,15 @@
       <div class="usecase animate delay-4"><div class="usecase-emoji">💼</div><h4>Reuniões presenciais</h4><p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p></div>
       <div class="usecase animate"><div class="usecase-emoji">⛽</div><h4>Abastecer / Parar</h4><p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p></div>
     </div>
-
-    <div class="videos-grid">
-      <div class="video-card animate">
-        <div class="video-embed"><iframe src="https://www.youtube.com/embed/r_gyDG0YCFE" title="GeoAlert - Promocional 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="video-label">🎥 Promocional 1</div>
-      </div>
-      <div class="video-card animate delay-1">
-        <div class="video-embed"><iframe src="https://www.youtube.com/embed/rJBetotf-SQ" title="GeoAlert - Promocional 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="video-label">🎥 Promocional 2</div>
-      </div>
-      <div class="video-card animate delay-2">
-        <div class="video-embed"><iframe src="https://www.youtube.com/embed/L3JfvNl8BQg" title="GeoAlert - Promocional 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-        <div class="video-label">🎥 Promocional 3</div>
-      </div>
-    </div>
   </div>
 </section>
+
+<div class="video-break">
+  <div class="video-card animate">
+    <div class="video-embed"><iframe src="https://www.youtube.com/embed/L3JfvNl8BQg" title="GeoAlert - Promocional 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+    <div class="video-label">🎥 Promocional 3</div>
+  </div>
+</div>
 
 <section class="comparison-section">
   <div class="container">
