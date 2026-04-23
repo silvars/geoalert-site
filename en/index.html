@@ -4,7 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Geo Alert — Never miss your stop.</title>
-  <meta name="description" content="Save a place. Forget about it. The app alerts you when you're nearby — with vibration, alarm and configurable radius." />
+  <meta name="description" content="Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and configurable radius." />
+  <link rel="canonical" href="https://www.geoalert.com.br/en/" />
+  <link rel="alternate" hreflang="pt-BR" href="https://www.geoalert.com.br/" />
+  <link rel="alternate" hreflang="en" href="https://www.geoalert.com.br/en/" />
+  <link rel="alternate" hreflang="x-default" href="https://www.geoalert.com.br/" />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://www.geoalert.com.br/en/" />
+  <meta property="og:title" content="Geo Alert — Never miss your stop." />
+  <meta property="og:description" content="Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and configurable radius." />
+  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
+  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <meta name="theme-color" content="#143D4D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -235,7 +248,7 @@
     .faq-q::after { content: '+'; font-size: 20px; color: var(--subtle); transition: transform .2s; }
     .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--accent); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
-    .faq-item.open .faq-a { max-height: 300px; padding-top: 12px; }
+    .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 
     /* CTA */
     .cta-section { text-align: center; padding: 80px 24px; background: radial-gradient(ellipse at 50% 100%, rgba(107,138,255,0.06) 0%, transparent 60%); }
@@ -280,7 +293,7 @@
 
 <section class="hero">
   <h1 class="animate">Never miss your<br><span class="gradient">stop again.</span></h1>
-  <p class="animate delay-1">Save a place. Forget about it. The app alerts you when you're nearby — with vibration, alarm and configurable radius.</p>
+  <p class="animate delay-1">Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and configurable radius.</p>
   <div class="store-badges animate delay-2">
     <a href="https://github.com/silvars/geoalert-site/releases/download/v1.0.0/GeoAlert-release.apk" class="store-badge">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
@@ -515,9 +528,8 @@
     <h2 class="section-title" style="text-align:center">Questions?</h2><br>
     <div class="faq-list">
       <div class="faq-item"><div class="faq-q">Does it need internet to work?</div><div class="faq-a">No. Monitoring uses your phone's GPS. You only need internet to search addresses when adding a place.</div></div>
-      <div class="faq-item"><div class="faq-q">Does it drain battery?</div><div class="faq-a">No. On Android, you'll see a "Monitoring your location" notification — it's required by the system to keep the app active in the background, but actual battery usage is very low. The app uses GPS smartly and efficiently.</div></div>
-      <div class="faq-item"><div class="faq-q">Does it work with the app closed?</div><div class="faq-a">Yes! On Android, monitoring runs via a dedicated background service. On iOS, the native geofencing system handles everything. In both cases, alerts fire even with the app closed.</div></div>
-      <div class="faq-item"><div class="faq-q">Why do I need to allow location "all the time"?</div><div class="faq-a">So the app can monitor your position even when minimized or closed. Without this permission, alerts only work while the app is open. Go to Settings → Apps → Geo Alert → Permissions → Location → select <strong>"Allow all the time"</strong>. Your privacy is fully protected: all data stays on your device only.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it drain battery?</div><div class="faq-a">No. Geo Alert uses the phone's native geofencing system, which is ultra-efficient.</div></div>
+      <div class="faq-item"><div class="faq-q">Does it work with the app closed?</div><div class="faq-a">Yes! Monitoring runs in the background. Even with the app closed, alerts fire normally.</div></div>
       <div class="faq-item"><div class="faq-q">Does my data go to any server?</div><div class="faq-a">No. All data stays on your phone. We have no servers, we collect nothing. Total privacy.</div></div>
       <div class="faq-item"><div class="faq-q">How many places can I monitor?</div><div class="faq-a">On Android, no practical limit. On iOS, the system allows up to 20 simultaneous locations (Apple limitation).</div></div>
       <div class="faq-item"><div class="faq-q">Can I share the APK with friends?</div><div class="faq-a">Yes! The Android APK can be sent directly. For iOS, the app needs to be installed via TestFlight.</div></div>
