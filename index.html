@@ -238,6 +238,15 @@
     .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
     .highlight-item p { font-size: 13px; color: var(--subtle); line-height: 1.5; }
 
+    /* VIDEOS */
+    .videos-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; max-width: 1100px; margin: 48px auto 0; }
+    .video-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: transform .2s, box-shadow .2s; }
+    .video-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
+    .video-card .video-embed { position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; }
+    .video-card .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
+    .video-card .video-label { padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--text); text-align: center; }
+    @media (max-width: 520px) { .videos-grid { grid-template-columns: 1fr; } }
+
     /* COMPARISON */
     .comparison-section { background: var(--surface); }
     .comparison-wrap { overflow-x: auto; }
@@ -505,6 +514,21 @@
       <div class="usecase animate delay-3"><div class="usecase-emoji">🏠</div><h4>Chegando em casa</h4><p>Notifique a família que está chegando. Automaticamente.</p></div>
       <div class="usecase animate delay-4"><div class="usecase-emoji">💼</div><h4>Reuniões presenciais</h4><p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p></div>
       <div class="usecase animate"><div class="usecase-emoji">⛽</div><h4>Abastecer / Parar</h4><p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p></div>
+    </div>
+
+    <div class="videos-grid">
+      <div class="video-card animate">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/r_gyDG0YCFE" title="GeoAlert - Promocional 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-label">🎥 Promocional 1</div>
+      </div>
+      <div class="video-card animate delay-1">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/rJBetotf-SQ" title="GeoAlert - Promocional 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-label">🎥 Promocional 2</div>
+      </div>
+      <div class="video-card animate delay-2">
+        <div class="video-embed"><iframe src="https://www.youtube.com/embed/L3JfvNl8BQg" title="GeoAlert - Promocional 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
+        <div class="video-label">🎥 Promocional 3</div>
+      </div>
     </div>
   </div>
 </section>
