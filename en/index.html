@@ -2,11 +2,11 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <link rel="canonical" href="https://www.geoalert.com.br/en/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="google-site-verification" content="7ElC76Y3JHcOVqXTG5k73BSi2FE0hpy5656PFuXRGQw" />
+  <meta name="robots" content="index,follow" />
 
-  <title>Geo Alert — Your proximity reminder</title>
+  <title>Geo Alert — Location and proximity alerts</title>
   <meta name="description" content="Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and up to 5 alerts per place. Free for Android." />
   <link rel="canonical" href="https://www.geoalert.com.br/en/" />
   <link rel="alternate" hreflang="pt-BR" href="https://www.geoalert.com.br/" />
@@ -16,11 +16,19 @@
   <meta property="og:url" content="https://www.geoalert.com.br/en/" />
   <meta property="og:title" content="Geo Alert — Your proximity reminder" />
   <meta property="og:description" content="Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and up to 5 alerts per place." />
-  <link rel="icon" type="image/x-icon" href="../favicon.ico" />
-  <link rel="icon" type="image/png" sizes="48x48" href="../favicon-48x48.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png" />
+  <meta property="og:image" content="https://www.geoalert.com.br/og-cover.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Geo Alert — Location and proximity alerts" />
+  <meta name="twitter:description" content="Save a place and stay worry-free. The app alerts you when you're nearby." />
+  <meta name="twitter:image" content="https://www.geoalert.com.br/og-cover.png" />
+
+  <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+  <link rel="icon" type="image/png" sizes="48x48" href="/favicon-48x48.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
   <meta name="theme-color" content="#143D4D" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -285,18 +293,31 @@
     .animate { animation: fadeUp .6s ease-out forwards; opacity: 0; }
     .delay-1 { animation-delay: .1s; } .delay-2 { animation-delay: .2s; } .delay-3 { animation-delay: .3s; } .delay-4 { animation-delay: .4s; }
   </style>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "MobileApplication",
+  "name": "Geo Alert",
+  "applicationCategory": "UtilitiesApplication",
+  "operatingSystem": "Android, iOS",
+  "description": "Location and proximity alerts.",
+  "url": "https://www.geoalert.com.br/en/"
+}
+</script>
+
 </head>
 <body>
 
 <nav>
   <div class="nav-inner">
-    <a href="#" class="nav-logo"><span>📍</span> Geo Alert</a>
+    <a href="/en/" class="nav-logo"><span>📍</span> Geo Alert</a>
     <div class="nav-links">
       <a href="#how-it-works">How it works</a>
       <a href="#app-preview">The App</a>
       <a href="#features">Features</a>
       <a href="#faq">FAQ</a>
-      <a href="../index.html" class="lang-switch">🇧🇷 PT</a>
+      <a href="/" class="lang-switch">🇧🇷 PT</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme">🌙</button>
     </div>
     <a href="#download" class="nav-cta">Download</a>
@@ -587,7 +608,7 @@
 
 <footer>
   <p>Geo Alert v1.0.3 — Made with ❤️ in Brazil</p>
-  <p style="margin-top:8px"><a href="privacy.html">Privacy</a> · <a href="mailto:contato@geoalert.com.br">Contact</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUG1frux0Fu_XuLfcBn2VGmTsACBxarGwqcVi4kvYHK0e1wA/viewform" target="_blank" rel="noopener">Feedback</a></p>
+  <p style="margin-top:8px"><a href="/privacy.html">Privacy</a> · <a href="mailto:contato@geoalert.com.br">Contact</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUG1frux0Fu_XuLfcBn2VGmTsACBxarGwqcVi4kvYHK0e1wA/viewform" target="_blank" rel="noopener">Feedback</a></p>
 </footer>
 
 <script>
