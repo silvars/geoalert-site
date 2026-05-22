@@ -1,0 +1,740 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Geo Alert — App Screens (Mockups)</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+body{font-family:'Inter',sans-serif;background:#080808;color:#fff;padding:40px 20px}
+h1{text-align:center;font-size:32px;font-weight:800;margin-bottom:8px}
+.subtitle{text-align:center;color:#888;font-size:14px;margin-bottom:48px}
+.grid{display:flex;flex-wrap:wrap;gap:40px;justify-content:center;max-width:1400px;margin:0 auto}
+
+/* Phone frame */
+.phone{width:375px;flex-shrink:0}
+.phone-label{text-align:center;font-size:13px;font-weight:700;color:#6B8AFF;text-transform:uppercase;letter-spacing:0.08em;margin-bottom:12px}
+.phone-frame{width:375px;height:812px;border-radius:44px;overflow:hidden;border:3px solid #333;position:relative;background:#0D0D0D}
+
+/* Shared */
+.screen{width:100%;height:100%;position:relative;overflow-y:auto;overflow-x:hidden}
+.screen::-webkit-scrollbar{display:none}
+.status-bar{display:flex;justify-content:space-between;align-items:center;padding:8px 24px 0;height:44px;position:sticky;top:0;z-index:10;background:#0D0D0D}
+.status-time{font-size:15px;font-weight:600;color:#F5F5F5}
+.status-icons{display:flex;gap:6px;align-items:center}
+.status-icons .batt{width:24px;height:11px;border:1.5px solid #F5F5F5;border-radius:3px;position:relative}
+.status-icons .batt::after{content:'';position:absolute;left:2px;top:2px;width:14px;height:5px;background:#34D399;border-radius:1px}
+.home-ind{width:134px;height:5px;background:#333;border-radius:3px;margin:8px auto 0}
+
+/* Colors */
+:root{
+  --bg:#0D0D0D;--surface:#1A1A1A;--surface2:#252525;--border:#333;
+  --text:#F5F5F5;--muted:#A0A0A0;--subtle:#666;--primary:#FFF;
+  --accent:#6B8AFF;--success:#34D399;--warning:#FB923C;--danger:#F87171;
+  --green:#22C55E;--orange:#F97316;--red:#EF4444;
+}
+
+/* ═══════════════ SCREEN STYLES ═══════════════ */
+
+/* ── LOGIN ── */
+.login{display:flex;flex-direction:column;align-items:center;justify-content:flex-start;height:100%;padding:40px 20px 20px;overflow-y:auto}
+.login-logo{width:56px;height:56px;border-radius:16px;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:28px;margin-bottom:20px;color:#0D0D0D}
+.login-title{font-size:28px;font-weight:800;margin-bottom:8px;text-align:center}
+.login-tag{font-size:14px;color:var(--muted);text-align:center;max-width:300px;margin-bottom:28px;line-height:1.5}
+.tier-cards{width:100%;display:flex;flex-direction:column;gap:10px;margin-bottom:20px}
+.tier-card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px;transition:border-color 0.2s}
+.tier-card.pro{border-color:var(--accent);background:rgba(107,138,255,0.08)}
+.tier-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:8px}
+.tier-name{font-size:14px;font-weight:700}
+.tier-price{font-size:11px;color:var(--muted)}
+.tier-feat{font-size:12px;color:var(--muted);line-height:1.5;margin-bottom:6px}
+.tier-feat b{color:var(--accent);font-weight:700}
+.login-btn{width:100%;padding:14px;border-radius:12px;font-size:15px;font-weight:600;text-align:center;margin-bottom:10px;display:flex;align-items:center;justify-content:center;gap:8px;border:none;cursor:pointer;transition:opacity 0.2s}
+.login-btn.primary{background:var(--primary);color:#0D0D0D}
+.login-btn.primary:active{opacity:0.8}
+.login-btn.google{background:var(--surface2);color:var(--text);border:1.5px solid var(--border)}
+.login-btn.google:active{opacity:0.7}
+.login-btn.apple{background:var(--surface2);color:var(--text);border:1.5px solid var(--border)}
+.login-btn.apple:active{opacity:0.7}
+.login-skip{font-size:13px;color:var(--accent);text-decoration:underline;margin-top:8px;cursor:pointer}
+
+/* ── HOME ── */
+.home-header{padding:16px 24px 8px;display:flex;align-items:center;justify-content:space-between}
+.home-header h2{font-size:32px;font-weight:800;margin:0}
+.home-badge{background:var(--danger);color:#fff;font-size:10px;font-weight:700;padding:4px 8px;border-radius:10px;min-width:20px;text-align:center}
+.home-monitor{display:flex;align-items:center;gap:6px;margin-top:4px;font-size:13px;color:var(--muted)}
+.home-monitor .dot{width:8px;height:8px;border-radius:50%;background:var(--success)}
+.group-hdr{display:flex;align-items:center;justify-content:space-between;background:var(--surface2);padding:12px 24px;gap:8px;margin-top:8px}
+.group-hdr .toggle{font-size:11px;color:var(--muted);width:16px;text-align:center}
+.group-hdr .lbl{font-size:12px;font-weight:700;color:var(--textSubtle);letter-spacing:0.5px;flex:1}
+.group-hdr .cnt{font-size:11px;color:var(--subtle);margin-right:12px}
+.sw{width:44px;height:26px;border-radius:13px;position:relative;flex-shrink:0;cursor:pointer}
+.sw.on{background:var(--success)}
+.sw.off{background:var(--border)}
+.sw::after{content:'';width:22px;height:22px;border-radius:50%;background:#fff;position:absolute;top:2px;transition:left 0.2s;left:2px}
+.sw.on::after{left:20px}
+.place-card{display:flex;align-items:flex-start;padding:12px 24px;gap:12px;border-bottom:1px solid var(--border);position:relative}
+.place-card:active{background:var(--surface2)}
+.place-emoji{width:48px;height:48px;border-radius:12px;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0}
+.place-info{flex:1;min-width:0}
+.place-name{font-size:15px;font-weight:600;color:var(--text)}
+.place-addr{font-size:13px;color:var(--muted);margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.place-icons{display:flex;gap:4px;margin-top:4px;align-items:center}
+.place-icon{font-size:11px;padding:2px 6px;background:var(--accentDim);color:var(--accent);border-radius:4px;white-space:nowrap}
+.ring-chips{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.ring-chip{display:flex;align-items:center;gap:3px;font-size:10px;color:var(--muted)}
+.ring-chip .rdot{width:6px;height:6px;border-radius:50%}
+.place-right{display:flex;align-items:center;gap:8px;flex-shrink:0;padding-top:4px}
+.place-toggle{width:40px;height:24px;border-radius:12px;background:var(--border);cursor:pointer;transition:background 0.2s;position:relative}
+.place-toggle.on{background:var(--success)}
+.place-toggle::after{content:'';position:absolute;width:18px;height:18px;border-radius:10px;background:#fff;top:3px;left:3px;transition:left 0.2s}
+.place-toggle.on::after{left:19px}
+.fab{position:absolute;bottom:68px;right:24px;width:56px;height:56px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-size:28px;color:#0D0D0D;box-shadow:0 4px 16px rgba(0,0,0,0.4);cursor:pointer;font-weight:300}
+.fab:active{opacity:0.85}
+.tab-bar{position:absolute;bottom:0;left:0;right:0;height:60px;background:var(--surface);border-top:1px solid var(--border);display:flex;align-items:center;justify-content:space-around;padding-bottom:env(safe-area-inset-bottom)}
+.tab{font-size:11px;font-weight:600;color:var(--textSubtle);display:flex;flex-direction:column;align-items:center;gap:4px;cursor:pointer;transition:color 0.2s}
+.tab.active{color:var(--primary)}
+
+/* ── ADD PLACE ── */
+.map-bg{background:linear-gradient(135deg,#1a2332,#162029,#1d2b38);height:100%;position:relative}
+.map-roads{position:absolute;inset:0;overflow:hidden}
+.map-roads div{position:absolute;background:#2a3a4a;border-radius:2px}
+.geo-circles{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.geo-circles .c{border-radius:50%;position:absolute;transform:translate(-50%,-50%);border-style:dashed;border-width:1.5px}
+.map-pin{position:absolute;top:50%;left:50%;transform:translate(-50%,-100%);width:24px;height:24px;border-radius:50%;background:var(--red);border:3px solid #fff;display:flex;align-items:center;justify-content:center}
+.map-pin::after{content:'';width:8px;height:8px;border-radius:50%;background:#fff}
+.float-bar{position:absolute;top:56px;left:16px;right:16px;display:flex;gap:10px;z-index:5}
+.float-back{width:42px;height:42px;border-radius:50%;background:rgba(26,26,26,.92);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--text);backdrop-filter:blur(10px)}
+.float-search{flex:1;height:42px;border-radius:12px;background:rgba(26,26,26,.92);display:flex;align-items:center;padding:0 14px;font-size:14px;color:var(--muted);backdrop-filter:blur(10px)}
+.my-loc{position:absolute;bottom:180px;right:16px;width:44px;height:44px;border-radius:50%;background:rgba(26,26,26,.92);display:flex;align-items:center;justify-content:center;font-size:20px;color:var(--primary);backdrop-filter:blur(10px)}
+.bottom-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--surface);border-radius:24px 24px 0 0;padding:12px 24px 32px}
+.sheet-handle{width:40px;height:4px;border-radius:2px;background:var(--border);margin:0 auto 16px}
+.sheet-loc{display:flex;align-items:center;gap:8px;margin-bottom:16px}
+.sheet-loc .info{flex:1}
+.sheet-loc .info h4{font-size:14px;font-weight:600}
+.sheet-loc .info p{font-size:12px;color:var(--muted)}
+.sheet-loc .change{font-size:13px;color:var(--accent)}
+.templates{display:flex;gap:8px;overflow-x:auto}
+.templates::-webkit-scrollbar{display:none}
+.tpl{padding:8px 16px;border-radius:10px;background:var(--surface2);font-size:12px;font-weight:600;white-space:nowrap;flex-shrink:0}
+
+/* ── CONFIGURE PERIMETERS ── */
+.cfg-hdr{display:flex;align-items:center;gap:12px;padding:12px 24px 16px;background:var(--surface)}
+.cfg-back{width:36px;height:36px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--text);cursor:pointer}
+.cfg-back:active{opacity:0.7}
+.cfg-hdr h3{font-size:18px;font-weight:700;margin:0;flex:1}
+.cfg-scroll{padding:16px 24px;overflow-y:auto;height:calc(100% - 100px)}
+.cfg-preview{display:flex;align-items:center;gap:12px;background:var(--surface2);padding:12px;border-radius:12px;margin-bottom:20px}
+.cfg-preview .emoji{font-size:28px}
+.cfg-preview .nm{font-size:15px;font-weight:600}
+.cfg-preview .ad{font-size:12px;color:var(--muted);margin-top:2px}
+.sec-label{font-size:11px;font-weight:700;color:var(--textSubtle);letter-spacing:1px;margin-bottom:12px;margin-top:20px;text-transform:uppercase}
+.ring-card{background:var(--surface2);border-radius:12px;padding:14px;margin-bottom:12px}
+.ring-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px}
+.ring-top span{font-size:14px;font-weight:700}
+.ring-top .x{font-size:18px;color:var(--danger);cursor:pointer;opacity:0.7}
+.ring-top .x:active{opacity:1}
+.ring-val{font-size:24px;font-weight:700;margin-bottom:10px}
+.slider-track{height:5px;border-radius:3px;background:var(--border);position:relative;margin-bottom:14px;cursor:pointer}
+.slider-fill{height:100%;border-radius:3px;position:absolute;left:0;top:0}
+.slider-thumb{width:22px;height:22px;border-radius:50%;position:absolute;top:50%;transform:translate(-50%,-50%);background:#fff;border:3px solid;box-shadow:0 2px 8px rgba(0,0,0,0.3);cursor:grab;z-index:2}
+.slider-thumb:active{cursor:grabbing}
+.presets{display:flex;gap:8px;margin-bottom:10px;flex-wrap:wrap}
+.preset{padding:6px 12px;border-radius:8px;font-size:12px;font-weight:600;background:var(--surface);color:var(--muted);cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.preset.sel{background:var(--surface);color:var(--text);border-color:var(--primary)}
+.alert-types{display:flex;gap:8px}
+.atype{padding:8px 12px;border-radius:8px;font-size:12px;font-weight:600;background:var(--surface);color:var(--muted);display:flex;align-items:center;gap:4px;cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.atype.sel{color:var(--text);border-color:var(--primary)}
+.friend-toggle{display:flex;align-items:center;justify-content:space-between;margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:12px;color:var(--muted)}
+.friend-toggle .sw{width:40px;height:24px}
+.add-ring{border:1.5px dashed var(--border);border-radius:12px;padding:14px;text-align:center;font-size:14px;color:var(--accent);margin-bottom:16px;cursor:pointer;transition:all 0.2s}
+.add-ring:active{background:var(--accentDim)}
+.reminder-row{display:flex;gap:8px;margin-bottom:16px}
+.reminder-chip{flex:1;padding:12px;border-radius:12px;text-align:center;font-size:13px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.reminder-chip.sel{background:var(--primary);color:#0D0D0D;border-color:var(--primary)}
+.reminder-chip.unsel{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.group-chips{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:20px}
+.gchip{padding:8px 14px;border-radius:10px;font-size:12px;font-weight:600;cursor:pointer;border:1px solid transparent;transition:all 0.2s}
+.gchip.sel{background:var(--primary);color:#0D0D0D;border-color:var(--primary)}
+.gchip.unsel{background:var(--surface2);color:var(--muted);border:1px solid var(--border)}
+.btn-save{width:100%;padding:14px;border-radius:12px;background:var(--primary);color:#0D0D0D;font-size:15px;font-weight:700;text-align:center;border:none;cursor:pointer;margin-top:8px}
+.btn-save:active{opacity:0.85}
+
+/* ── PLACE DETAIL ── */
+.detail-map{height:270px;background:linear-gradient(135deg,#1a2332,#162029);position:relative;overflow:hidden}
+.detail-circles{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%)}
+.detail-overlay{position:absolute;top:56px;left:16px;right:16px;display:flex;justify-content:space-between;align-items:flex-start}
+.detail-back{padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.5);color:#fff;font-size:16px;backdrop-filter:blur(8px)}
+.detail-status{padding:6px 14px;border-radius:20px;display:flex;align-items:center;gap:6px;font-size:12px;font-weight:600;backdrop-filter:blur(8px)}
+.detail-status.on{background:rgba(52,211,153,.15);color:var(--success)}
+.detail-edit{padding:6px 14px;border-radius:20px;background:rgba(0,0,0,.5);color:#fff;font-size:12px;font-weight:600;position:absolute;right:16px;top:56px}
+.detail-body{background:var(--bg);border-radius:24px 24px 0 0;margin-top:-22px;position:relative;padding:24px}
+.detail-info{display:flex;align-items:center;gap:10px;margin-bottom:4px}
+.detail-info .emoji{font-size:28px}
+.detail-info h3{font-size:22px;font-weight:800}
+.detail-addr{font-size:13px;color:var(--muted);margin-bottom:6px;margin-left:38px}
+.detail-badge{display:inline-flex;align-items:center;gap:4px;font-size:12px;color:var(--muted);background:var(--surface2);padding:4px 10px;border-radius:8px;margin-left:38px;margin-bottom:20px}
+.detail-sec{font-size:11px;font-weight:700;color:var(--subtle);letter-spacing:1px;margin-bottom:10px;margin-top:16px}
+.detail-card{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:14px;margin-bottom:12px}
+.detail-ring-row{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--border)}
+.detail-ring-row:last-child{border-bottom:none}
+.detail-ring-row .rdot{width:8px;height:8px;border-radius:50%;flex-shrink:0}
+.detail-ring-row .dist{font-size:14px;font-weight:600;flex:1}
+.detail-ring-row .type{font-size:12px;color:var(--muted)}
+.detail-history-row{display:flex;align-items:center;gap:10px;padding:8px 0;border-bottom:1px solid var(--border)}
+.detail-history-row:last-child{border-bottom:none}
+.detail-history-row .icon{font-size:16px}
+.detail-history-row .info{flex:1;font-size:13px;color:var(--muted)}
+.detail-history-row .time{font-size:11px;color:var(--subtle)}
+.detail-edit-link{font-size:13px;color:var(--accent);text-decoration:underline;display:block;margin-top:8px}
+.btn-delete{width:100%;padding:14px;border-radius:12px;background:var(--surface2);color:var(--muted);font-size:14px;text-align:center;margin-top:16px}
+
+/* ── HISTORY ── */
+.hist-header{padding:16px 24px 12px}
+.hist-header h2{font-size:28px;font-weight:800}
+.hist-item{display:flex;align-items:flex-start;padding:14px 24px;gap:12px;border-top:1px solid var(--border)}
+.hist-item:first-child{border-top:none}
+.hist-emoji{font-size:22px;flex-shrink:0;margin-top:2px}
+.hist-info{flex:1}
+.hist-name{font-size:15px;font-weight:600}
+.hist-sub{font-size:12px;color:var(--muted);margin-top:2px;display:flex;align-items:center;gap:4px}
+.hist-time{font-size:11px;color:var(--subtle);flex-shrink:0;margin-top:2px}
+
+/* ── SETTINGS ── */
+.set-header{padding:16px 24px 12px}
+.set-header h2{font-size:32px;font-weight:800;margin:0;margin-bottom:4px}
+.set-section{padding:0 24px;margin-bottom:18px}
+.set-label{font-size:11px;font-weight:700;color:var(--textSubtle);letter-spacing:1px;margin-bottom:12px;text-transform:uppercase}
+.set-chips{display:flex;gap:10px;flex-wrap:wrap}
+.set-chip{padding:10px 16px;border-radius:12px;text-align:center;font-size:13px;font-weight:600;display:flex;align-items:center;justify-content:center;gap:6px;cursor:pointer;border:1.5px solid transparent;transition:all 0.2s}
+.set-chip.sel{background:var(--primary);color:#0D0D0D;border-color:var(--primary)}
+.set-chip.unsel{background:var(--surface2);color:var(--muted);border-color:var(--border)}
+.set-row{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--border)}
+.set-row:last-child{border-bottom:none}
+.set-row .k{font-size:14px;color:var(--text);font-weight:500}
+.set-row .v{font-size:14px;color:var(--muted)}
+.set-row .v.green{color:var(--success)}
+.set-about{background:var(--surface2);border-radius:12px;padding:12px 14px;margin:0 0 20px;border:1px solid var(--border)}
+.btn-logout{margin:0;padding:14px;border-radius:12px;background:var(--surface2);text-align:center;font-size:14px;color:var(--danger);font-weight:600;border:none;cursor:pointer}
+
+/* ── EDIT LOCATION ── */
+.edit-hint{position:absolute;top:50%;left:50%;transform:translate(-50%,60px);padding:8px 20px;border-radius:20px;background:rgba(0,0,0,.5);font-size:13px;color:#fff;white-space:nowrap;backdrop-filter:blur(8px)}
+.edit-sheet{position:absolute;bottom:0;left:0;right:0;background:var(--surface);border-radius:24px 24px 0 0;padding:16px 24px 32px}
+.edit-label{font-size:11px;font-weight:700;color:var(--subtle);letter-spacing:1px;margin-bottom:6px}
+.edit-addr{font-size:14px;color:var(--muted);margin-bottom:16px}
+.edit-btn{width:100%;padding:14px;border-radius:12px;background:var(--primary);color:#0D0D0D;font-size:15px;font-weight:700;text-align:center}
+
+/* ── CONNECTIONS / FRIENDS ── */
+.fr-header{padding:16px 24px 12px}
+.fr-header h2{font-size:28px;font-weight:800}
+.fr-header p{font-size:13px;color:var(--muted);margin-top:4px}
+.fr-search{margin:0 24px 14px;padding:11px 14px;border-radius:11px;background:var(--surface2);font-size:13px;color:var(--muted);display:flex;align-items:center;gap:8px}
+.fr-section-label{font-size:11px;font-weight:700;color:var(--subtle);letter-spacing:1px;padding:6px 24px 8px}
+.fr-item{display:flex;align-items:center;gap:12px;padding:12px 24px;border-bottom:1px solid var(--border)}
+.fr-avatar{width:42px;height:42px;border-radius:50%;background:var(--surface2);display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:700;color:var(--accent);flex-shrink:0}
+.fr-info{flex:1;min-width:0}
+.fr-name{font-size:14px;font-weight:600}
+.fr-sub{font-size:12px;color:var(--muted);margin-top:2px}
+.fr-pill{font-size:10px;font-weight:700;padding:3px 8px;border-radius:10px;text-transform:uppercase;letter-spacing:0.5px}
+.fr-pill.in{background:rgba(52,211,153,.15);color:var(--success)}
+.fr-pill.out{background:rgba(107,138,255,.15);color:var(--accent)}
+.fr-pill.pend{background:rgba(251,146,60,.15);color:var(--warning)}
+.fr-cta{margin:18px 24px;padding:14px;border-radius:12px;background:var(--surface);border:1.5px dashed var(--border);text-align:center;font-size:14px;color:var(--muted)}
+
+/* ── HEADER ── */
+.mockups-header{display:flex;justify-content:space-between;align-items:center;padding:16px 24px;margin-bottom:24px;background:var(--surface);border-radius:12px;max-width:1400px;margin-left:auto;margin-right:auto}
+.mockups-header a{color:var(--accent);text-decoration:none;font-weight:600}
+.mockups-header a:hover{opacity:0.8}
+</style>
+</head>
+<body>
+
+<div class="mockups-header">
+  <h1 style="margin:0;font-size:24px">📍 Geo Alert — Mockups</h1>
+  <a href="index.html">← Back to website</a>
+</div>
+
+<h1 style="text-align:center;font-size:28px;margin-top:0">All Screens</h1>
+<p class="subtitle">All app screens · Dark Theme</p>
+
+<div class="grid">
+
+<!-- ════════ 1. LOGIN ════════ -->
+<div class="phone">
+  <div class="phone-label">Login</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="login">
+        <div class="login-logo">◎</div>
+        <div class="login-title">GeoAlert</div>
+        <div class="login-tag">Use sem cadastro ou faça login para sincronizar entre celulares e avisar amigos.</div>
+        <div class="tier-cards">
+          <div class="tier-card">
+            <div class="tier-head"><span class="tier-name">📱 Sem login</span><span class="tier-price">100% local</span></div>
+            <div class="tier-feat"><b>3 lugares</b> · <b>2 alertas</b> por lugar · sem nuvem</div>
+          </div>
+          <div class="tier-card">
+            <div class="tier-head"><span class="tier-name">✨ Com login</span><span class="tier-price">Grátis</span></div>
+            <div class="tier-feat"><b>5 lugares</b> · <b>3 alertas</b> · <b>5 amigos</b> · sync</div>
+          </div>
+          <div class="tier-card pro">
+            <div class="tier-head"><span class="tier-name" style="color:var(--accent)">💎 PRO</span><span class="tier-price">Em breve</span></div>
+            <div class="tier-feat"><b>25 lugares</b> · <b>5 alertas</b> · <b>50 amigos</b> · histórico 100</div>
+          </div>
+        </div>
+        <div class="login-btn apple"> Continuar com Apple</div>
+        <div class="login-btn google">G  Continuar com Google</div>
+        <div class="login-btn primary">📱 Telefone ou e-mail</div>
+        <div class="login-skip">Continuar sem login</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 2. HOME ════════ -->
+<div class="phone">
+  <div class="phone-label">Home — Meus Locais</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="home-header">
+        <h2>Locais</h2>
+        <div class="home-badge" style="display:none">2</div>
+      </div>
+      <div class="home-monitor"><div class="dot"></div><span>4 de 8 monitorando</span></div>
+      
+      <!-- Group: Trabalho -->
+      <div class="group-hdr">
+        <span class="toggle">▼</span>
+        <span class="lbl">TRABALHO</span>
+        <span class="cnt">2/3</span>
+        <div class="sw on"></div>
+      </div>
+      <div class="place-card">
+        <div class="place-emoji">🏢</div>
+        <div class="place-info">
+          <div class="place-name">Escritório</div>
+          <div class="place-addr">R. Augusta, 1200 - São Paulo</div>
+          <div class="place-icons">
+            <div class="place-icon">🔗 1 amigo</div>
+          </div>
+          <div class="ring-chips">
+            <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+            <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>1km</div>
+            <div class="ring-chip"><div class="rdot" style="background:#F87171"></div>2km</div>
+          </div>
+        </div>
+        <div class="place-right">
+          <div class="place-toggle on"></div>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-emoji">📋</div>
+        <div class="place-info">
+          <div class="place-name">Reunião Centro</div>
+          <div class="place-addr">Av. Paulista, 900 - São Paulo</div>
+          <div class="ring-chips">
+            <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>1.5km</div>
+          </div>
+        </div>
+        <div class="place-right">
+          <div class="place-toggle"></div>
+        </div>
+      </div>
+      
+      <!-- Group: Pessoal -->
+      <div class="group-hdr">
+        <span class="toggle">▼</span>
+        <span class="lbl">PESSOAL</span>
+        <span class="cnt">2/3</span>
+        <div class="sw on"></div>
+      </div>
+      <div class="place-card">
+        <div class="place-emoji">🏠</div>
+        <div class="place-info">
+          <div class="place-name">Casa</div>
+          <div class="place-addr">R. das Flores, 42 - São Paulo</div>
+          <div class="ring-chips">
+            <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+            <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>2km</div>
+          </div>
+        </div>
+        <div class="place-right">
+          <div class="place-toggle on"></div>
+        </div>
+      </div>
+      <div class="place-card">
+        <div class="place-emoji">🚌</div>
+        <div class="place-info">
+          <div class="place-name">Ponto de ônibus</div>
+          <div class="place-addr">Terminal Barra Funda</div>
+          <div class="ring-chips">
+            <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>600m</div>
+          </div>
+        </div>
+        <div class="place-right">
+          <div class="place-toggle"></div>
+        </div>
+      </div>
+
+      <!-- Group: Saúde -->
+      <div class="group-hdr">
+        <span class="toggle">▶</span>
+        <span class="lbl">SAÚDE</span>
+        <span class="cnt">1/1</span>
+        <div class="sw on"></div>
+      </div>
+      <div class="place-card">
+        <div class="place-emoji">💊</div>
+        <div class="place-info">
+          <div class="place-name">Farmácia</div>
+          <div class="place-addr">Drogasil - R. Oscar Freire</div>
+          <div class="ring-chips">
+            <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>300m</div>
+          </div>
+        </div>
+        <div class="place-right">
+          <div class="place-toggle on"></div>
+        </div>
+      </div>
+      
+      <div class="fab">＋</div>
+      <div class="tab-bar">
+        <div class="tab active"><span style="font-size:16px">📍</span><span>Locais</span></div>
+        <div class="tab"><span style="font-size:16px">🕐</span><span>Histórico</span></div>
+        <div class="tab"><span style="font-size:16px">👥</span><span>Amigos</span></div>
+        <div class="tab"><span style="font-size:16px">⚙️</span><span>Config</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 3. ADD PLACE ════════ -->
+<div class="phone">
+  <div class="phone-label">Adicionar Local</div>
+  <div class="phone-frame">
+    <div class="screen map-bg">
+      <div class="map-roads">
+        <div style="width:375px;height:6px;top:250px;transform:rotate(-5deg)"></div>
+        <div style="width:4px;height:812px;left:140px;transform:rotate(3deg)"></div>
+        <div style="width:4px;height:812px;left:260px;transform:rotate(-2deg)"></div>
+        <div style="width:375px;height:5px;top:480px;transform:rotate(2deg)"></div>
+        <div style="width:375px;height:3px;top:150px;transform:rotate(-1deg)"></div>
+      </div>
+      <!-- Geofence circles -->
+      <div class="geo-circles">
+        <div class="c" style="width:240px;height:240px;border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.04)"></div>
+        <div class="c" style="width:160px;height:160px;border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.06)"></div>
+        <div class="c" style="width:90px;height:90px;border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.08)"></div>
+      </div>
+      <div class="map-pin"></div>
+      <div class="float-bar">
+        <div class="float-back">‹</div>
+        <div class="float-search">🔍 Buscar endereço...</div>
+      </div>
+      <div class="my-loc">◎</div>
+      <div class="bottom-sheet">
+        <div class="sheet-handle"></div>
+        <div class="sheet-loc">
+          <div class="info">
+            <h4>📍 Av. Paulista, 1578</h4>
+            <p>Bela Vista, São Paulo - SP</p>
+          </div>
+          <div class="change">Alterar</div>
+        </div>
+        <div class="templates">
+          <div class="tpl">🚌 Ônibus</div>
+          <div class="tpl">🏠 Casa</div>
+          <div class="tpl">📋 Tarefa</div>
+          <div class="tpl">💼 Trabalho</div>
+          <div class="tpl">💊 Saúde</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 4. CONFIGURE PERIMETERS ════════ -->
+<div class="phone">
+  <div class="phone-label">Configurar Alertas</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="cfg-hdr"><div class="cfg-back">‹</div><h3>Configurar Alertas</h3></div>
+      <div class="cfg-scroll">
+        <div class="cfg-preview"><span class="emoji">🏢</span><div><div class="nm">Escritório</div><div class="ad">R. Augusta, 1200 - São Paulo</div></div></div>
+        
+        <div class="sec-label">Alertas</div>
+        <!-- Ring 1 -->
+        <div class="ring-card">
+          <div class="ring-top"><span>Alerta 1</span><span class="x">×</span></div>
+          <div class="ring-val">500 m</div>
+          <div class="slider-track"><div class="slider-fill" style="width:20%;background:#22C55E"></div><div class="slider-thumb" style="left:20%;border-color:#22C55E"></div></div>
+          <div class="presets">
+            <div class="preset sel" style="background:var(--primary);color:#0D0D0D">500m</div>
+            <div class="preset">1km</div>
+            <div class="preset">2km</div>
+            <div class="preset">5km</div>
+          </div>
+          <div class="alert-types">
+            <div class="atype sel" style="border-color:#22C55E;color:var(--text)">📳 Vibração</div>
+            <div class="atype">🔔 Alarme</div>
+          </div>
+          <div class="friend-toggle">
+            <span>🔗 Avisar amigos</span>
+            <div class="sw on"></div>
+          </div>
+        </div>
+        
+        <!-- Ring 2 -->
+        <div class="ring-card">
+          <div class="ring-top"><span>Alerta 2</span><span class="x">×</span></div>
+          <div class="ring-val">1.5 km</div>
+          <div class="slider-track"><div class="slider-fill" style="width:35%;background:#FB923C"></div><div class="slider-thumb" style="left:35%;border-color:#FB923C"></div></div>
+          <div class="presets">
+            <div class="preset">500m</div>
+            <div class="preset">1km</div>
+            <div class="preset sel" style="background:var(--primary);color:#0D0D0D">1.5km</div>
+            <div class="preset">2km</div>
+          </div>
+          <div class="alert-types">
+            <div class="atype">📳 Vibração</div>
+            <div class="atype sel" style="border-color:#FB923C;color:var(--text)">🔔 Alarme</div>
+          </div>
+          <div class="friend-toggle">
+            <span>🔗 Avisar amigos</span>
+            <div class="sw"></div>
+          </div>
+        </div>
+        
+        <div class="add-ring">+ Adicionar alerta</div>
+        
+        <div class="sec-label">Tipo de alerta</div>
+        <div class="reminder-row">
+          <div class="reminder-chip sel">🔁 Recorrente</div>
+          <div class="reminder-chip unsel">🏁 Uma vez</div>
+        </div>
+        
+        <div class="sec-label">Grupo</div>
+        <div class="group-chips">
+          <div class="gchip sel">Trabalho</div>
+          <div class="gchip unsel">Casa</div>
+          <div class="gchip unsel">Pessoal</div>
+          <div class="gchip unsel">Saúde</div>
+        </div>
+        
+        <button class="btn-save">Salvar Local</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 5. PLACE DETAIL ════════ -->
+<div class="phone">
+  <div class="phone-label">Detalhe do Local</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="detail-map">
+        <div class="map-roads">
+          <div style="width:375px;height:5px;top:120px;background:#2a3a4a;position:absolute;transform:rotate(-3deg)"></div>
+          <div style="width:3px;height:270px;left:180px;background:#2a3a4a;position:absolute;transform:rotate(2deg)"></div>
+        </div>
+        <div class="detail-circles">
+          <div class="c" style="width:200px;height:200px;border-color:rgba(239,68,68,.4);background:rgba(239,68,68,.04);position:absolute;transform:translate(-50%,-50%)"></div>
+          <div class="c" style="width:130px;height:130px;border-color:rgba(249,115,22,.4);background:rgba(249,115,22,.06);position:absolute;transform:translate(-50%,-50%)"></div>
+          <div class="c" style="width:70px;height:70px;border-color:rgba(34,197,94,.5);background:rgba(34,197,94,.08);position:absolute;transform:translate(-50%,-50%)"></div>
+        </div>
+        <div class="map-pin" style="top:50%;left:50%;transform:translate(-50%,-50%)"></div>
+        <div class="detail-overlay">
+          <div class="detail-back">‹</div>
+          <div class="detail-status on"><div class="dot" style="width:6px;height:6px;border-radius:50%;background:var(--success)"></div>Monitorando</div>
+        </div>
+        <div class="detail-edit">Editar ›</div>
+      </div>
+      <div class="detail-body">
+        <div class="detail-info"><span class="emoji">🏢</span><h3>Escritório</h3></div>
+        <div class="detail-addr">R. Augusta, 1200 - São Paulo, SP</div>
+        <div class="detail-badge">🔁 Recorrente</div>
+        <div class="detail-sec">RAIOS CONFIGURADOS</div>
+        <div class="detail-card">
+          <div class="detail-ring-row"><div class="rdot" style="background:var(--green)"></div><span class="dist">500 m</span><span class="type">📳 Vibração</span></div>
+          <div class="detail-ring-row"><div class="rdot" style="background:var(--orange)"></div><span class="dist">1 km</span><span class="type">🔔 Alarme</span></div>
+          <div class="detail-ring-row"><div class="rdot" style="background:var(--red)"></div><span class="dist">2 km</span><span class="type">🔔 Alarme</span></div>
+        </div>
+        <a class="detail-edit-link">Editar raios</a>
+        <div class="detail-sec">HISTÓRICO RECENTE</div>
+        <div class="detail-card">
+          <div class="detail-history-row"><span class="icon">📳</span><span class="info">Vibração · 500m</span><span class="time">há 2h</span></div>
+          <div class="detail-history-row"><span class="icon">🔔</span><span class="info">Alarme · 1km</span><span class="time">há 5h</span></div>
+          <div class="detail-history-row"><span class="icon">🔔</span><span class="info">Alarme · 2km</span><span class="time">ontem</span></div>
+        </div>
+        <div class="btn-delete">Excluir local</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 6. HISTORY ════════ -->
+<div class="phone">
+  <div class="phone-label">Histórico</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="hist-header"><h2>Histórico</h2></div>
+      <div class="hist-item"><div class="hist-emoji">🏢</div><div class="hist-info"><div class="hist-name">Escritório</div><div class="hist-sub">📳 Vibração · 500m</div></div><div class="hist-time">há 2h</div></div>
+      <div class="hist-item"><div class="hist-emoji">🏢</div><div class="hist-info"><div class="hist-name">Escritório</div><div class="hist-sub">🔔 Alarme · 1km</div></div><div class="hist-time">há 5h</div></div>
+      <div class="hist-item"><div class="hist-emoji">🏠</div><div class="hist-info"><div class="hist-name">Casa</div><div class="hist-sub">📳 Vibração · 500m</div></div><div class="hist-time">há 8h</div></div>
+      <div class="hist-item"><div class="hist-emoji">🚌</div><div class="hist-info"><div class="hist-name">Ponto de ônibus</div><div class="hist-sub">🔔 Alarme · 500m</div></div><div class="hist-time">ontem</div></div>
+      <div class="hist-item"><div class="hist-emoji">💊</div><div class="hist-info"><div class="hist-name">Farmácia</div><div class="hist-sub">📳 Vibração · 300m</div></div><div class="hist-time">ontem</div></div>
+      <div class="hist-item"><div class="hist-emoji">🏢</div><div class="hist-info"><div class="hist-name">Escritório</div><div class="hist-sub">🔔 Alarme · 2km</div></div><div class="hist-time">2 dias</div></div>
+      <div class="hist-item"><div class="hist-emoji">🏠</div><div class="hist-info"><div class="hist-name">Casa</div><div class="hist-sub">📳 Vibração · 2km</div></div><div class="hist-time">2 dias</div></div>
+      <div class="hist-item"><div class="hist-emoji">📋</div><div class="hist-info"><div class="hist-name">Reunião Centro</div><div class="hist-sub">📳 Vibração · 1km</div></div><div class="hist-time">3 dias</div></div>
+      <div class="tab-bar">
+        <div class="tab">📍 Locais</div>
+        <div class="tab active">🕐 Histórico</div>
+        <div class="tab">⚙️ Config</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 7. SETTINGS ════════ -->
+<div class="phone">
+  <div class="phone-label">Configurações</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="set-header"><h2>Configurações</h2></div>
+      <div class="set-section">
+        <div class="set-label">IDIOMA</div>
+        <div class="set-chips">
+          <div class="set-chip sel">🇧🇷 Português</div>
+          <div class="set-chip unsel">🇺🇸 English</div>
+        </div>
+      </div>
+      <div class="set-section">
+        <div class="set-label">TEMA</div>
+        <div class="set-chips">
+          <div class="set-chip unsel">☀️ Claro</div>
+          <div class="set-chip sel">🌙 Escuro</div>
+        </div>
+      </div>
+      <div class="set-section"><div class="set-label">SOBRE</div></div>
+      <div class="set-about">
+        <div class="set-row"><span class="k">Versão</span><span class="v">1.0.4</span></div>
+        <div class="set-row"><span class="k">Geofencing</span><span class="v green">Ativo</span></div>
+        <div class="set-row"><span class="k">Bateria</span><span class="v green">Otimizado</span></div>
+      </div>
+      <div class="btn-logout">Sair da conta</div>
+      <div class="tab-bar">
+        <div class="tab">📍 Locais</div>
+        <div class="tab">🕐 Histórico</div>
+        <div class="tab active">⚙️ Config</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 8. EDIT LOCATION ════════ -->
+<div class="phone">
+  <div class="phone-label">Editar Localização</div>
+  <div class="phone-frame">
+    <div class="screen map-bg">
+      <div class="map-roads">
+        <div style="width:375px;height:6px;top:300px;transform:rotate(-3deg)"></div>
+        <div style="width:4px;height:812px;left:200px;transform:rotate(2deg)"></div>
+        <div style="width:375px;height:4px;top:450px;transform:rotate(1deg)"></div>
+      </div>
+      <div class="map-pin" style="top:42%;left:52%;transform:translate(-50%,-100%)"></div>
+      <div class="float-bar">
+        <div class="float-back">‹</div>
+        <div class="float-search">🔍 Buscar endereço...</div>
+      </div>
+      <div class="edit-hint">Toque para mover o pin</div>
+      <div class="my-loc">◎</div>
+      <div class="edit-sheet">
+        <div class="sheet-handle"></div>
+        <div class="edit-label">NOVA LOCALIZAÇÃO</div>
+        <div class="edit-addr">R. Augusta, 1200 - Consolação, São Paulo - SP</div>
+        <div class="edit-btn">Confirmar nova posição</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ════════ 9. CONNECTIONS / FRIENDS ════════ -->
+<div class="phone">
+  <div class="phone-label">Conexões — Amigos</div>
+  <div class="phone-frame">
+    <div class="screen" style="background:var(--bg)">
+      <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+      <div class="fr-header">
+        <h2>Conexões</h2>
+        <p>Avise (e seja avisado) quando alguém chegar perto.</p>
+      </div>
+      <div class="fr-search">🔍 Buscar por nome, telefone ou e-mail…</div>
+
+      <div class="fr-section-label">VOCÊ AVISA</div>
+      <div class="fr-item">
+        <div class="fr-avatar">M</div>
+        <div class="fr-info">
+          <div class="fr-name">Mariana Silva</div>
+          <div class="fr-sub">🏠 Casa · 🏢 Escritório · 1 alerta cada</div>
+        </div>
+        <div class="fr-pill out">Saída</div>
+      </div>
+      <div class="fr-item">
+        <div class="fr-avatar">P</div>
+        <div class="fr-info">
+          <div class="fr-name">Pai</div>
+          <div class="fr-sub">🏠 Casa · 2 alertas (máx)</div>
+        </div>
+        <div class="fr-pill out">Saída</div>
+      </div>
+
+      <div class="fr-section-label">AVISA VOCÊ</div>
+      <div class="fr-item">
+        <div class="fr-avatar">L</div>
+        <div class="fr-info">
+          <div class="fr-name">Lucas Rocha</div>
+          <div class="fr-sub">🚌 Ponto do ônibus · 1 alerta</div>
+        </div>
+        <div class="fr-pill in">Entrada</div>
+      </div>
+      <div class="fr-item">
+        <div class="fr-avatar">A</div>
+        <div class="fr-info">
+          <div class="fr-name">Ana (irmã)</div>
+          <div class="fr-sub">🏠 Casa dela · 2 alertas</div>
+        </div>
+        <div class="fr-pill in">Entrada</div>
+      </div>
+
+      <div class="fr-section-label">PENDENTES</div>
+      <div class="fr-item">
+        <div class="fr-avatar">C</div>
+        <div class="fr-info">
+          <div class="fr-name">Carlos Mendes</div>
+          <div class="fr-sub">Convite enviado · há 2 dias</div>
+        </div>
+        <div class="fr-pill pend">Aguardando</div>
+      </div>
+
+      <div class="fr-cta">＋ Convidar amigo por telefone ou e-mail</div>
+
+      <div class="fab" style="bottom:72px">+</div>
+      <div class="tab-bar">
+        <div class="tab">📍 Locais</div>
+        <div class="tab">🕐 Histórico</div>
+        <div class="tab active">👥 Amigos</div>
+        <div class="tab">⚙️ Config</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- grid -->
+</body>
+</html>

@@ -3,8 +3,6 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="google-site-verification" content="7ElC76Y3JHcOVqXTG5k73BSi2FE0hpy5656PFuXRGQw" />
-
   <title>Política de Privacidade — Geo Alert</title>
   <meta name="description" content="Política de Privacidade do app Geo Alert. Seus dados são seus." />
   <link rel="canonical" href="https://www.geoalert.com.br/privacy.html" />
@@ -75,8 +73,9 @@
       transition: opacity .2s;
     }
     .nav-back:hover { opacity: 0.8; }
-    .lang-switch { font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 6px; text-decoration: none; transition: all .2s; }
+    .lang-switch { display: inline-flex; align-items: center; gap: 6px; font-size: 13px; font-weight: 600; color: var(--subtle); border: 1px solid var(--border); padding: 4px 10px; border-radius: 999px; text-decoration: none; transition: all .2s; }
     .lang-switch:hover { color: var(--text); border-color: var(--muted); }
+    .lang-switch svg { width: 16px; height: 16px; display: block; }
     .theme-toggle { background: none; border: 1px solid var(--border); width: 32px; height: 32px; border-radius: 50%; cursor: pointer; font-size: 16px; display: flex; align-items: center; justify-content: center; transition: all .2s; color: var(--text); }
     .theme-toggle:hover { border-color: var(--muted); transform: scale(1.1); }
 
@@ -129,7 +128,7 @@
   <div class="nav-inner">
     <a class="nav-logo" href="index.html"><span>📍</span> Geo Alert</a>
     <div style="display:flex;align-items:center;gap:16px">
-      <a href="en/privacy.html" class="lang-switch">🇺🇸 EN</a>
+      <a href="en/privacy.html" class="lang-switch" aria-label="English" title="English"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="ukc2"><circle cx="12" cy="12" r="11"/></clipPath></defs><g clip-path="url(#ukc2)"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.5"/><path d="M12 0V24M0 12H24" stroke="#fff" stroke-width="5"/><path d="M12 0V24M0 12H24" stroke="#C8102E" stroke-width="3"/></g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(0,0,0,.15)"/></svg>EN</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">🌙</button>
       <a class="nav-back" href="index.html">← Voltar ao site</a>
     </div>
@@ -200,7 +199,31 @@
 </main>
 
 <footer>
-  <p>Geo Alert v1.0.3 — Feito com ❤️ no Brasil</p>
+  <p>Geo Alert v2.0.0 — Feito com ❤️ no Brasil</p>
+  <p style="margin-top: 8px;"><a href="index.html">Voltar ao site</a> · <a href="mailto:contato@geoalert.com.br">Contato</a></p>
+ tipo vibração.</li>
+  </ul>
+  <p>Você pode revogar qualquer permissão nas configurações do seu celular a qualquer momento.</p>
+
+  <h2>Segurança</h2>
+  <p>Seus dados ficam protegidos pelo sistema do celular (iOS ou Android). Recomendamos manter senha ou biometria ativada no dispositivo.</p>
+
+  <h2>Crianças</h2>
+  <p>O app não é direcionado a menores de 13 anos.</p>
+
+  <h2>Mudanças nesta página</h2>
+  <p>Se mudarmos algo importante aqui, vamos avisar numa atualização do app.</p>
+
+  <h2>Contato</h2>
+  <p>Dúvidas? Manda um e-mail: <a href="mailto:contato@geoalert.com.br">contato@geoalert.com.br</a></p>
+
+  <div class="highlight-box">
+    <p>✅ <strong>Resumindo:</strong> O Geo Alert é 100% local. Sem servidores, sem coleta de dados, sem rastreamento. Sua localização nunca sai do seu celular. Seus dados são seus — ponto.</p>
+  </div>
+</main>
+
+<footer>
+  <p>Geo Alert v2.0.0 — Feito com ❤️ no Brasil</p>
   <p style="margin-top: 8px;"><a href="index.html">Voltar ao site</a> · <a href="mailto:contato@geoalert.com.br">Contato</a></p>
 </footer>
 
