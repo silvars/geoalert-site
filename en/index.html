@@ -173,6 +173,28 @@
     .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
     .highlight-item p { font-size: 13px; color: var(--subtle); line-height: 1.5; }
 
+    /* DEMO (YouTube Shorts) */
+    .demo-section { padding: 100px 24px; background: var(--surface); overflow: hidden; }
+    .demo-section-alt { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
+    .demo-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
+    .demo-reverse .demo-text { order: 2; }
+    .demo-reverse .demo-frame-wrap { order: 1; }
+    .demo-text .section-title { margin-bottom: 16px; }
+    .demo-bullets { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-direction: column; gap: 14px; }
+    .demo-bullets li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text); font-weight: 500; }
+    .demo-bullets ion-icon { font-size: 22px; color: var(--accent); flex-shrink: 0; }
+    .demo-frame-wrap { display: flex; justify-content: center; align-items: center; perspective: 1000px; }
+    .demo-frame { width: 100%; max-width: 405px; aspect-ratio: 9 / 16; border-radius: 28px; box-shadow: 0 40px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05); background: #0E2E33; transition: transform .4s ease; }
+    .demo-frame:hover { transform: scale(1.02) rotateY(-2deg); }
+    [data-theme="dark"] .demo-frame { box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(125,200,209,0.1); }
+    .badge-new { display: inline-block; background: linear-gradient(135deg, #4F6EF7, #22C55E); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 999px; margin-right: 10px; vertical-align: middle; text-transform: uppercase; }
+    @media (max-width: 768px) {
+      .demo-container { grid-template-columns: 1fr; gap: 40px; }
+      .demo-text { text-align: center; }
+      .demo-bullets li { justify-content: center; }
+      .demo-frame { max-width: 320px; }
+    }
+
     /* VIDEOS */
     .video-break { max-width: 700px; margin: 0 auto; padding: 48px 20px; }
     .video-break .video-card { border-radius: var(--radius); overflow: hidden; border: 1px solid var(--border); background: var(--surface); transition: transform .2s, box-shadow .2s; }
@@ -363,6 +385,44 @@
       <div class="feature-card animate delay-2"><div class="feature-icon fi-green"><ion-icon name="time-outline"></ion-icon></div><h3>Alert history</h3><p>See all alerts that have fired — when, where and what type. Up to 100 records saved.</p></div>
       <div class="feature-card animate delay-3"><div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div><h3>Connections — notify your people</h3><p>With login, connect friends and family by phone or email. Get (or send) alerts when someone is arriving — limit of 2 alerts per friend per place.</p></div>
       <div class="feature-card animate delay-4"><div class="feature-icon fi-blue"><ion-icon name="cloud-outline"></ion-icon></div><h3>Optional cloud sync</h3><p>Sign in with Apple, Google, email or phone to sync your places across devices. Without login, everything stays on your device.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ NEW — CONNECTIONS (YouTube Shorts) ════════ -->
+<section id="demo-connections" class="demo-section">
+  <div class="container demo-container">
+    <div class="demo-text">
+      <span class="section-label"><span class="badge-new">New</span> Connections</span>
+      <h2 class="section-title">Connect who matters.<br>Without exposing where you are.</h2>
+      <p class="section-subtitle">Invite a friend by email, they accept, and that's it: you can notify each other when arriving nearby. No continuous location sharing — just the event.</p>
+      <ul class="demo-bullets">
+        <li><ion-icon name="shield-checkmark-outline"></ion-icon> Only becomes a connection if both accept.</li>
+        <li><ion-icon name="lock-closed-outline"></ion-icon> No one sees where you are — only when you arrive.</li>
+        <li><ion-icon name="notifications-outline"></ion-icon> The alert arrives instantly, no need to open the app.</li>
+      </ul>
+    </div>
+    <div class="demo-frame-wrap">
+      <iframe class="demo-frame" src="https://www.youtube.com/embed/TF2ujUPBCKI" title="Connections — Geo Alert" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" frameborder="0"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ NEW — NOTIFY CONNECTIONS (YouTube Shorts) ════════ -->
+<section id="demo-notify" class="demo-section demo-section-alt">
+  <div class="container demo-container demo-reverse">
+    <div class="demo-frame-wrap">
+      <iframe class="demo-frame" src="https://www.youtube.com/embed/XQa6joF0VFc" title="Notify Connections — Geo Alert" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" frameborder="0"></iframe>
+    </div>
+    <div class="demo-text">
+      <span class="section-label"><span class="badge-new">New</span> Notify connections</span>
+      <h2 class="section-title">I'm home.<br>Without saying a word.</h2>
+      <p class="section-subtitle">For each place, choose who gets notified when you arrive or leave. The alert goes out on its own — you just live your life.</p>
+      <ul class="demo-bullets">
+        <li><ion-icon name="toggle-outline"></ion-icon> Turn on notifications only at the places you choose.</li>
+        <li><ion-icon name="people-outline"></ion-icon> Pick who is notified at each one.</li>
+        <li><ion-icon name="flash-outline"></ion-icon> Works with the app closed, even in your pocket.</li>
+      </ul>
     </div>
   </div>
 </section>
