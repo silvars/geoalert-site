@@ -58,7 +58,7 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text); background: var(--bg);
-      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
       transition: background .3s, color .3s;
     }
 
@@ -66,7 +66,6 @@
     nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; backdrop-filter: blur(24px); -webkit-backdrop-filter: blur(24px); background: var(--nav-bg); border-bottom: 1px solid var(--border); padding: 0 24px; transition: background .3s, border-color .3s; }
     .nav-inner { max-width: 1100px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between; height: 64px; }
     .nav-logo { font-weight: 800; font-size: 20px; display: flex; align-items: center; gap: 8px; text-decoration: none; color: var(--text); }
-    .nav-logo span { font-size: 24px; }
     .nav-links { display: flex; gap: 32px; align-items: center; }
     .nav-links a { text-decoration: none; color: var(--muted); font-size: 14px; font-weight: 500; transition: color .2s; }
     .nav-links a:hover { color: var(--text); }
@@ -80,11 +79,12 @@
     .nav-cta:hover { transform: translateY(-1px); box-shadow: 0 4px 20px rgba(107,138,255,.35); }
 
     /* HERO */
-    .hero { padding: 150px 24px 90px; text-align: center; background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%); }
-    .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; max-width: 720px; margin: 0 auto 20px; }
+    .hero { padding: 150px 24px 90px; text-align: left; background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%); }
+    .hero-badge { display: inline-flex; align-items: center; gap: 6px; background: var(--accent-dim); color: var(--accent); padding: 6px 14px; border-radius: 100px; font-size: 13px; font-weight: 600; margin-bottom: 28px; border: 1px solid rgba(107,138,255,0.2); }
+    .hero h1 { font-size: clamp(36px, 6vw, 64px); font-weight: 900; line-height: 1.08; letter-spacing: -0.03em; max-width: 520px; margin: 0 0 20px; }
     .hero h1 .gradient { background: linear-gradient(135deg, #6B8AFF, #A78BFA, #F472B6); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
-    .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 auto 40px; line-height: 1.7; }
-    .store-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+    .hero p { font-size: 18px; color: var(--muted); max-width: 520px; margin: 0 0 40px; line-height: 1.7; }
+    .store-badges { display: flex; gap: 16px; justify-content: flex-start; flex-wrap: wrap; margin-bottom: 16px; }
     .store-badge { display: inline-flex; align-items: center; gap: 12px; background: var(--primary); color: var(--bg); padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: none; }
     .store-badge:hover { transform: translateY(-2px); box-shadow: 0 8px 28px var(--shadow-med); }
     .store-badge svg { flex-shrink: 0; }
@@ -95,36 +95,56 @@
     .store-badge-outline:hover { border-color: var(--muted); transform: translateY(-2px); }
     .store-badge-outline svg { flex-shrink: 0; }
     .store-badge-outline .store-badge-text .small { color: var(--muted); }
+    .hero-social-proof { font-size: 13px; color: var(--subtle); margin-top: 12px; }
     .hero-secondary-link { display: inline-block; margin-top: 16px; color: var(--accent); font-size: 14px; font-weight: 600; text-decoration: none; transition: color .2s; }
     .hero-secondary-link:hover { color: #A78BFA; }
-    .hero-stats { display: flex; justify-content: center; gap: 48px; margin-top: 64px; flex-wrap: wrap; }
-    .stat { text-align: center; }
-    .stat-value { font-size: 32px; font-weight: 800; }
-    .stat-label { font-size: 13px; color: var(--subtle); font-weight: 500; margin-top: 4px; }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+    .hero-text { max-width: 520px; }
+    .hero-mockup { display: flex; justify-content: center; align-items: center; }
+    .hero-phone { width: 260px; height: 562px; border-radius: 32px; overflow: hidden; border: 2.5px solid #333; background: #0D0D0D; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); flex-shrink: 0; }
+    .hero-phone-inner { width: 375px; height: 812px; transform: scale(0.693); transform-origin: top left; overflow: hidden; }
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-mockup { display: none; }
+      .hero-text { max-width: 100%; text-align: center; }
+      .hero-text h1 { text-align: center; margin: 0 auto 20px; }
+      .hero-text p { text-align: center; }
+      .hero-text .store-badges { justify-content: center; }
+      .hero-social-proof { text-align: center; }
+    }
 
     /* SECTIONS */
-    section { padding: 80px 24px; }
+    section { padding: 96px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-label { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
     .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
     .section-subtitle { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
 
-    /* STEPS */
-    .steps { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px; }
-    .step { background: var(--surface); border-radius: var(--radius); padding: 32px 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
-    .step:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
-    .step-num { width: 40px; height: 40px; border-radius: 12px; background: var(--accent); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 16px; font-weight: 700; margin-bottom: 16px; }
-    .step h3 { font-size: 18px; font-weight: 700; margin-bottom: 8px; }
-    .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
+    /* STEPS NEW */
+    .steps-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .step-new { padding: 0 32px; position: relative; }
+    .step-new + .step-new::before { content: "→"; position: absolute; left: -10px; top: 56px; font-size: 20px; color: var(--border); }
+    .step-dec { font-size: 80px; font-weight: 900; line-height: 1; color: var(--accent); opacity: 0.08; margin-bottom: -10px; display: block; }
+    .step-new h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step-new p { font-size: 16px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) {
+      .steps-new { grid-template-columns: 1fr; }
+      .step-new { padding: 0 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+      .step-new:last-child { border-bottom: none; margin-bottom: 0; }
+      .step-new + .step-new::before { display: none; }
+    }
 
-    /* ═══ TIERS SHOWCASE ═══ */
-    .showcase-section { padding: 80px 24px; background: linear-gradient(180deg, var(--bg) 0%, rgba(107,138,255,0.04) 50%, var(--bg) 100%); overflow: hidden; }
+    /* TIERS SHOWCASE */
+    .showcase-section { padding: 96px 24px; background: #F5F7FF; overflow: hidden; }
+    [data-theme="dark"] .showcase-section { background: #0d1228; }
     .showcase-section .section-label, .showcase-section .section-title, .showcase-section .section-subtitle { text-align: center; }
     .showcase-section .section-subtitle { margin-left: auto; margin-right: auto; }
     .tiers-showcase { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .tier-col { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; }
+    .tier-col { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; position: relative; }
     .tier-col:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
     .tier-col.tier-pro { border-color: var(--accent); background: linear-gradient(160deg, rgba(107,138,255,0.07) 0%, var(--surface) 100%); }
+    .tier-col-highlighted { border: 2px solid var(--accent) !important; box-shadow: 0 8px 32px rgba(107,138,255,0.2); }
+    .tier-popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 999px; white-space: nowrap; letter-spacing: 0.04em; }
     .tier-badge { display: inline-flex; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; margin-bottom: 20px; }
     .tier-badge.anon { background: var(--surface2); color: var(--muted); }
     .tier-badge.free { background: rgba(52,211,153,0.15); color: #34D399; }
@@ -141,39 +161,31 @@
     .tier-rules li b { color: var(--text); font-weight: 700; }
     @media (max-width: 760px) { .tiers-showcase { grid-template-columns: 1fr; max-width: 400px; } }
 
-    /* FEATURES */
+    /* FEATURES NEW */
     .features-section { background: var(--surface); }
-    .features-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 20px; }
-    .feature-card { background: var(--surface2); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
-    .feature-card:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-med); border-color: rgba(107,138,255,0.3); }
+    .features-group-a { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+    .features-group-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card-a { background: var(--surface2); border-radius: var(--radius); padding: 36px 32px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
+    .feature-card-a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-med); border-color: rgba(107,138,255,0.3); }
+    .feature-card-a h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+    .feature-card-a p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    .feature-card-b { background: var(--surface2); border-radius: var(--radius-sm); padding: 24px 20px; border: 1px solid var(--border); transition: transform .2s; }
+    .feature-card-b:hover { transform: translateY(-2px); }
+    .feature-card-b h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature-card-b p { font-size: 13px; color: var(--muted); line-height: 1.6; }
     .feature-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; margin-bottom: 16px; }
-    .feature-card h3 { font-size: 17px; font-weight: 700; margin-bottom: 8px; }
-    .feature-card p { font-size: 14px; color: var(--muted); line-height: 1.6; }
     .fi-blue { background: rgba(107,138,255,0.15); }
     .fi-green { background: rgba(52,211,153,0.15); }
     .fi-purple { background: rgba(167,139,250,0.15); }
     .fi-orange { background: rgba(251,146,60,0.15); }
     .fi-red { background: rgba(248,113,113,0.15); }
     .fi-gray { background: rgba(255,255,255,0.08); }
+    @media (max-width: 768px) {
+      .features-group-a { grid-template-columns: 1fr; }
+      .features-group-b { grid-template-columns: 1fr 1fr; }
+    }
 
-    /* USE CASES */
-    .usecases { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
-    .usecase { background: var(--surface); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); text-align: center; transition: all .2s; }
-    .usecase:hover { border-color: var(--accent); background: var(--accent-dim); }
-    .usecase-emoji { font-size: 36px; margin-bottom: 12px; }
-    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
-    .usecase p { font-size: 13px; color: var(--muted); line-height: 1.5; }
-
-    /* HIGHLIGHT */
-    .highlight-section { background: linear-gradient(135deg, rgba(107,138,255,0.08) 0%, rgba(167,139,250,0.06) 100%); border: 1px solid rgba(107,138,255,0.15); border-radius: 24px; padding: 64px 48px; margin: 0 24px; }
-    .highlight-section .section-label { color: #A78BFA; }
-    .highlight-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 24px; }
-    .highlight-item { text-align: center; padding: 24px; background: rgba(255,255,255,0.04); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.06); }
-    .highlight-item .hi-icon { font-size: 32px; margin-bottom: 12px; }
-    .highlight-item h4 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-    .highlight-item p { font-size: 13px; color: var(--subtle); line-height: 1.5; }
-
-    /* DEMO (YouTube Shorts) */
+    /* DEMO */
     .demo-section { padding: 100px 24px; background: var(--surface); overflow: hidden; }
     .demo-section-alt { background: var(--bg); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
     .demo-container { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 64px; align-items: center; }
@@ -183,17 +195,62 @@
     .demo-bullets { list-style: none; padding: 0; margin: 28px 0 0; display: flex; flex-direction: column; gap: 14px; }
     .demo-bullets li { display: flex; align-items: center; gap: 12px; font-size: 15px; color: var(--text); font-weight: 500; }
     .demo-bullets ion-icon { font-size: 22px; color: var(--accent); flex-shrink: 0; }
-    .demo-frame-wrap { display: flex; justify-content: center; align-items: center; perspective: 1000px; }
+    .demo-frame-wrap { display: flex; flex-direction: column; justify-content: center; align-items: center; perspective: 1000px; }
     .demo-frame { width: 100%; max-width: 405px; aspect-ratio: 9 / 16; border-radius: 28px; box-shadow: 0 40px 80px rgba(0,0,0,0.25), 0 0 0 1px rgba(255,255,255,0.05); background: #0E2E33; transition: transform .4s ease; }
     .demo-frame:hover { transform: scale(1.02) rotateY(-2deg); }
-    [data-theme="dark"] .demo-frame { box-shadow: 0 40px 80px rgba(0,0,0,0.6), 0 0 60px rgba(125,200,209,0.1); }
     .badge-new { display: inline-block; background: linear-gradient(135deg, #4F6EF7, #22C55E); color: #fff; font-size: 10px; font-weight: 800; letter-spacing: 0.08em; padding: 3px 8px; border-radius: 999px; margin-right: 10px; vertical-align: middle; text-transform: uppercase; }
+    .demo-dark { background: #111827 !important; }
+    .demo-dark .section-label { color: #818cf8 !important; }
+    .demo-dark .section-title, .demo-dark .section-subtitle { color: rgba(255,255,255,0.9) !important; }
+    .demo-dark .demo-bullets li { color: rgba(255,255,255,0.8) !important; }
+    .demo-dark .demo-bullets ion-icon { color: #818cf8 !important; }
+    .video-context { font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 12px; }
+    .demo-dark .video-context { color: rgba(255,255,255,0.45) !important; }
     @media (max-width: 768px) {
       .demo-container { grid-template-columns: 1fr; gap: 40px; }
       .demo-text { text-align: center; }
       .demo-bullets li { justify-content: center; }
       .demo-frame { max-width: 320px; }
     }
+
+    /* PRIVACY */
+    .privacy-section { background: #F0F4FF; padding: 96px 24px; }
+    [data-theme="dark"] .privacy-section { background: #0d1a2d; }
+    .privacy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+    .privacy-item { text-align: center; }
+    .privacy-item .pi-icon { font-size: 48px; margin-bottom: 16px; display: block; color: var(--accent); }
+    .privacy-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .privacy-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) { .privacy-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* USE CASES */
+    .usecases { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .usecase { background: var(--surface); border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); text-align: center; transition: all .2s; }
+    .usecase:hover { border-color: var(--accent); background: var(--accent-dim); }
+    .usecase-emoji { font-size: 36px; margin-bottom: 12px; }
+    .usecase h4 { font-size: 16px; font-weight: 700; margin-bottom: 6px; }
+    .usecase p { font-size: 13px; color: var(--muted); line-height: 1.5; }
+    .usecase-quote { font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.5; margin-bottom: 8px; display: block; }
+
+    /* COMPARISON */
+    .comparison-section { background: var(--surface); }
+    .comparison-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+    .comp-highlight { padding: 28px 24px; background: var(--surface2); border: 1px solid var(--border); border-radius: var(--radius); }
+    .comp-highlight .ch-icon { font-size: 32px; margin-bottom: 12px; display: block; color: var(--accent); }
+    .comp-highlight h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .comp-highlight p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .comp-toggle-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: none; padding: 0; margin-bottom: 24px; }
+    .comp-collapsible { display: none; }
+    .comp-collapsible.open { display: block; }
+    .comparison-wrap { overflow-x: auto; }
+    .comparison { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
+    .comparison th { text-align: left; padding: 14px 16px; font-weight: 700; border-bottom: 2px solid var(--border); font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
+    .comparison th:last-child { text-align: center; }
+    .comparison td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
+    .comparison td:last-child { text-align: center; }
+    .check { color: var(--success); font-weight: 700; font-size: 18px; }
+    .cross { color: var(--subtle); font-size: 18px; }
+    @media (max-width: 768px) { .comparison-highlights { grid-template-columns: 1fr; } }
 
     /* VIDEOS */
     .video-break { max-width: 700px; margin: 0 auto; padding: 48px 20px; }
@@ -203,30 +260,26 @@
     .video-break .video-embed iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0; }
     .video-break .video-label { padding: 14px 16px; font-size: 14px; font-weight: 600; color: var(--text); text-align: center; }
 
-    /* COMPARISON */
-    .comparison-section { background: var(--surface); }
-    .comparison-wrap { overflow-x: auto; }
-    .comparison { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 600px; }
-    .comparison th { text-align: left; padding: 14px 16px; font-weight: 700; border-bottom: 2px solid var(--border); font-size: 13px; text-transform: uppercase; letter-spacing: 0.04em; color: var(--muted); }
-    .comparison th:last-child { text-align: center; }
-    .comparison td { padding: 12px 16px; border-bottom: 1px solid var(--border); }
-    .comparison td:last-child { text-align: center; }
-    .check { color: var(--success); font-weight: 700; font-size: 18px; }
-    .cross { color: var(--subtle); font-size: 18px; }
-
     /* FAQ */
     .faq-list { max-width: 700px; margin: 0 auto; }
     .faq-item { border-bottom: 1px solid var(--border); padding: 20px 0; }
     .faq-q { font-size: 16px; font-weight: 700; cursor: pointer; display: flex; justify-content: space-between; align-items: center; gap: 16px; }
-    .faq-q::after { content: '+'; font-size: 20px; color: var(--subtle); transition: transform .2s; }
+    .faq-q::after { content: "+"; font-size: 20px; color: var(--subtle); transition: transform .2s; }
     .faq-item.open .faq-q::after { transform: rotate(45deg); color: var(--accent); }
     .faq-a { max-height: 0; overflow: hidden; transition: max-height .3s ease; font-size: 14px; color: var(--muted); line-height: 1.7; }
     .faq-item.open .faq-a { max-height: 200px; padding-top: 12px; }
 
-    /* CTA */
-    .cta-section { text-align: center; padding: 80px 24px; background: radial-gradient(ellipse at 50% 100%, rgba(107,138,255,0.06) 0%, transparent 60%); }
-    .cta-section h2 { font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
-    .cta-section p { font-size: 17px; color: var(--muted); margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    /* CTA DARK */
+    .cta-dark { background: #111827; text-align: center; padding: 96px 24px; }
+    .cta-dark h2 { color: #fff; font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .cta-dark p { color: rgba(255,255,255,0.6); font-size: 17px; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .store-badge-inv { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: #111; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; }
+    .store-badge-inv:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,.2); }
+    .store-badge-inv .store-badge-text .small { color: #555; }
+    .store-badge-inv-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: #fff; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: 1.5px solid rgba(255,255,255,0.3); }
+    .store-badge-inv-outline:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+    .store-badge-inv-outline .store-badge-text .small { color: rgba(255,255,255,0.5); }
+    .cta-badges { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
 
     /* FOOTER */
     footer { border-top: 1px solid var(--border); padding: 32px 24px; text-align: center; font-size: 13px; color: var(--subtle); }
@@ -236,15 +289,51 @@
     @media (max-width: 768px) {
       .nav-links { display: none; }
       .hero { padding: 120px 20px 60px; }
-      .hero-stats { gap: 24px; }
-      .highlight-section { margin: 0 12px; padding: 40px 24px; border-radius: 16px; }
-      section { padding: 60px 20px; }
-      .store-badge, .store-badge-outline { width: 100%; justify-content: center; }
+      section { padding: 64px 20px; }
+      .store-badge, .store-badge-outline, .store-badge-inv, .store-badge-inv-outline { width: 100%; justify-content: center; }
     }
 
     @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
     .animate { animation: fadeUp .6s ease-out forwards; opacity: 0; }
     .delay-1 { animation-delay: .1s; } .delay-2 { animation-delay: .2s; } .delay-3 { animation-delay: .3s; } .delay-4 { animation-delay: .4s; }
+
+    /* SCREENS */
+    .status-bar { display:flex;justify-content:space-between;align-items:center;padding:8px 24px 0;height:44px;position:sticky;top:0;z-index:10;background:#0D0D0D; }
+    .status-time { font-size:15px;font-weight:600;color:#F5F5F5; }
+    .status-icons { display:flex;gap:6px;align-items:center; }
+    .status-icons .batt { width:24px;height:11px;border:1.5px solid #F5F5F5;border-radius:3px;position:relative; }
+    .status-icons .batt::after { content:"";position:absolute;left:2px;top:2px;width:14px;height:5px;background:#34D399;border-radius:1px; }
+    .screen { width:100%;height:100%;position:relative;overflow-y:auto;overflow-x:hidden; }
+    .screen::-webkit-scrollbar { display:none; }
+    .home-header { padding:16px 24px 8px;display:flex;align-items:center;justify-content:space-between; }
+    .home-header h2 { font-size:32px;font-weight:800;margin:0;color:#F5F5F5; }
+    .home-monitor { display:flex;align-items:center;gap:6px;margin-top:4px;font-size:13px;color:#A0A0A0;padding:0 24px 8px; }
+    .home-monitor .dot { width:8px;height:8px;border-radius:50%;background:#34D399; }
+    .group-hdr { display:flex;align-items:center;justify-content:space-between;background:#252525;padding:12px 24px;gap:8px;margin-top:8px; }
+    .group-hdr .toggle { font-size:11px;color:#A0A0A0;width:16px; }
+    .group-hdr .lbl { font-size:12px;font-weight:700;color:#A0A0A0;letter-spacing:0.5px;flex:1; }
+    .group-hdr .cnt { font-size:11px;color:#666;margin-right:12px; }
+    .sw { width:44px;height:26px;border-radius:13px;position:relative;flex-shrink:0; }
+    .sw.on { background:#34D399; }
+    .sw::after { content:"";width:22px;height:22px;border-radius:50%;background:#fff;position:absolute;top:2px;left:2px; }
+    .sw.on::after { left:20px; }
+    .place-card { display:flex;align-items:flex-start;padding:12px 24px;gap:12px;border-bottom:1px solid #333; }
+    .place-emoji { width:48px;height:48px;border-radius:12px;background:#252525;display:flex;align-items:center;justify-content:center;font-size:24px;flex-shrink:0; }
+    .place-info { flex:1;min-width:0; }
+    .place-name { font-size:15px;font-weight:600;color:#F5F5F5; }
+    .place-addr { font-size:13px;color:#A0A0A0;margin-top:2px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis; }
+    .ring-chips { display:flex;gap:8px;margin-top:6px;flex-wrap:wrap; }
+    .ring-chip { display:flex;align-items:center;gap:3px;font-size:10px;color:#A0A0A0; }
+    .ring-chip .rdot { width:6px;height:6px;border-radius:50%; }
+    .place-right { display:flex;align-items:center;gap:8px;flex-shrink:0;padding-top:4px; }
+    .place-toggle { width:40px;height:24px;border-radius:12px;background:#333;position:relative; }
+    .place-toggle.on { background:#34D399; }
+    .place-toggle::after { content:"";position:absolute;width:18px;height:18px;border-radius:10px;background:#fff;top:3px;left:3px; }
+    .place-toggle.on::after { left:19px; }
+    .fab { position:absolute;bottom:68px;right:24px;width:56px;height:56px;border-radius:50%;background:#FFF;display:flex;align-items:center;justify-content:center;font-size:28px;color:#0D0D0D;box-shadow:0 4px 16px rgba(0,0,0,0.4);font-weight:300; }
+    .tab-bar { position:absolute;bottom:0;left:0;right:0;height:60px;background:#1A1A1A;border-top:1px solid #333;display:flex;align-items:center;justify-content:space-around; }
+    .tab { font-size:11px;font-weight:600;color:#666;display:flex;flex-direction:column;align-items:center;gap:4px; }
+    .tab.active { color:#FFF; }
   </style>
 
 <script type="application/ld+json">
@@ -267,60 +356,135 @@
     <a href="index.html" class="nav-logo"><ion-icon name="location-outline"></ion-icon> Geo Alert</a>
     <div class="nav-links">
       <a href="#how-it-works">How it works</a>
-      <a href="#app-preview">The App</a>
       <a href="#features">Features</a>
       <a href="#plans">Plans</a>
       <a href="#faq">FAQ</a>
-      <a href="../index.html" class="lang-switch" aria-label="Português" title="Português"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#009c3b"/><path d="M12 4L21 12L12 20L3 12Z" fill="#ffdf00"/><circle cx="12" cy="12" r="4" fill="#002776"/><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(0,0,0,.15)"/></svg>PT</a>
+      <a href="../index.html" class="lang-switch" aria-label="Portugu\u00eas" title="Portugu\u00eas"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="11" fill="#009c3b"/><path d="M12 4L21 12L12 20L3 12Z" fill="#ffdf00"/><circle cx="12" cy="12" r="4" fill="#002776"/><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(0,0,0,.15)"/></svg>PT</a>
       <button class="theme-toggle" onclick="toggleTheme()" aria-label="Toggle theme"><ion-icon name="moon-outline"></ion-icon></button>
     </div>
     <a href="#download" class="nav-cta">Download</a>
   </div>
 </nav>
 
+<!-- ════ HERO ════ -->
 <section class="hero">
-  <h1 class="animate">Never miss your<br><span class="gradient">stop again.</span></h1>
-  <p class="animate delay-1">Save a place and stay worry-free. The app alerts you when you're nearby — with vibration, alarm and configurable distances.</p>
-  <div class="store-badges animate delay-2">
-    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Available on</span><span class="big">Google Play</span></div>
-    </a>
-    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Download on</span><span class="big">App Store</span></div>
-    </a>
-  </div>
-  <a href="#app-preview" class="hero-secondary-link animate delay-3">See the app in action →</a>
-  <div class="hero-stats animate delay-3">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Alerts per place</div></div>
-    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Alert types</div></div>
-    <div class="stat"><div class="stat-value">∞</div><div class="stat-label">Places on PRO</div></div>
-    <div class="stat"><div class="stat-value"><ion-icon name="link-outline"></ion-icon></div><div class="stat-label">Notify your friends</div></div>
-  </div>
-</section>
-
-<section id="how-it-works">
-  <div class="container">
-    <span class="section-label">How it works</span>
-    <h2 class="section-title">3 steps. No hassle.</h2>
-    <p class="section-subtitle">No sign-up to start. Log in later to sync and connect with friends.</p>
-    <div class="steps">
-      <div class="step animate"><div class="step-num">1</div><h3>Save a place</h3><p>Search an address or tap the map. Pick an emoji and name it — or use a ready-made template.</p></div>
-      <div class="step animate delay-1"><div class="step-num">2</div><h3>Set up alerts</h3><p>Define up to 5 alerts at different distances (500m to 10km). Each one can vibrate or sound a loud alarm.</p></div>
-      <div class="step animate delay-2"><div class="step-num">3</div><h3>Forget and live</h3><p>The app monitors in the background. When you (or a connected friend) get close, alerts fire — even with the app closed.</p></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge animate"><ion-icon name="location-outline"></ion-icon> Location alerts</div>
+      <h1 class="animate">You arrive.<br>The app already knew.</h1>
+      <p class="animate delay-1">Set it up once. Then forget — Geo Alert monitors in the background and fires the alert at the right moment, even with the app closed.</p>
+      <div class="store-badges animate delay-2">
+        <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
+          <div class="store-badge-text"><span class="small">Available on</span><span class="big">Google Play</span></div>
+        </a>
+        <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="store-badge-text"><span class="small">Download on</span><span class="big">App Store</span></div>
+        </a>
+      </div>
+      <p class="hero-social-proof">Free on Android and iOS &middot; No sign-up to get started</p>
+      <a href="#features" class="hero-secondary-link animate delay-3">See all features &rarr;</a>
+    </div>
+    <div class="hero-mockup animate delay-2">
+      <div class="hero-phone">
+        <div class="hero-phone-inner">
+          <div class="screen" style="background:#0D0D0D">
+            <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+            <div class="home-header"><h2>Places</h2></div>
+            <div class="home-monitor"><div class="dot"></div><span>4 of 8 monitoring</span></div>
+            <div class="group-hdr"><span class="toggle">&#9660;</span><span class="lbl">WORK</span><span class="cnt">2/3</span><div class="sw on"></div></div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="business"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Office</div>
+                <div class="place-addr">Augusta St, 1200</div>
+                <div class="ring-chips">
+                  <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+                  <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>1km</div>
+                </div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="bus"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Bus stop</div>
+                <div class="place-addr">Barra Funda Terminal</div>
+                <div class="ring-chips"><div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>600m</div></div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="group-hdr"><span class="toggle">&#9660;</span><span class="lbl">PERSONAL</span><span class="cnt">2/3</span><div class="sw on"></div></div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="home"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Home</div>
+                <div class="place-addr">Flores St, 42</div>
+                <div class="ring-chips">
+                  <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+                  <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>2km</div>
+                </div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="medical"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Pharmacy</div>
+                <div class="place-addr">CVS - Main St</div>
+                <div class="ring-chips"><div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>300m</div></div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="fab">&#xff0b;</div>
+            <div class="tab-bar">
+              <div class="tab active"><span style="font-size:16px"><ion-icon name="location"></ion-icon></span><span>Places</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="time"></ion-icon></span><span>History</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="people"></ion-icon></span><span>Friends</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="settings-outline"></ion-icon></span><span>Settings</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
 
-<section class="showcase-section" id="app-preview">
+<!-- ════ HOW IT WORKS ════ -->
+<section id="how-it-works">
+  <div class="container">
+    <span class="section-label">How it works</span>
+    <h2 class="section-title">Set up in 30 seconds. Use forever.</h2>
+    <p class="section-subtitle">No sign-up to start. Log in later to sync and connect with friends.</p>
+    <div class="steps-new">
+      <div class="step-new animate">
+        <span class="step-dec">1</span>
+        <h3>Save a place</h3>
+        <p>Search an address or tap directly on the map to pin the spot. Choose from ready-made templates (Bus, Home, Work) or create from scratch with an emoji and a name.</p>
+      </div>
+      <div class="step-new animate delay-1">
+        <span class="step-dec">2</span>
+        <h3>Set up alerts</h3>
+        <p>Define up to 5 alerts at different distances, from 500m to 10km. Each alert can vibrate quietly or sound a loud alarm — great for not missing your bus stop while you sleep.</p>
+      </div>
+      <div class="step-new animate delay-2">
+        <span class="step-dec">3</span>
+        <h3>Forget and live</h3>
+        <p>Put your phone in your pocket and forget it. Geo Alert monitors in the background with no extra battery drain. When you (or a connected friend) get close, the alert fires — even with the app closed, even on silent.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ PLANS ════ -->
+<section class="showcase-section" id="plans">
   <div class="container">
     <span class="section-label">Plans &amp; limits</span>
-    <h2 class="section-title">Free to start.<br>More power with login.</h2>
-    <p class="section-subtitle">No sign-up needed to begin monitoring places. With login, sync across devices and notify friends.</p>
+    <h2 class="section-title">Start now. No sign-up.</h2>
+    <p class="section-subtitle">Use for free. Log in for more. PRO for those who need it all.</p>
 
     <div class="tiers-showcase">
-
       <div class="tier-col animate">
         <span class="tier-badge anon">No login</span>
         <div class="tier-number">3</div>
@@ -334,7 +498,8 @@
         </ul>
       </div>
 
-      <div class="tier-col animate delay-1">
+      <div class="tier-col tier-col-highlighted animate delay-1">
+        <div class="tier-popular-badge">Most popular</div>
         <span class="tier-badge free">Free login</span>
         <div class="tier-number">5</div>
         <div class="tier-sublabel">monitored places</div>
@@ -360,7 +525,6 @@
           <li><span class="rdot accent"></span>Alert history up to 100 entries</li>
         </ul>
       </div>
-
     </div>
     <p style="text-align:center;font-size:12px;color:var(--muted);margin-top:18px;line-height:1.6">
       <ion-icon name="information-circle-outline" style="vertical-align:-2px;margin-right:3px"></ion-icon>
@@ -369,28 +533,73 @@
   </div>
 </section>
 
+<!-- ════ FEATURES ════ -->
 <section id="features" class="features-section">
   <div class="container">
     <span class="section-label">Features</span>
-    <h2 class="section-title">Everything you need.<br>Nothing you don't.</h2>
+    <h2 class="section-title">Simple on the surface.<br>Powerful underneath.</h2>
     <p class="section-subtitle">Built to be simple to use and powerful under the hood.</p>
-    <div class="features-grid">
-      <div class="feature-card animate"><div class="feature-icon fi-blue"><ion-icon name="location-outline"></ion-icon></div><h3>Up to 5 alerts per place</h3><p>Set different distances for each alert. The first can vibrate, the last can sound a loud alarm.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-red"><ion-icon name="notifications-outline"></ion-icon></div><h3>Alarm that overrides silent</h3><p>The "Ring" alert plays loud even on silent mode (iOS) and uses alarm stream on Android.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green"><ion-icon name="cube-outline"></ion-icon></div><h3>Ready-made templates</h3><p>Bus, home, task — start from a template and customize. Create alerts in 10 seconds.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple"><ion-icon name="albums-outline"></ion-icon></div><h3>Smart groups</h3><p>Organize by Work, Personal, Health, Family and more. Enable/disable groups with one tap.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-orange"><ion-icon name="repeat-outline"></ion-icon></div><h3>One-time or recurring</h3><p>One-time alerts auto-disable after firing. Recurring ones work forever.</p></div>
-      <div class="feature-card animate"><div class="feature-icon fi-gray"><ion-icon name="moon-outline"></ion-icon></div><h3>Light and dark theme</h3><p>Switch between light and dark mode in settings. Your preference is saved.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-blue"><ion-icon name="earth-outline"></ion-icon></div><h3>English and Portuguese</h3><p>Fully translated interface in EN and PT-BR. Auto-detects your phone language.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green"><ion-icon name="time-outline"></ion-icon></div><h3>Alert history</h3><p>See all alerts that have fired — when, where and what type. Up to 100 records saved.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div><h3>Connections — notify your people</h3><p>With login, connect friends and family by phone or email. Get (or send) alerts when someone is arriving — limit of 2 alerts per friend per place.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-blue"><ion-icon name="cloud-outline"></ion-icon></div><h3>Optional cloud sync</h3><p>Sign in with Apple, Google, email or phone to sync your places across devices. Without login, everything stays on your device.</p></div>
+
+    <div class="features-group-a">
+      <div class="feature-card-a animate">
+        <div class="feature-icon fi-blue"><ion-icon name="location-outline"></ion-icon></div>
+        <h3>Up to 5 alerts per place</h3>
+        <p>Each place can have up to 5 alerts at different distances — 500m, 1km, 2km. The first vibrates quietly, the last sounds a loud alarm. No other location reminder app does this.</p>
+      </div>
+      <div class="feature-card-a animate delay-1">
+        <div class="feature-icon fi-red"><ion-icon name="notifications-outline"></ion-icon></div>
+        <h3>Alarm that overrides silent</h3>
+        <p>On silent mode, most apps can't alert you. Geo Alert uses the native alarm stream — on iOS and Android — to make sure you'll hear it, even with your phone in your bag on silent.</p>
+      </div>
+      <div class="feature-card-a animate delay-2">
+        <div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div>
+        <h3>Connections — notify your people</h3>
+        <p>With login, connect friends and family by phone or email. Get (or send) alerts when someone is arriving — limit of 2 alerts per friend per place.</p>
+      </div>
+      <div class="feature-card-a animate delay-3">
+        <div class="feature-icon fi-orange"><ion-icon name="repeat-outline"></ion-icon></div>
+        <h3>One-time or recurring</h3>
+        <p>One-time alerts auto-disable after firing — ideal for one-off tasks. Recurring ones work forever, no reconfiguration needed.</p>
+      </div>
+    </div>
+
+    <div class="features-group-b">
+      <div class="feature-card-b animate">
+        <div class="feature-icon fi-green"><ion-icon name="cube-outline"></ion-icon></div>
+        <h3>Ready-made templates</h3>
+        <p>Bus, home, task — start from a template and customize. Create alerts in 10 seconds.</p>
+      </div>
+      <div class="feature-card-b animate delay-1">
+        <div class="feature-icon fi-purple"><ion-icon name="albums-outline"></ion-icon></div>
+        <h3>Smart groups</h3>
+        <p>Organize by Work, Personal, Health, Family and more. Enable/disable groups with one tap.</p>
+      </div>
+      <div class="feature-card-b animate delay-2">
+        <div class="feature-icon fi-green"><ion-icon name="time-outline"></ion-icon></div>
+        <h3>Alert history</h3>
+        <p>See all alerts that have fired — when, where and what type. Up to 100 records saved.</p>
+      </div>
+      <div class="feature-card-b animate delay-3">
+        <div class="feature-icon fi-blue"><ion-icon name="cloud-outline"></ion-icon></div>
+        <h3>Optional cloud sync</h3>
+        <p>Sign in with Apple, Google, email or phone to sync your places across devices. Without login, everything stays on your device.</p>
+      </div>
+      <div class="feature-card-b animate delay-4">
+        <div class="feature-icon fi-gray"><ion-icon name="moon-outline"></ion-icon></div>
+        <h3>Light and dark theme</h3>
+        <p>Switch between light and dark mode in settings. Your preference is saved.</p>
+      </div>
+      <div class="feature-card-b animate">
+        <div class="feature-icon fi-blue"><ion-icon name="earth-outline"></ion-icon></div>
+        <h3>English and Portuguese</h3>
+        <p>Fully translated interface in EN and PT-BR. Auto-detects your phone language.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- ════════ NEW — CONNECTIONS (YouTube Shorts) ════════ -->
-<section id="demo-connections" class="demo-section">
+<!-- ════ CONNECTIONS ════ -->
+<section id="demo-connections" class="demo-section demo-dark">
   <div class="container demo-container">
     <div class="demo-text">
       <span class="section-label"><span class="badge-new">New</span> Connections</span>
@@ -403,12 +612,13 @@
       </ul>
     </div>
     <div class="demo-frame-wrap">
+      <p class="video-context">See how it works in practice &rarr;</p>
       <iframe class="demo-frame" src="https://www.youtube.com/embed/TF2ujUPBCKI" title="Connections — Geo Alert" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" frameborder="0"></iframe>
     </div>
   </div>
 </section>
 
-<!-- ════════ NEW — NOTIFY CONNECTIONS (YouTube Shorts) ════════ -->
+<!-- ════ NOTIFY CONNECTIONS ════ -->
 <section id="demo-notify" class="demo-section demo-section-alt">
   <div class="container demo-container demo-reverse">
     <div class="demo-frame-wrap">
@@ -423,91 +633,139 @@
         <li><ion-icon name="people-outline"></ion-icon> Pick who is notified at each one.</li>
         <li><ion-icon name="flash-outline"></ion-icon> Works with the app closed, even in your pocket.</li>
       </ul>
+      <p class="video-context" style="margin-top:20px">See how it works in practice &rarr;</p>
     </div>
   </div>
 </section>
 
-<div class="video-break">
-  <div class="video-card animate">
-    <div class="video-embed"><iframe src="https://www.youtube.com/embed/r_gyDG0YCFE" title="GeoAlert - Promo 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-    <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promo 1</div>
-  </div>
-</div>
-
-<div class="highlight-section">
+<!-- ════ PRIVACY ════ -->
+<section class="privacy-section">
   <div class="container">
-    <span class="section-label">Privacy first</span>
-    <h2 class="section-title">You decide what leaves the phone.</h2>
-    <p class="section-subtitle">Without login, everything stays on your device. With login, only the places and connections you choose to sync — no tracking.</p>
-    <div class="highlight-grid">
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="phone-portrait" style="font-size:28px"></ion-icon></div><h4>Local mode by default</h4><p>No sign-up: everything is saved on your phone, nothing in the cloud.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="cloud-outline"></ion-icon></div><h4>Optional sync</h4><p>With login (Apple/Google/email/phone) your places sync across your devices.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="radio-outline" style="font-size:28px"></ion-icon></div><h4>Works offline</h4><p>Monitoring uses native GPS. No internet needed for alerts to fire.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="battery-half-outline" style="font-size:28px"></ion-icon></div><h4>Minimal battery</h4><p>Uses the phone's native system — no extra battery drain.</p></div>
+    <span class="section-label">Privacy</span>
+    <h2 class="section-title">Your data. Your rules.</h2>
+    <p class="section-subtitle">Without login, nothing leaves the device. With login, only what you choose.</p>
+    <div class="privacy-grid">
+      <div class="privacy-item">
+        <ion-icon name="phone-portrait-outline" class="pi-icon"></ion-icon>
+        <h4>Local mode by default</h4>
+        <p>No sign-up: everything is saved on your phone, nothing in the cloud.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="cloud-outline" class="pi-icon"></ion-icon>
+        <h4>Optional sync</h4>
+        <p>With login (Apple/Google/email/phone) your places sync across your devices.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="radio-outline" class="pi-icon"></ion-icon>
+        <h4>Works offline</h4>
+        <p>Monitoring uses native GPS. No internet needed for alerts to fire.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="battery-half-outline" class="pi-icon"></ion-icon>
+        <h4>Minimal battery</h4>
+        <p>Uses the phone's native system — no extra battery drain.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
-<div class="video-break">
-  <div class="video-card animate">
-    <div class="video-embed"><iframe src="https://www.youtube.com/embed/rJBetotf-SQ" title="GeoAlert - Promo 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-    <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promo 2</div>
-  </div>
-</div>
-
+<!-- ════ USE CASES ════ -->
 <section id="use-cases">
   <div class="container">
     <span class="section-label">Who uses it</span>
-    <h2 class="section-title">Who is Geo Alert for?</h2>
-    <p class="section-subtitle">Anyone who needs a reminder when arriving somewhere.</p>
+    <h2 class="section-title">For those who don't want to rely on memory.</h2>
     <div class="usecases">
-      <div class="usecase animate"><div class="usecase-emoji"><ion-icon name="bus-outline"></ion-icon></div><h4>Bus passengers</h4><p>Never miss your stop. Set the alert and sleep peacefully on the ride.</p></div>
-      <div class="usecase animate delay-1"><div class="usecase-emoji"><ion-icon name="cart-outline"></ion-icon></div><h4>Errands on the way</h4><p>"Buy bread on the way back." Set it and the app reminds you when passing by.</p></div>
-      <div class="usecase animate delay-2"><div class="usecase-emoji"><ion-icon name="medkit-outline"></ion-icon></div><h4>Pharmacy / Health</h4><p>Alert when near the pharmacy, clinic or hospital.</p></div>
-      <div class="usecase animate delay-3"><div class="usecase-emoji"><ion-icon name="home-outline"></ion-icon></div><h4>Almost home</h4><p>Notify your family you're arriving. Automatically.</p></div>
-      <div class="usecase animate delay-4"><div class="usecase-emoji"><ion-icon name="briefcase-outline"></ion-icon></div><h4>In-person meetings</h4><p>Know when you're near the meeting spot. Get ready before arriving.</p></div>
-      <div class="usecase animate"><div class="usecase-emoji"><ion-icon name="car-outline"></ion-icon></div><h4>Gas station / Stops</h4><p>Remember to stop for gas. Set it once and the alert handles the rest.</p></div>
+      <div class="usecase animate">
+        <div class="usecase-emoji"><ion-icon name="bus-outline"></ion-icon></div>
+        <h4>Bus passengers</h4>
+        <span class="usecase-quote">"I missed my stop again while sleeping."</span>
+        <p>Never miss your stop. Set the alert and sleep peacefully on the ride.</p>
+      </div>
+      <div class="usecase animate delay-1">
+        <div class="usecase-emoji"><ion-icon name="cart-outline"></ion-icon></div>
+        <h4>Errands on the way</h4>
+        <span class="usecase-quote">"Buy bread. I always forget on the way back."</span>
+        <p>"Buy bread on the way back." Set it and the app reminds you when passing by.</p>
+      </div>
+      <div class="usecase animate delay-2">
+        <div class="usecase-emoji"><ion-icon name="medkit-outline"></ion-icon></div>
+        <h4>Pharmacy / Health</h4>
+        <span class="usecase-quote">"I drove past it three times this week."</span>
+        <p>Alert when near the pharmacy, clinic or hospital.</p>
+      </div>
+      <div class="usecase animate delay-3">
+        <div class="usecase-emoji"><ion-icon name="home-outline"></ion-icon></div>
+        <h4>Almost home</h4>
+        <span class="usecase-quote">"I'm already home but forgot to tell anyone."</span>
+        <p>Notify your family you're arriving. Automatically.</p>
+      </div>
+      <div class="usecase animate delay-4">
+        <div class="usecase-emoji"><ion-icon name="briefcase-outline"></ion-icon></div>
+        <h4>In-person meetings</h4>
+        <span class="usecase-quote">"Where is it again? Am I close?"</span>
+        <p>Know when you're near the meeting spot. Get ready before arriving.</p>
+      </div>
+      <div class="usecase animate">
+        <div class="usecase-emoji"><ion-icon name="car-outline"></ion-icon></div>
+        <h4>Gas station / Stops</h4>
+        <span class="usecase-quote">"I left with almost no gas, again."</span>
+        <p>Remember to stop for gas. Set it once and the alert handles the rest.</p>
+      </div>
     </div>
   </div>
 </section>
 
-<div class="video-break">
-  <div class="video-card animate">
-    <div class="video-embed"><iframe src="https://www.youtube.com/embed/L3JfvNl8BQg" title="GeoAlert - Promo 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
-    <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promo 3</div>
-  </div>
-</div>
-
+<!-- ════ COMPARISON ════ -->
 <section class="comparison-section">
   <div class="container">
-    <span class="section-label">Comparison</span>
-    <h2 class="section-title">Why Geo Alert?</h2>
-    <p class="section-subtitle">Compared to generic reminders and other location apps.</p>
-    <div class="comparison-wrap">
-      <table class="comparison">
-        <thead><tr><th>Feature</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">iOS/Android Reminders</th></tr></thead>
-        <tbody>
-          <tr><td>Multiple alerts per place</td><td><span class="check">✓</span> Up to 5</td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alarm overrides silent</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alert types (vibration + ring)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>One-time alerts (auto-disable)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Place groups</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Ready-made templates</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alert history</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Notify friends on arrival</td><td><span class="check">✓</span> Connections</td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Sync across devices</td><td><span class="check">✓</span> Optional (login)</td><td><span class="check">✓</span></td></tr>
-          <tr><td>Light/dark theme</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>100% local mode (no sign-up)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Free</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        </tbody>
-      </table>
+    <span class="section-label">Why switch</span>
+    <h2 class="section-title">What native reminders don't do.</h2>
+    <div class="comparison-highlights">
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="layers-outline"></ion-icon></span>
+        <h4>Multiple alerts per place</h4>
+        <p>Native reminders only allow one alert per location. Geo Alert allows up to 5, at different distances — each with its own sound or vibration.</p>
+      </div>
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="volume-high-outline"></ion-icon></span>
+        <h4>Alarm that ignores silent mode</h4>
+        <p>Your phone on silent is invisible to most apps. Geo Alert uses the native alarm channel to make sure you'll hear it.</p>
+      </div>
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></span>
+        <h4>Real privacy</h4>
+        <p>No login, zero data in the cloud. With login, only what you choose to sync — no continuous tracking.</p>
+      </div>
+    </div>
+    <button class="comp-toggle-btn" onclick="toggleComparison()">See full comparison &darr;</button>
+    <div class="comp-collapsible" id="comp-table">
+      <div class="comparison-wrap">
+        <table class="comparison">
+          <thead><tr><th>Feature</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">iOS/Android Reminders</th></tr></thead>
+          <tbody>
+            <tr><td>Multiple alerts per place</td><td><span class="check">&#10003;</span> Up to 5</td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Alarm overrides silent</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Alert types (vibration + ring)</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>One-time alerts (auto-disable)</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Place groups</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Ready-made templates</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Alert history</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Notify friends on arrival</td><td><span class="check">&#10003;</span> Connections</td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Sync across devices</td><td><span class="check">&#10003;</span> Optional (login)</td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>Light/dark theme</td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+            <tr><td>100% local mode (no sign-up)</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Free</td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="plans">
+<!-- ════ PLAN DETAILS ════ -->
+<section id="plan-details">
   <div class="container">
-    <span class="section-label">Plans</span>
+    <span class="section-label">Limits</span>
     <h2 class="section-title">Start free. Upgrade when you need to.</h2>
     <p class="section-subtitle">Use the app without sign-up or log in to sync and connect with friends. PRO unlocks the limits.</p>
     <div class="comparison-wrap">
@@ -517,9 +775,9 @@
           <tr><td>Monitored places</td><td style="text-align:center">3</td><td style="text-align:center">5</td><td style="text-align:center">25</td></tr>
           <tr><td>Alerts per place</td><td style="text-align:center">2</td><td style="text-align:center">3</td><td style="text-align:center">5</td></tr>
           <tr><td>Alert history</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">100</td></tr>
-          <tr><td>Sync across devices</td><td style="text-align:center"><span class="cross">✕</span></td><td style="text-align:center"><span class="check">✓</span></td><td style="text-align:center"><span class="check">✓</span></td></tr>
-          <tr><td>Connections (notify friends)</td><td style="text-align:center"><span class="cross">✕</span></td><td style="text-align:center"><span class="check">✓</span> up to 2 alerts/friend</td><td style="text-align:center"><span class="check">✓</span> up to 2 alerts/friend</td></tr>
-          <tr><td>100% local mode</td><td style="text-align:center"><span class="check">✓</span></td><td style="text-align:center">—</td><td style="text-align:center">—</td></tr>
+          <tr><td>Sync across devices</td><td style="text-align:center"><span class="cross">&#10005;</span></td><td style="text-align:center"><span class="check">&#10003;</span></td><td style="text-align:center"><span class="check">&#10003;</span></td></tr>
+          <tr><td>Connections (notify friends)</td><td style="text-align:center"><span class="cross">&#10005;</span></td><td style="text-align:center"><span class="check">&#10003;</span> up to 2 alerts/friend</td><td style="text-align:center"><span class="check">&#10003;</span> up to 2 alerts/friend</td></tr>
+          <tr><td>100% local mode</td><td style="text-align:center"><span class="check">&#10003;</span></td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td></tr>
           <tr><td colspan="4" style="font-size:11px;color:var(--muted);padding-top:10px;border:none"><ion-icon name="information-circle-outline" style="vertical-align:-2px;margin-right:3px"></ion-icon>Each alert = 1 native geofence. iOS: max 20 simultaneous (Apple). Android: no fixed limit.</td></tr>
         </tbody>
       </table>
@@ -527,6 +785,7 @@
   </div>
 </section>
 
+<!-- ════ FAQ ════ -->
 <section id="faq">
   <div class="container">
     <span class="section-label">FAQ</span>
@@ -543,15 +802,16 @@
   </div>
 </section>
 
-<section class="cta-section" id="download">
-  <h2>Ready to never miss<br>your stop again? <ion-icon name="location-outline"></ion-icon></h2>
-  <p>Download now and set up your first alert in under 30 seconds.</p>
-  <div class="store-badges">
-    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
+<!-- ════ CTA ════ -->
+<section class="cta-dark" id="download">
+  <h2>Set up your first alert in 30 seconds.</h2>
+  <p>Free. No sign-up. Works today.</p>
+  <div class="cta-badges">
+    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge-inv">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
       <div class="store-badge-text"><span class="small">Available on</span><span class="big">Google Play</span></div>
     </a>
-    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
+    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-inv-outline">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       <div class="store-badge-text"><span class="small">Download on</span><span class="big">App Store</span></div>
     </a>
@@ -559,10 +819,19 @@
 </section>
 
 <footer>
-  <p style="margin-top:8px"><a href="privacy.html">Privacy</a> · <a href="mailto:contato@geoalert.com.br">Contact</a> · <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUG1frux0Fu_XuLfcBn2VGmTsACBxarGwqcVi4kvYHK0e1wA/viewform" target="_blank" rel="noopener">Feedback</a></p>
+  <p style="margin-top:8px"><a href="privacy.html">Privacy</a> &middot; <a href="mailto:contato@geoalert.com.br">Contact</a> &middot; <a href="https://docs.google.com/forms/d/e/1FAIpQLSfUG1frux0Fu_XuLfcBn2VGmTsACBxarGwqcVi4kvYHK0e1wA/viewform" target="_blank" rel="noopener">Feedback</a></p>
 </footer>
 
 <script>
+  function toggleComparison() {
+    var el = document.getElementById('comp-table');
+    var btn = document.querySelector('.comp-toggle-btn');
+    if (el.classList.toggle('open')) {
+      btn.textContent = 'Hide comparison \u2191';
+    } else {
+      btn.textContent = 'See full comparison \u2193';
+    }
+  }
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
   });

@@ -63,7 +63,7 @@
     body {
       font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
       color: var(--text); background: var(--bg);
-      line-height: 1.6; -webkit-font-smoothing: antialiased; overflow-x: hidden;
+      line-height: 1.7; -webkit-font-smoothing: antialiased; overflow-x: hidden;
       transition: background .3s, color .3s;
     }
 
@@ -108,9 +108,9 @@
     .stat-label { font-size: 13px; color: var(--subtle); font-weight: 500; margin-top: 4px; }
 
     /* SECTIONS */
-    section { padding: 80px 24px; }
+    section { padding: 96px 24px; }
     .container { max-width: 1100px; margin: 0 auto; }
-    .section-label { display: inline-block; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 12px; }
+    .section-label { display: inline-block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent); margin-bottom: 12px; }
     .section-title { font-size: clamp(28px, 4vw, 42px); font-weight: 800; line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 16px; }
     .section-subtitle { font-size: 17px; color: var(--muted); max-width: 560px; line-height: 1.7; margin-bottom: 48px; }
 
@@ -123,7 +123,8 @@
     .step p { font-size: 14px; color: var(--muted); line-height: 1.6; }
 
     /* ═══ TIERS SHOWCASE ═══ */
-    .showcase-section { padding: 80px 24px; background: linear-gradient(180deg, var(--bg) 0%, rgba(107,138,255,0.04) 50%, var(--bg) 100%); overflow: hidden; }
+    .showcase-section { padding: 96px 24px; background: #F5F7FF; overflow: hidden; }
+    [data-theme="dark"] .showcase-section { background: #0d1228; }
     .showcase-section .section-label, .showcase-section .section-title, .showcase-section .section-subtitle { text-align: center; }
     .showcase-section .section-subtitle { margin-left: auto; margin-right: auto; }
 
@@ -149,7 +150,7 @@
       .demo-frame { max-width: 320px; }
     }
     .tiers-showcase { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
-    .tier-col { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; }
+    .tier-col { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; position: relative; }
     .tier-col:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
     .tier-col.tier-pro { border-color: var(--accent); background: linear-gradient(160deg, rgba(107,138,255,0.07) 0%, var(--surface) 100%); }
     .tier-badge { display: inline-flex; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; margin-bottom: 20px; }
@@ -548,6 +549,105 @@
     .edit-label { font-size:9px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:6px; }
     .edit-addr { font-size:13px;font-weight:600;color:#F5F5F5;margin-bottom:14px;line-height:1.4; }
     .edit-btn { width:100%;padding:12px;border-radius:10px;background:#FFF;color:#0D0D0D;font-size:13px;font-weight:700;text-align:center; }
+
+    /* ═══ HERO INNER LAYOUT ═══ */
+    .hero { padding: 150px 24px 90px; text-align: left; background: radial-gradient(ellipse at 50% 0%, rgba(107,138,255,0.08) 0%, transparent 60%); }
+    .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 420px; gap: 64px; align-items: center; }
+    .hero-text { max-width: 520px; }
+    .hero-text h1 { text-align: left; margin: 0 0 20px; max-width: 520px; }
+    .hero-text p { text-align: left; margin: 0 0 40px; }
+    .hero-text .store-badges { justify-content: flex-start; }
+    .hero-social-proof { font-size: 13px; color: var(--subtle); margin-top: 12px; }
+    .hero-mockup { display: flex; justify-content: center; align-items: center; }
+    .hero-phone { width: 260px; height: 562px; border-radius: 32px; overflow: hidden; border: 2.5px solid #333; background: #0D0D0D; position: relative; box-shadow: 0 20px 60px rgba(0,0,0,0.5); flex-shrink: 0; }
+    .hero-phone-inner { width: 375px; height: 812px; transform: scale(0.693); transform-origin: top left; overflow: hidden; }
+    @media (max-width: 960px) {
+      .hero-inner { grid-template-columns: 1fr; gap: 48px; }
+      .hero-mockup { display: none; }
+      .hero-text { max-width: 100%; text-align: center; }
+      .hero-text h1 { text-align: center; margin: 0 auto 20px; }
+      .hero-text p { text-align: center; }
+      .hero-text .store-badges { justify-content: center; }
+      .hero-social-proof { text-align: center; }
+    }
+
+    /* ═══ STEPS NEW ═══ */
+    .steps-new { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0; }
+    .step-new { padding: 0 32px; position: relative; }
+    .step-new + .step-new::before { content: '→'; position: absolute; left: -10px; top: 56px; font-size: 20px; color: var(--border); }
+    .step-dec { font-size: 80px; font-weight: 900; line-height: 1; color: var(--accent); opacity: 0.08; margin-bottom: -10px; display: block; }
+    .step-new h3 { font-size: 18px; font-weight: 700; margin-bottom: 10px; }
+    .step-new p { font-size: 16px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) {
+      .steps-new { grid-template-columns: 1fr; }
+      .step-new { padding: 0 0 32px; border-bottom: 1px solid var(--border); margin-bottom: 32px; }
+      .step-new:last-child { border-bottom: none; margin-bottom: 0; }
+      .step-new + .step-new::before { display: none; }
+    }
+
+    /* ═══ TIERS HIGHLIGHTED ═══ */
+    .tier-col-highlighted { border: 2px solid var(--accent) !important; box-shadow: 0 8px 32px rgba(107,138,255,0.2); }
+    .tier-popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 999px; white-space: nowrap; letter-spacing: 0.04em; }
+
+    /* ═══ FEATURES NEW ═══ */
+    .features-group-a { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+    .features-group-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .feature-card-a { background: var(--surface2); border-radius: var(--radius); padding: 36px 32px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
+    .feature-card-a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-med); border-color: rgba(107,138,255,0.3); }
+    .feature-card-a h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
+    .feature-card-a p { font-size: 15px; color: var(--muted); line-height: 1.7; }
+    .feature-card-b { background: var(--surface2); border-radius: var(--radius-sm); padding: 24px 20px; border: 1px solid var(--border); transition: transform .2s; }
+    .feature-card-b:hover { transform: translateY(-2px); }
+    .feature-card-b h3 { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
+    .feature-card-b p { font-size: 13px; color: var(--muted); line-height: 1.6; }
+    @media (max-width: 768px) {
+      .features-group-a { grid-template-columns: 1fr; }
+      .features-group-b { grid-template-columns: 1fr 1fr; }
+    }
+
+    /* ═══ PRIVACY SECTION ═══ */
+    .privacy-section { background: #F0F4FF; padding: 96px 24px; }
+    [data-theme="dark"] .privacy-section { background: #0d1a2d; }
+    .privacy-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 48px; }
+    .privacy-item { text-align: center; }
+    .privacy-item .pi-icon { font-size: 48px; margin-bottom: 16px; display: block; color: var(--accent); }
+    .privacy-item h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; color: var(--text); }
+    .privacy-item p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    @media (max-width: 768px) { .privacy-grid { grid-template-columns: 1fr 1fr; } }
+
+    /* ═══ DEMO DARK ═══ */
+    .demo-dark { background: #111827 !important; }
+    .demo-dark .section-label { color: #818cf8 !important; }
+    .demo-dark .section-title,.demo-dark .section-subtitle { color: rgba(255,255,255,0.9) !important; }
+    .demo-dark .demo-bullets li { color: rgba(255,255,255,0.8) !important; }
+    .demo-dark .demo-bullets ion-icon { color: #818cf8 !important; }
+    .video-context { font-size: 14px; font-style: italic; color: var(--muted); margin-bottom: 12px; }
+    .demo-dark .video-context { color: rgba(255,255,255,0.45) !important; }
+
+    /* ═══ USECASE QUOTE ═══ */
+    .usecase-quote { font-size: 14px; font-style: italic; color: var(--muted); line-height: 1.5; margin-bottom: 8px; display: block; }
+
+    /* ═══ COMPARISON NEW ═══ */
+    .comparison-highlights { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-bottom: 40px; }
+    .comp-highlight { padding: 28px 24px; background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); }
+    .comp-highlight .ch-icon { font-size: 32px; margin-bottom: 12px; display: block; color: var(--accent); }
+    .comp-highlight h4 { font-size: 16px; font-weight: 700; margin-bottom: 8px; }
+    .comp-highlight p { font-size: 14px; color: var(--muted); line-height: 1.7; }
+    .comp-toggle-btn { display: inline-flex; align-items: center; gap: 6px; color: var(--accent); font-size: 14px; font-weight: 600; cursor: pointer; border: none; background: none; padding: 0; margin-bottom: 24px; }
+    .comp-collapsible { display: none; }
+    .comp-collapsible.open { display: block; }
+    @media (max-width: 768px) { .comparison-highlights { grid-template-columns: 1fr; } }
+
+    /* ═══ CTA DARK ═══ */
+    .cta-dark { background: #111827; text-align: center; padding: 96px 24px; }
+    .cta-dark h2 { color: #fff; font-size: clamp(28px, 4vw, 42px); font-weight: 800; margin-bottom: 16px; letter-spacing: -0.02em; }
+    .cta-dark p { color: rgba(255,255,255,0.6); font-size: 17px; margin-bottom: 36px; max-width: 480px; margin-left: auto; margin-right: auto; }
+    .store-badge-inv { display: inline-flex; align-items: center; gap: 12px; background: #fff; color: #111; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; }
+    .store-badge-inv:hover { transform: translateY(-2px); box-shadow: 0 8px 28px rgba(255,255,255,.2); }
+    .store-badge-inv .store-badge-text .small { color: #555; }
+    .store-badge-inv-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: #fff; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: 1.5px solid rgba(255,255,255,0.3); }
+    .store-badge-inv-outline:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
+    .store-badge-inv-outline .store-badge-text .small { color: rgba(255,255,255,0.5); }
   </style>
 
 <script type="application/ld+json">
@@ -582,36 +682,110 @@
 </nav>
 
 <section class="hero">
-  <h1 class="animate">Nunca mais perca<br>seu <span class="gradient">ponto de parada.</span></h1>
-  <p class="animate delay-1">Registre um lugar e fique despreocupado. O app te avisa quando estiver perto — com vibração, alarme e distâncias configuráveis.</p>
-  <div class="store-badges animate delay-2">
-    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
-      <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
-    </a>
-    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
-      <div class="store-badge-text"><span class="small">Baixe na</span><span class="big">App Store</span></div>
-    </a>
-  </div>
-  <a href="#app-preview" class="hero-secondary-link animate delay-3">Ver o app por dentro →</a>
-  <div class="hero-stats animate delay-3">
-    <div class="stat"><div class="stat-value">5</div><div class="stat-label">Alertas por lugar</div></div>
-    <div class="stat"><div class="stat-value">2</div><div class="stat-label">Tipos de alerta</div></div>
-    <div class="stat"><div class="stat-value">25</div><div class="stat-label">Lugares no PRO</div></div>
-    <div class="stat"><div class="stat-value"><ion-icon name="link" style="font-size:28px"></ion-icon></div><div class="stat-label">Avise seus amigos</div></div>
+  <div class="hero-inner">
+    <div class="hero-text">
+      <div class="hero-badge animate"><ion-icon name="location-outline"></ion-icon> Alertas por localização</div>
+      <h1 class="animate">Você chega.<br>O app já sabia.</h1>
+      <p class="animate delay-1">Configure uma vez. Depois esqueça — o Geo Alert monitora em segundo plano e dispara o alerta na hora certa, mesmo com o app fechado.</p>
+      <div class="store-badges animate delay-2">
+        <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
+          <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
+        </a>
+        <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
+          <div class="store-badge-text"><span class="small">Baixe na</span><span class="big">App Store</span></div>
+        </a>
+      </div>
+      <p class="hero-social-proof">Grátis no Android e iOS · Sem cadastro pra começar</p>
+      <a href="#app-preview" class="hero-secondary-link animate delay-3">Ver o app por dentro →</a>
+    </div>
+    <div class="hero-mockup animate delay-2">
+      <div class="hero-phone">
+        <div class="hero-phone-inner">
+          <div class="screen" style="background:#0D0D0D">
+            <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+            <div class="home-header"><h2>Locais</h2></div>
+            <div class="home-monitor"><div class="dot"></div><span>4 de 8 monitorando</span></div>
+            <div class="group-hdr"><span class="toggle">▼</span><span class="lbl">TRABALHO</span><span class="cnt">2/3</span><div class="sw on"></div></div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="business"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Escritório</div>
+                <div class="place-addr">R. Augusta, 1200 - São Paulo</div>
+                <div class="ring-chips">
+                  <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+                  <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>1km</div>
+                </div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="bus"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Ponto de ônibus</div>
+                <div class="place-addr">Terminal Barra Funda</div>
+                <div class="ring-chips"><div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>600m</div></div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="group-hdr"><span class="toggle">▼</span><span class="lbl">PESSOAL</span><span class="cnt">2/3</span><div class="sw on"></div></div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="home"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Casa</div>
+                <div class="place-addr">R. das Flores, 42</div>
+                <div class="ring-chips">
+                  <div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>500m</div>
+                  <div class="ring-chip"><div class="rdot" style="background:#FB923C"></div>2km</div>
+                </div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="place-card">
+              <div class="place-emoji"><ion-icon name="medical"></ion-icon></div>
+              <div class="place-info">
+                <div class="place-name">Farmácia</div>
+                <div class="place-addr">Drogasil - R. Oscar Freire</div>
+                <div class="ring-chips"><div class="ring-chip"><div class="rdot" style="background:#22C55E"></div>300m</div></div>
+              </div>
+              <div class="place-right"><div class="place-toggle on"></div></div>
+            </div>
+            <div class="fab">＋</div>
+            <div class="tab-bar">
+              <div class="tab active"><span style="font-size:16px"><ion-icon name="location"></ion-icon></span><span>Locais</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="time"></ion-icon></span><span>Histórico</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="people"></ion-icon></span><span>Amigos</span></div>
+              <div class="tab"><span style="font-size:16px"><ion-icon name="settings-outline"></ion-icon></span><span>Config</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </section>
 
 <section id="como-funciona">
   <div class="container">
     <span class="section-label">Como funciona</span>
-    <h2 class="section-title">3 passos. Sem complicação.</h2>
+    <h2 class="section-title">Configure em 30 segundos. Use para sempre.</h2>
     <p class="section-subtitle">Sem cadastro pra começar. Faça login depois pra sincronizar e conectar amigos.</p>
-    <div class="steps">
-      <div class="step animate"><div class="step-num">1</div><h3>Registre o lugar</h3><p>Busque um endereço ou toque no mapa. Escolha um emoji e dê um nome — ou use um template pronto.</p></div>
-      <div class="step animate delay-1"><div class="step-num">2</div><h3>Configure os alertas</h3><p>Defina até 5 alertas com distâncias diferentes (500m a 10km). Cada um pode vibrar ou tocar alarme alto.</p></div>
-      <div class="step animate delay-2"><div class="step-num">3</div><h3>Esqueça e viva</h3><p>O app monitora em segundo plano. Quando você (ou um amigo conectado) se aproximar, os alertas disparam — mesmo com o app fechado.</p></div>
+    <div class="steps-new">
+      <div class="step-new animate">
+        <span class="step-dec">1</span>
+        <h3>Registre o lugar</h3>
+        <p>Busque um endereço ou toque direto no mapa para fixar o ponto. Escolha entre templates prontos (Ônibus, Casa, Trabalho) ou crie do zero com um emoji e um nome.</p>
+      </div>
+      <div class="step-new animate delay-1">
+        <span class="step-dec">2</span>
+        <h3>Configure os alertas</h3>
+        <p>Defina até 5 alertas com distâncias diferentes, de 500m a 10km. Cada alerta pode vibrar discretamente ou tocar alarme alto — útil pra não perder o ponto de ônibus enquanto dorme.</p>
+      </div>
+      <div class="step-new animate delay-2">
+        <span class="step-dec">3</span>
+        <h3>Esqueça e viva</h3>
+        <p>Coloca o celular no bolso e esquece. O Geo Alert monitora em segundo plano, sem consumo extra de bateria. Quando você (ou um amigo conectado) se aproximar, o alerta dispara — mesmo com o app fechado, mesmo no silencioso.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -619,8 +793,8 @@
 <section class="showcase-section" id="app-preview">
   <div class="container">
     <span class="section-label">Planos e limites</span>
-    <h2 class="section-title">Grátis pra começar.<br>Mais poder com login.</h2>
-    <p class="section-subtitle">Sem cadastro você já monitora lugares. Com login, sincroniza e avisa amigos.</p>
+    <h2 class="section-title">Comece agora. Sem cadastro.</h2>
+    <p class="section-subtitle">Use de graça. Faça login pra mais. PRO pra quem precisa de tudo.</p>
 
     <div class="tiers-showcase">
 
@@ -637,7 +811,8 @@
         </ul>
       </div>
 
-      <div class="tier-col animate delay-1">
+      <div class="tier-col tier-col-highlighted animate delay-1">
+        <div class="tier-popular-badge">Mais popular</div>
         <span class="tier-badge free">Login grátis</span>
         <div class="tier-number">5</div>
         <div class="tier-sublabel">lugares monitorados</div>
@@ -1044,25 +1219,69 @@
 <section id="features" class="features-section">
   <div class="container">
     <span class="section-label">Funcionalidades</span>
-    <h2 class="section-title">Tudo que você precisa.<br>Nada que não precisa.</h2>
+    <h2 class="section-title">Simples por fora.<br>Poderoso por baixo.</h2>
     <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
-    <div class="features-grid">
-      <div class="feature-card animate"><div class="feature-icon fi-blue"><ion-icon name="location-outline"></ion-icon></div><h3>Até 5 alertas por lugar</h3><p>Defina distâncias diferentes para cada alerta. O primeiro pode vibrar, o último tocar alarme.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-red"><ion-icon name="notifications-outline"></ion-icon></div><h3>Alarme que fura silencioso</h3><p>O alerta tipo "Toque" toca alto mesmo no silencioso (iOS) e usa stream de alarme no Android.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green"><ion-icon name="cube-outline"></ion-icon></div><h3>Templates prontos</h3><p>Ônibus, casa, tarefa — comece com um template e ajuste. Crie alertas em 10 segundos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple"><ion-icon name="albums-outline"></ion-icon></div><h3>Grupos inteligentes</h3><p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos com um toque.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-orange"><ion-icon name="repeat-outline"></ion-icon></div><h3>Único ou recorrente</h3><p>Alertas únicos desligam sozinhos após disparar. Recorrentes funcionam para sempre.</p></div>
-      <div class="feature-card animate"><div class="feature-icon fi-gray"><ion-icon name="moon-outline"></ion-icon></div><h3>Tema claro e escuro</h3><p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p></div>
-      <div class="feature-card animate delay-1"><div class="feature-icon fi-blue"><ion-icon name="earth-outline"></ion-icon></div><h3>Português e Inglês</h3><p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p></div>
-      <div class="feature-card animate delay-2"><div class="feature-icon fi-green"><ion-icon name="time-outline"></ion-icon></div><h3>Histórico de alertas</h3><p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p></div>
-      <div class="feature-card animate delay-3"><div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div><h3>Conexões — avise seus amigos</h3><p>Com login, conecte amigos e familiares por telefone ou e-mail. Receba (ou envie) avisos quando alguém estiver chegando — limite de 2 perímetros por amigo por lugar.</p></div>
-      <div class="feature-card animate delay-4"><div class="feature-icon fi-blue"><ion-icon name="cloud-outline"></ion-icon></div><h3>Sincronização opcional na nuvem</h3><p>Faça login com Apple, Google, e-mail ou telefone para sincronizar seus locais entre celulares. Sem login, tudo continua só no seu aparelho.</p></div>
+
+    <div class="features-group-a">
+      <div class="feature-card-a animate">
+        <div class="feature-icon fi-blue"><ion-icon name="location-outline"></ion-icon></div>
+        <h3>Até 5 alertas por lugar</h3>
+        <p>Cada lugar pode ter até 5 alertas com distâncias diferentes — 500m, 1km, 2km. O primeiro vibra discretamente, o último toca alarme alto. Nenhum outro app de lembrete por localização faz isso.</p>
+      </div>
+      <div class="feature-card-a animate delay-1">
+        <div class="feature-icon fi-red"><ion-icon name="notifications-outline"></ion-icon></div>
+        <h3>Alarme que fura silencioso</h3>
+        <p>No silencioso, a maioria dos apps não consegue te avisar. O Geo Alert usa o stream de alarme nativo — no iOS e no Android — pra garantir que você vai ouvir, mesmo com o celular na bolsa no modo silencioso.</p>
+      </div>
+      <div class="feature-card-a animate delay-2">
+        <div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div>
+        <h3>Conexões — avise seus amigos</h3>
+        <p>Com login, conecte amigos e familiares por telefone ou e-mail. Receba (ou envie) avisos quando alguém estiver chegando — limite de 2 perímetros por amigo por lugar.</p>
+      </div>
+      <div class="feature-card-a animate delay-3">
+        <div class="feature-icon fi-orange"><ion-icon name="repeat-outline"></ion-icon></div>
+        <h3>Único ou recorrente</h3>
+        <p>Alertas únicos desligam sozinhos após disparar — ideal para tarefas pontuais. Recorrentes funcionam para sempre, sem precisar reconfigurar.</p>
+      </div>
+    </div>
+
+    <div class="features-group-b">
+      <div class="feature-card-b animate">
+        <div class="feature-icon fi-green"><ion-icon name="cube-outline"></ion-icon></div>
+        <h3>Templates prontos</h3>
+        <p>Ônibus, casa, tarefa — comece com um template e ajuste. Crie alertas em 10 segundos.</p>
+      </div>
+      <div class="feature-card-b animate delay-1">
+        <div class="feature-icon fi-purple"><ion-icon name="albums-outline"></ion-icon></div>
+        <h3>Grupos inteligentes</h3>
+        <p>Organize por Trabalho, Pessoal, Saúde, Família e mais. Ative/desative grupos com um toque.</p>
+      </div>
+      <div class="feature-card-b animate delay-2">
+        <div class="feature-icon fi-green"><ion-icon name="time-outline"></ion-icon></div>
+        <h3>Histórico de alertas</h3>
+        <p>Veja todos os alertas que já dispararam — quando, onde e que tipo. Até 100 registros salvos.</p>
+      </div>
+      <div class="feature-card-b animate delay-3">
+        <div class="feature-icon fi-blue"><ion-icon name="cloud-outline"></ion-icon></div>
+        <h3>Sincronização opcional na nuvem</h3>
+        <p>Faça login com Apple, Google, e-mail ou telefone para sincronizar seus locais entre celulares. Sem login, tudo continua só no seu aparelho.</p>
+      </div>
+      <div class="feature-card-b animate delay-4">
+        <div class="feature-icon fi-gray"><ion-icon name="moon-outline"></ion-icon></div>
+        <h3>Tema claro e escuro</h3>
+        <p>Alterne entre modo claro e escuro nas configurações. Sua preferência é salva e lembrada.</p>
+      </div>
+      <div class="feature-card-b animate">
+        <div class="feature-icon fi-blue"><ion-icon name="earth-outline"></ion-icon></div>
+        <h3>Português e Inglês</h3>
+        <p>Interface completamente traduzida em PT-BR e EN. Detecta o idioma do celular automaticamente.</p>
+      </div>
     </div>
   </div>
 </section>
 
 <!-- ════════ NOVIDADES — CONEXÕES (YouTube Shorts) ════════ -->
-<section id="demo-conexoes" class="demo-section">
+<section id="demo-conexoes" class="demo-section demo-dark">
   <div class="container demo-container">
     <div class="demo-text">
       <span class="section-label"><span class="badge-new">Novidade</span> Conexões</span>
@@ -1075,6 +1294,7 @@
       </ul>
     </div>
     <div class="demo-frame-wrap">
+      <p class="video-context">Veja como funciona na prática →</p>
       <iframe class="demo-frame" src="https://www.youtube.com/embed/TF2ujUPBCKI" title="Conexões — Geo Alert" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy" frameborder="0"></iframe>
     </div>
   </div>
@@ -1095,6 +1315,7 @@
         <li><ion-icon name="people-outline"></ion-icon> Escolhe quem é avisado em cada um deles.</li>
         <li><ion-icon name="flash-outline"></ion-icon> Funciona com o app fechado, mesmo no bolso.</li>
       </ul>
+      <p class="video-context" style="margin-top:20px">Veja como funciona na prática →</p>
     </div>
   </div>
 </section>
@@ -1106,19 +1327,35 @@
   </div>
 </div>
 
-<div class="highlight-section">
+<section class="privacy-section">
   <div class="container">
-    <span class="section-label">Privacidade primeiro</span>
-    <h2 class="section-title">Você decide o que sai do celular.</h2>
-    <p class="section-subtitle">Sem login, tudo fica no seu aparelho. Com login, só os locais e conexões que você escolhe sincronizar — nada de rastreamento.</p>
-    <div class="highlight-grid">
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="phone-portrait" style="font-size:28px"></ion-icon></div><h4>Modo local por padrão</h4><p>Sem cadastro: tudo fica salvo no seu celular, sem nada na nuvem.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="cloud-outline" style="font-size:28px"></ion-icon></div><h4>Sincronização opcional</h4><p>Com login (Apple/Google/e-mail/telefone) seus locais sincronizam entre seus aparelhos.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="radio-outline" style="font-size:28px"></ion-icon></div><h4>Funciona offline</h4><p>O monitoramento usa GPS nativo. Não precisa de internet para os alertas dispararem.</p></div>
-      <div class="highlight-item"><div class="hi-icon"><ion-icon name="battery-half-outline" style="font-size:28px"></ion-icon></div><h4>Bateria mínima</h4><p>Usa o sistema nativo do celular — sem consumo extra de bateria.</p></div>
+    <span class="section-label">Privacidade</span>
+    <h2 class="section-title">Seus dados. Suas regras.</h2>
+    <p class="section-subtitle">Sem login, nada sai do aparelho. Com login, só o que você escolher.</p>
+    <div class="privacy-grid">
+      <div class="privacy-item">
+        <ion-icon name="phone-portrait-outline" class="pi-icon"></ion-icon>
+        <h4>Modo local por padrão</h4>
+        <p>Sem cadastro: tudo fica salvo no seu celular, sem nada na nuvem.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="cloud-outline" class="pi-icon"></ion-icon>
+        <h4>Sincronização opcional</h4>
+        <p>Com login (Apple/Google/e-mail/telefone) seus locais sincronizam entre seus aparelhos.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="radio-outline" class="pi-icon"></ion-icon>
+        <h4>Funciona offline</h4>
+        <p>O monitoramento usa GPS nativo. Não precisa de internet para os alertas dispararem.</p>
+      </div>
+      <div class="privacy-item">
+        <ion-icon name="battery-half-outline" class="pi-icon"></ion-icon>
+        <h4>Bateria mínima</h4>
+        <p>Usa o sistema nativo do celular — sem consumo extra de bateria.</p>
+      </div>
     </div>
   </div>
-</div>
+</section>
 
 <div class="video-break">
   <div class="video-card animate">
@@ -1130,15 +1367,44 @@
 <section id="casos-de-uso">
   <div class="container">
     <span class="section-label">Quem usa</span>
-    <h2 class="section-title">Para quem é o Geo Alert?</h2>
-    <p class="section-subtitle">Qualquer pessoa que precisa lembrar de algo quando chegar em algum lugar.</p>
+    <h2 class="section-title">Para quem não quer depender da memória.</h2>
     <div class="usecases">
-      <div class="usecase animate"><div class="usecase-emoji"><ion-icon name="bus-outline"></ion-icon></div><h4>Passageiro de ônibus</h4><p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p></div>
-      <div class="usecase animate delay-1"><div class="usecase-emoji"><ion-icon name="cart-outline"></ion-icon></div><h4>Tarefas no caminho</h4><p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p></div>
-      <div class="usecase animate delay-2"><div class="usecase-emoji"><ion-icon name="medkit-outline"></ion-icon></div><h4>Farmácia / Saúde</h4><p>Alerta quando estiver perto da farmácia, clínica ou hospital.</p></div>
-      <div class="usecase animate delay-3"><div class="usecase-emoji"><ion-icon name="home-outline"></ion-icon></div><h4>Chegando em casa</h4><p>Notifique a família que está chegando. Automaticamente.</p></div>
-      <div class="usecase animate delay-4"><div class="usecase-emoji"><ion-icon name="briefcase-outline"></ion-icon></div><h4>Reuniões presenciais</h4><p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p></div>
-      <div class="usecase animate"><div class="usecase-emoji"><ion-icon name="car-outline"></ion-icon></div><h4>Abastecer / Parar</h4><p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p></div>
+      <div class="usecase animate">
+        <div class="usecase-emoji"><ion-icon name="bus-outline"></ion-icon></div>
+        <h4>Passageiro de ônibus</h4>
+        <span class="usecase-quote">"Mais uma vez passei o ponto dormindo."</span>
+        <p>Nunca mais perca o ponto. Configure o alerta e durma tranquilo no trajeto.</p>
+      </div>
+      <div class="usecase animate delay-1">
+        <div class="usecase-emoji"><ion-icon name="cart-outline"></ion-icon></div>
+        <h4>Tarefas no caminho</h4>
+        <span class="usecase-quote">"Comprar pão. Sempre esqueço na volta."</span>
+        <p>"Comprar pão na volta." Configure e o app te lembra quando passar pela padaria.</p>
+      </div>
+      <div class="usecase animate delay-2">
+        <div class="usecase-emoji"><ion-icon name="medkit-outline"></ion-icon></div>
+        <h4>Farmácia / Saúde</h4>
+        <span class="usecase-quote">"Passei na frente três vezes essa semana."</span>
+        <p>Alerta quando estiver perto da farmácia, clínica ou hospital.</p>
+      </div>
+      <div class="usecase animate delay-3">
+        <div class="usecase-emoji"><ion-icon name="home-outline"></ion-icon></div>
+        <h4>Chegando em casa</h4>
+        <span class="usecase-quote">"Já cheguei, mas não avisei ninguém."</span>
+        <p>Notifique a família que está chegando. Automaticamente.</p>
+      </div>
+      <div class="usecase animate delay-4">
+        <div class="usecase-emoji"><ion-icon name="briefcase-outline"></ion-icon></div>
+        <h4>Reuniões presenciais</h4>
+        <span class="usecase-quote">"Onde é mesmo? Já estou perto?"</span>
+        <p>Saiba quando estiver perto do local da reunião. Prepare-se antes de chegar.</p>
+      </div>
+      <div class="usecase animate">
+        <div class="usecase-emoji"><ion-icon name="car-outline"></ion-icon></div>
+        <h4>Abastecer / Parar</h4>
+        <span class="usecase-quote">"Saí com o carro quase sem combustível, de novo."</span>
+        <p>Lembre de parar no posto. Configure uma vez e o alerta cuida do resto.</p>
+      </div>
     </div>
   </div>
 </section>
@@ -1152,27 +1418,46 @@
 
 <section class="comparison-section">
   <div class="container">
-    <span class="section-label">Diferencial</span>
-    <h2 class="section-title">Por que Geo Alert?</h2>
-    <p class="section-subtitle">Comparado com lembretes genéricos e outros apps de localização.</p>
-    <div class="comparison-wrap">
-      <table class="comparison">
-        <thead><tr><th>Funcionalidade</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">Lembretes iOS/Android</th></tr></thead>
-        <tbody>
-          <tr><td>Múltiplos alertas por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Tipos de alerta (vibração + toque)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Alertas únicos (auto-desliga)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Grupos de lugares</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Avisar amigos quando chegam</td><td><span class="check">✓</span> Conexões</td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Sincronização entre celulares</td><td><span class="check">✓</span> Opcional (login)</td><td><span class="check">✓</span></td></tr>
-          <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-          <tr><td>Modo 100% local (sem cadastro)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
-          <tr><td>Gratuito</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
-        </tbody>
-      </table>
+    <span class="section-label">Por que trocar</span>
+    <h2 class="section-title">O que os lembretes nativos não fazem.</h2>
+    <div class="comparison-highlights">
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="layers-outline"></ion-icon></span>
+        <h4>Múltiplos alertas por lugar</h4>
+        <p>Os lembretes nativos do celular só permitem um alerta por localização. O Geo Alert permite até 5, em distâncias diferentes — cada um com som ou vibração próprios.</p>
+      </div>
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="volume-high-outline"></ion-icon></span>
+        <h4>Alarme que ignora o silencioso</h4>
+        <p>Seu celular no silencioso é invisível pra maioria dos apps. O Geo Alert usa o canal de alarme nativo pra garantir que você vai ouvir.</p>
+      </div>
+      <div class="comp-highlight">
+        <span class="ch-icon"><ion-icon name="shield-checkmark-outline"></ion-icon></span>
+        <h4>Privacidade de verdade</h4>
+        <p>Sem login, zero dados na nuvem. Com login, só o que você escolher sincronizar — nenhum rastreamento contínuo.</p>
+      </div>
+    </div>
+    <button class="comp-toggle-btn" onclick="toggleComparison()">Ver comparação completa ↓</button>
+    <div class="comp-collapsible" id="comp-table">
+      <div class="comparison-wrap">
+        <table class="comparison">
+          <thead><tr><th>Funcionalidade</th><th style="text-align:center">Geo Alert</th><th style="text-align:center">Lembretes iOS/Android</th></tr></thead>
+          <tbody>
+            <tr><td>Múltiplos alertas por lugar</td><td><span class="check">✓</span> Até 5</td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Alarme que fura silencioso</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Tipos de alerta (vibração + toque)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Alertas únicos (auto-desliga)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Grupos de lugares</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Avisar amigos quando chegam</td><td><span class="check">✓</span> Conexões</td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Sincronização entre celulares</td><td><span class="check">✓</span> Opcional (login)</td><td><span class="check">✓</span></td></tr>
+            <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+            <tr><td>Modo 100% local (sem cadastro)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Gratuito</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </section>
@@ -1215,15 +1500,15 @@
   </div>
 </section>
 
-<section class="cta-section" id="download">
-  <h2>Pronto pra nunca mais<br>perder seu ponto? <ion-icon name="location-outline"></ion-icon></h2>
-  <p>Baixe agora e configure seu primeiro alerta em menos de 30 segundos.</p>
+<section class="cta-dark" id="download">
+  <h2>Configure seu primeiro alerta em 30 segundos.</h2>
+  <p>Grátis. Sem cadastro. Funciona hoje mesmo.</p>
   <div class="store-badges">
-    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge">
+    <a href="https://play.google.com/store/apps/details?id=com.geoalert.app" class="store-badge-inv">
       <svg width="24" height="24" viewBox="0 0 24 24" fill="none"><path d="M3.609 1.814L13.792 12 3.61 22.186a.996.996 0 01-.61-.92V2.734a1 1 0 01.609-.92z" fill="#4285F4"/><path d="M17.16 8.642L5.457.85a1.003 1.003 0 00-.506-.145L14.985 10.74l2.176-2.098z" fill="#EA4335"/><path d="M20.39 10.76l-3.233-1.79-2.558 2.462L17.25 14l3.14-1.737c.5-.277.794-.755.794-1.252s-.294-.975-.794-1.252z" fill="#FBBC04"/><path d="M4.951 23.295a1.003 1.003 0 00.506-.145L17.16 15.358l-2.176-2.098L4.951 23.295z" fill="#34A853"/></svg>
       <div class="store-badge-text"><span class="small">Disponível no</span><span class="big">Google Play</span></div>
     </a>
-    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-outline">
+    <a href="https://apps.apple.com/br/app/geo-alert/id6763831080" class="store-badge-inv-outline">
       <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor"><path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.8-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/></svg>
       <div class="store-badge-text"><span class="small">Baixe na</span><span class="big">App Store</span></div>
     </a>
@@ -1235,6 +1520,15 @@
 </footer>
 
 <script>
+  function toggleComparison() {
+    var el = document.getElementById('comp-table');
+    var btn = document.querySelector('.comp-toggle-btn');
+    if (el.classList.toggle('open')) {
+      btn.textContent = 'Ocultar comparação ↑';
+    } else {
+      btn.textContent = 'Ver comparação completa ↓';
+    }
+  }
   document.querySelectorAll('.faq-q').forEach(q => {
     q.addEventListener('click', () => q.parentElement.classList.toggle('open'));
   });
