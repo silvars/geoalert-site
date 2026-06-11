@@ -35,6 +35,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700;800;900&display=swap" rel="stylesheet" />
   <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
   <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
   <style>
@@ -152,7 +153,7 @@
     .tiers-showcase { max-width: 960px; margin: 0 auto; display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
     .tier-col { background: var(--surface); border: 1px solid var(--border); border-radius: 20px; padding: 28px; transition: transform .2s, box-shadow .2s; position: relative; }
     .tier-col:hover { transform: translateY(-4px); box-shadow: 0 12px 32px var(--shadow-med); }
-    .tier-col.tier-pro { border-color: var(--accent); background: linear-gradient(160deg, rgba(107,138,255,0.07) 0%, var(--surface) 100%); }
+    .tier-col.tier-pro { border-color: var(--border); background: var(--surface); }
     .tier-badge { display: inline-flex; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; padding: 4px 10px; border-radius: 999px; margin-bottom: 20px; }
     .tier-badge.anon { background: var(--surface2); color: var(--muted); }
     .tier-badge.free { background: rgba(52,211,153,0.15); color: #34D399; }
@@ -587,11 +588,13 @@
 
     /* ═══ TIERS HIGHLIGHTED ═══ */
     .tier-col-highlighted { border: 2px solid var(--accent) !important; box-shadow: 0 8px 32px rgba(107,138,255,0.2); }
-    .tier-popular-badge { position: absolute; top: -14px; left: 50%; transform: translateX(-50%); background: var(--accent); color: #fff; font-size: 11px; font-weight: 700; padding: 4px 16px; border-radius: 999px; white-space: nowrap; letter-spacing: 0.04em; }
+    .tier-col.tier-featured { border: 2px solid var(--accent); background: linear-gradient(160deg, rgba(107,138,255,0.07) 0%, var(--surface) 100%); transform: translateY(-4px); box-shadow: 0 16px 40px rgba(107,138,255,0.15); }
+    .tier-popular-badge { display: inline-block; font-size: 11px; font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; background: var(--accent); color: #fff; padding: 4px 12px; border-radius: 999px; margin-bottom: 12px; }
 
     /* ═══ FEATURES NEW ═══ */
-    .features-group-a { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 24px; }
+    .features-group-a { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; margin-bottom: 48px; }
     .features-group-b { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+    .features-group-label { font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .1em; color: var(--accent); margin-bottom: 16px; display: block; }
     .feature-card-a { background: var(--surface2); border-radius: var(--radius); padding: 36px 32px; border: 1px solid var(--border); transition: transform .2s, box-shadow .2s; }
     .feature-card-a:hover { transform: translateY(-3px); box-shadow: 0 8px 24px var(--shadow-med); border-color: rgba(107,138,255,0.3); }
     .feature-card-a h3 { font-size: 19px; font-weight: 700; margin-bottom: 12px; }
@@ -648,6 +651,7 @@
     .store-badge-inv-outline { display: inline-flex; align-items: center; gap: 12px; background: transparent; color: #fff; padding: 0 24px; border-radius: 12px; height: 56px; text-decoration: none; transition: all .2s; border: 1.5px solid rgba(255,255,255,0.3); }
     .store-badge-inv-outline:hover { border-color: rgba(255,255,255,0.6); transform: translateY(-2px); }
     .store-badge-inv-outline .store-badge-text .small { color: rgba(255,255,255,0.5); }
+    h1, h2, .section-title, .hero h1, .cta-dark h2 { font-family: 'Space Grotesk', 'Inter', -apple-system, sans-serif; }
   </style>
 
 <script type="application/ld+json">
@@ -811,7 +815,7 @@
         </ul>
       </div>
 
-      <div class="tier-col tier-col-highlighted animate delay-1">
+      <div class="tier-col tier-featured animate delay-1">
         <div class="tier-popular-badge">Mais popular</div>
         <span class="tier-badge free">Login grátis</span>
         <div class="tier-number">5</div>
@@ -1222,29 +1226,31 @@
     <h2 class="section-title">Simples por fora.<br>Poderoso por baixo.</h2>
     <p class="section-subtitle">Desenvolvido para ser simples de usar e poderoso por baixo dos panos.</p>
 
+    <p class="features-group-label">Os diferenciais que importam</p>
     <div class="features-group-a">
       <div class="feature-card-a animate">
         <div class="feature-icon fi-blue"><ion-icon name="location-outline"></ion-icon></div>
         <h3>Até 5 alertas por lugar</h3>
-        <p>Cada lugar pode ter até 5 alertas com distâncias diferentes — 500m, 1km, 2km. O primeiro vibra discretamente, o último toca alarme alto. Nenhum outro app de lembrete por localização faz isso.</p>
+        <p>Cada lugar pode ter até 5 alertas com distâncias diferentes — 500m, 1km, 2km. O primeiro vibra discretamente, o último toca alarme alto. Nenhum app de lembrete por localização faz isso.</p>
       </div>
       <div class="feature-card-a animate delay-1">
         <div class="feature-icon fi-red"><ion-icon name="notifications-outline"></ion-icon></div>
         <h3>Alarme que fura silencioso</h3>
-        <p>No silencioso, a maioria dos apps não consegue te avisar. O Geo Alert usa o stream de alarme nativo — no iOS e no Android — pra garantir que você vai ouvir, mesmo com o celular na bolsa no modo silencioso.</p>
+        <p>No silencioso, a maioria dos apps não consegue te avisar. O Geo Alert usa o stream de alarme nativo — no iOS e no Android — pra garantir que você vai ouvir, mesmo com o celular no bolso em modo silencioso.</p>
       </div>
       <div class="feature-card-a animate delay-2">
         <div class="feature-icon fi-purple"><ion-icon name="people-outline"></ion-icon></div>
         <h3>Conexões — avise seus amigos</h3>
-        <p>Com login, conecte amigos e familiares por telefone ou e-mail. Receba (ou envie) avisos quando alguém estiver chegando — limite de 2 perímetros por amigo por lugar.</p>
+        <p>Com login, conecte amigos e familiares e receba (ou envie) avisos automáticos quando alguém se aproximar de um lugar. Sem exposição de localização contínua — só o evento de chegada, no momento certo.</p>
       </div>
       <div class="feature-card-a animate delay-3">
         <div class="feature-icon fi-orange"><ion-icon name="repeat-outline"></ion-icon></div>
         <h3>Único ou recorrente</h3>
-        <p>Alertas únicos desligam sozinhos após disparar — ideal para tarefas pontuais. Recorrentes funcionam para sempre, sem precisar reconfigurar.</p>
+        <p>Alertas únicos desligam sozinhos após disparar — perfeito para tarefas pontuais. Recorrentes funcionam para sempre, sem precisar reconfigurar. Você decide o comportamento de cada alerta individualmente.</p>
       </div>
     </div>
 
+    <p class="features-group-label" style="color: var(--subtle)">Mais detalhes</p>
     <div class="features-group-b">
       <div class="feature-card-b animate">
         <div class="feature-icon fi-green"><ion-icon name="cube-outline"></ion-icon></div>
@@ -1322,6 +1328,7 @@
 
 <div class="video-break">
   <div class="video-card animate">
+    <p class="video-context" style="padding: 12px 16px 4px;">Veja como funciona na prática →</p>
     <div class="video-embed"><iframe src="https://www.youtube.com/embed/r_gyDG0YCFE" title="GeoAlert - Promocional 1" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
     <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promocional 1</div>
   </div>
@@ -1359,6 +1366,7 @@
 
 <div class="video-break">
   <div class="video-card animate">
+    <p class="video-context" style="padding: 12px 16px 4px;">Veja como funciona na prática →</p>
     <div class="video-embed"><iframe src="https://www.youtube.com/embed/rJBetotf-SQ" title="GeoAlert - Promocional 2" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
     <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promocional 2</div>
   </div>
@@ -1411,6 +1419,7 @@
 
 <div class="video-break">
   <div class="video-card animate">
+    <p class="video-context" style="padding: 12px 16px 4px;">Veja como funciona na prática →</p>
     <div class="video-embed"><iframe src="https://www.youtube.com/embed/L3JfvNl8BQg" title="GeoAlert - Promocional 3" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen loading="lazy"></iframe></div>
     <div class="video-label"><ion-icon name="videocam-outline"></ion-icon> Promocional 3</div>
   </div>

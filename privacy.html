@@ -67,7 +67,7 @@
       display: flex; align-items: center; gap: 8px;
       text-decoration: none; color: var(--text);
     }
-    .nav-logo span { font-size: 24px; }
+    ion-icon { display: inline-block; width: 1em; height: 1em; vertical-align: -0.125em; }
     .nav-back {
       color: var(--accent); text-decoration: none; font-size: 14px; font-weight: 600;
       transition: opacity .2s;
@@ -126,10 +126,10 @@
 
 <nav>
   <div class="nav-inner">
-    <a class="nav-logo" href="index.html"><span>📍</span> Geo Alert</a>
+    <a class="nav-logo" href="index.html"><ion-icon name="location-outline"></ion-icon> Geo Alert</a>
     <div style="display:flex;align-items:center;gap:16px">
       <a href="en/privacy.html" class="lang-switch" aria-label="English" title="English"><svg viewBox="0 0 24 24" aria-hidden="true"><defs><clipPath id="ukc2"><circle cx="12" cy="12" r="11"/></clipPath></defs><g clip-path="url(#ukc2)"><rect width="24" height="24" fill="#012169"/><path d="M0 0L24 24M24 0L0 24" stroke="#fff" stroke-width="3"/><path d="M0 0L24 24M24 0L0 24" stroke="#C8102E" stroke-width="1.5"/><path d="M12 0V24M0 12H24" stroke="#fff" stroke-width="5"/><path d="M12 0V24M0 12H24" stroke="#C8102E" stroke-width="3"/></g><circle cx="12" cy="12" r="11" fill="none" stroke="rgba(0,0,0,.15)"/></svg>EN</a>
-      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema">🌙</button>
+      <button class="theme-toggle" onclick="toggleTheme()" aria-label="Alternar tema"><ion-icon name="moon-outline"></ion-icon></button>
       <a class="nav-back" href="index.html">← Voltar ao site</a>
     </div>
   </div>
@@ -245,17 +245,19 @@
     const html = document.documentElement;
     const isDark = html.getAttribute('data-theme') === 'dark';
     html.setAttribute('data-theme', isDark ? 'light' : 'dark');
-    document.querySelector('.theme-toggle').textContent = isDark ? '🌙' : '☀️';
+    document.querySelector('.theme-toggle').innerHTML = isDark ? '<ion-icon name="moon-outline"></ion-icon>' : '<ion-icon name="sunny-outline"></ion-icon>';
     localStorage.setItem('theme', isDark ? 'light' : 'dark');
   }
   (function() {
     const saved = localStorage.getItem('theme');
     if (saved === 'dark') {
       document.documentElement.setAttribute('data-theme', 'dark');
-      document.querySelector('.theme-toggle').textContent = '☀️';
+      document.querySelector('.theme-toggle').innerHTML = '<ion-icon name="sunny-outline"></ion-icon>';
     }
   })();
 </script>
 
+<script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+<script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>
 </html>
