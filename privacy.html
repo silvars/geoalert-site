@@ -137,64 +137,77 @@
 
 <main>
   <h1>Política de Privacidade</h1>
-  <p class="last-updated">Última atualização: 20 de abril de 2026</p>
+  <p class="last-updated">Última atualização: 11 de junho de 2026</p>
 
   <div class="highlight-box">
-    <p>🔒 <strong>Versão curta:</strong> O Geo Alert não coleta nada sobre você. Todos os seus dados ficam no seu celular. Sem servidores, sem rastreamento, sem surpresas.</p>
+    <p>🔒 <strong>Versão curta:</strong> O Geo Alert não vende seus dados nem te rastreia para publicidade. Sua localização é processada no celular. Usuários com conta podem sincronizar seus locais na nuvem — e você tem controle total sobre isso.</p>
   </div>
 
   <h2>O que o Geo Alert faz</h2>
-  <p>O Geo Alert é um app de alertas por localização. Você marca um lugar no mapa, configura os alertas e o app te avisa quando estiver perto. Simples assim.</p>
+  <p>O Geo Alert é um app de alertas por localização. Você marca um lugar no mapa, configura os alertas e o app te avisa quando estiver perto. O app funciona sem criar conta — mas usuários com conta (Google ou Apple) podem sincronizar seus dados entre dispositivos e assinar o plano Pro.</p>
 
-  <h2>O que NÃO coletamos</h2>
-  <p>Vamos ser diretos:</p>
+  <h2>Dados coletados por modo de uso</h2>
+
+  <h3>Sem conta (modo local)</h3>
+  <p>Se você usar o app sem criar conta:</p>
   <ul>
-    <li>🚫 <strong>Sua localização</strong> — é processada no seu celular e pronto. Não vai pra lugar nenhum.</li>
-    <li>🚫 <strong>Dados pessoais</strong> — não pedimos nome, e-mail, telefone, nada.</li>
-    <li>🚫 <strong>Analytics</strong> — sem rastreamento, sem pixels, sem nada monitorando você.</li>
-    <li>🚫 <strong>Dados de uso</strong> — não sabemos o que você faz no app. E não queremos saber.</li>
+    <li>✅ Nenhum dado é enviado para servidores.</li>
+    <li>✅ Seus locais e histórico ficam apenas no seu celular.</li>
+    <li>✅ Se desinstalar, tudo é apagado automaticamente.</li>
   </ul>
 
-  <h2>O que fica salvo no seu celular</h2>
-  <p>O app salva alguns dados <strong>localmente no seu dispositivo</strong>:</p>
+  <h3>Com conta (Google ou Apple)</h3>
+  <p>Se você fizer login, os seguintes dados são armazenados nos servidores do Firebase (Google):</p>
   <ul>
-    <li>📍 Seus locais registrados (nome, posição, distâncias)</li>
-    <li>🔔 Histórico de alertas que já dispararam</li>
-    <li>⚙️ Suas preferências (idioma, tema)</li>
+    <li>📧 <strong>Identificador da conta</strong> — e-mail ou ID Apple (fornecido pelo provedor de login). Não armazenamos senha.</li>
+    <li>📍 <strong>Seus locais cadastrados</strong> — nome, coordenadas e configurações dos alertas. Sincronizados entre dispositivos. Deletados automaticamente após 180 dias de inatividade.</li>
+    <li>🔔 <strong>Token de notificação push (FCM)</strong> — para enviar alertas mesmo com o app fechado. Vinculado à sua conta, não ao seu nome.</li>
   </ul>
-  <p>Esses dados <strong>nunca saem do celular</strong>. Se desinstalar o app, eles são apagados automaticamente.</p>
+  <p>Você pode excluir sua conta e todos os dados associados a qualquer momento nas configurações do app.</p>
+
+  <h2>O que NÃO coletamos (em nenhum caso)</h2>
+  <ul>
+    <li>🚫 <strong>Sua localização em tempo real</strong> — é processada no celular e nunca enviada para servidores.</li>
+    <li>🚫 <strong>Histórico de onde você esteve</strong> — o app não registra nem envia seu trajeto.</li>
+    <li>🚫 <strong>Analytics de comportamento</strong> — sem rastreamento de telas, cliques ou uso.</li>
+    <li>🚫 <strong>Dados para publicidade</strong> — não compartilhamos dados com redes de anúncios.</li>
+  </ul>
+
+  <h2>Assinatura Pro (RevenueCat)</h2>
+  <p>Se você assinar o plano Pro, os pagamentos são processados pela App Store (Apple) ou Google Play. Usamos o <strong>RevenueCat</strong> para gerenciar o status da assinatura. O RevenueCat recebe um identificador anônimo da compra — não recebe seu nome ou dados de pagamento.</p>
+  <p>Política de privacidade do RevenueCat: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
 
   <h2>Serviços externos</h2>
-  <p>O app usa dois serviços do Google apenas para uma coisa: buscar endereços.</p>
   <ul>
-    <li><strong>Google Places / Geocoding</strong> — quando você busca um endereço para cadastrar um local, o texto que digitou é enviado ao Google para encontrar o lugar. Só isso, só nessa hora.</li>
-    <li><strong>Apple Maps / Google Maps</strong> — para mostrar o mapa. Recebe apenas a região visível na tela.</li>
+    <li><strong>Firebase (Google)</strong> — autenticação, sincronização de dados e notificações push. Usado apenas para usuários com conta. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Política de privacidade</a></li>
+    <li><strong>Google Places / Geocoding</strong> — quando você busca um endereço, o texto digitado é enviado ao Google para encontrar o lugar. Só isso, só nessa hora.</li>
+    <li><strong>Apple Maps / Google Maps</strong> — para exibir o mapa. Recebe apenas a região visível na tela.</li>
+    <li><strong>RevenueCat</strong> — gerenciamento de assinaturas Pro.</li>
   </ul>
-  <p>Política de privacidade do Google: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
 
   <h2>Permissões</h2>
   <p>O app pede apenas o necessário:</p>
   <ul>
-    <li>📍 <strong>Localização</strong> — para saber quando você está perto de um local registrado, mesmo com o app fechado.</li>
+    <li>📍 <strong>Localização</strong> — para saber quando você está perto de um local registrado, mesmo com o app fechado. Nunca enviada para servidores.</li>
     <li>🔔 <strong>Notificações</strong> — para te avisar quando um alerta disparar.</li>
     <li>📳 <strong>Vibração</strong> — para alertas do tipo vibração.</li>
   </ul>
   <p>Você pode revogar qualquer permissão nas configurações do seu celular a qualquer momento.</p>
 
   <h2>Segurança</h2>
-  <p>Seus dados ficam protegidos pelo sistema do celular (iOS ou Android). Recomendamos manter senha ou biometria ativada no dispositivo.</p>
+  <p>Os dados na nuvem são protegidos pelo Firebase com criptografia em trânsito (TLS) e em repouso. O acesso é autenticado — só você vê seus dados. Recomendamos manter senha ou biometria ativada no dispositivo.</p>
 
   <h2>Crianças</h2>
   <p>O app não é direcionado a menores de 13 anos.</p>
 
   <h2>Mudanças nesta página</h2>
-  <p>Se mudarmos algo importante aqui, vamos avisar numa atualização do app.</p>
+  <p>Se mudarmos algo importante aqui, vamos avisar numa atualização do app. A data de atualização sempre aparece no topo desta página.</p>
 
   <h2>Contato</h2>
   <p>Dúvidas? Manda um e-mail: <a href="mailto:contato@geoalert.com.br">contato@geoalert.com.br</a></p>
 
   <div class="highlight-box">
-    <p>✅ <strong>Resumindo:</strong> O Geo Alert é 100% local. Sem servidores, sem coleta de dados, sem rastreamento. Sua localização nunca sai do seu celular. Seus dados são seus — ponto.</p>
+    <p>✅ <strong>Resumindo:</strong> Sua localização nunca sai do celular. Sem conta, o app é 100% local. Com conta, seus locais são sincronizados de forma segura — e você tem controle total para excluir tudo quando quiser.</p>
   </div>
 </main>
 

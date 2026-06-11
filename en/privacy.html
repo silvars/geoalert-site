@@ -138,88 +138,77 @@
 
 <main>
   <h1>Privacy Policy</h1>
-  <p class="last-updated">Last updated: April 20, 2026</p>
+  <p class="last-updated">Last updated: June 11, 2026</p>
 
   <div class="highlight-box">
-    <p>🔒 <strong>Short version:</strong> Geo Alert doesn't collect anything about you. All your data stays on your phone. No servers, no tracking, no surprises.</p>
+    <p>🔒 <strong>Short version:</strong> Geo Alert doesn't sell your data or track you for ads. Your location is processed on your phone. Users with an account can sync their places to the cloud — and you have full control over that.</p>
   </div>
 
   <h2>What Geo Alert does</h2>
-  <p>Geo Alert is a location-based alert app. You mark a place on the map, configure the alerts, and the app notifies you when you're nearby. That simple.</p>
+  <p>Geo Alert is a location-based alert app. You mark a place on the map, configure the alerts, and the app notifies you when you're nearby. The app works without creating an account — but users with an account (Google or Apple) can sync their data across devices and subscribe to the Pro plan.</p>
 
-  <h2>What we DON'T collect</h2>
-  <p>Let's be straightforward:</p>
+  <h2>Data collected by usage mode</h2>
+
+  <h3>Without an account (local mode)</h3>
+  <p>If you use the app without creating an account:</p>
   <ul>
-    <li>🚫 <strong>Your location</strong> — it's processed on your phone and that's it. It doesn't go anywhere.</li>
-    <li>🚫 <strong>Personal data</strong> — we don't ask for name, email, phone number, nothing.</li>
-    <li>🚫 <strong>Analytics</strong> — no tracking, no pixels, nothing monitoring you.</li>
-    <li>🚫 <strong>Usage data</strong> — we don't know what you do in the app. And we don't want to.</li>
+    <li>✅ No data is sent to servers.</li>
+    <li>✅ Your places and history stay only on your phone.</li>
+    <li>✅ If you uninstall, everything is automatically deleted.</li>
   </ul>
 
-  <h2>What stays on your phone</h2>
-  <p>The app saves some data <strong>locally on your device</strong>:</p>
+  <h3>With an account (Google or Apple)</h3>
+  <p>If you sign in, the following data is stored on Firebase (Google) servers:</p>
   <ul>
-    <li>📍 Your saved places (name, position, distances)</li>
-    <li>🔔 History of alerts that have fired</li>
-    <li>⚙️ Your preferences (language, theme)</li>
+    <li>📧 <strong>Account identifier</strong> — email or Apple ID (provided by the login provider). We don't store your password.</li>
+    <li>📍 <strong>Your saved places</strong> — name, coordinates, and alert settings. Synced across devices. Automatically deleted after 180 days of inactivity.</li>
+    <li>🔔 <strong>Push notification token (FCM)</strong> — to send alerts even when the app is closed. Linked to your account, not your name.</li>
   </ul>
-  <p>This data <strong>never leaves your phone</strong>. If you uninstall the app, it's automatically deleted.</p>
+  <p>You can delete your account and all associated data at any time from the app settings.</p>
+
+  <h2>What we NEVER collect (in any case)</h2>
+  <ul>
+    <li>🚫 <strong>Your real-time location</strong> — it's processed on the phone and never sent to servers.</li>
+    <li>🚫 <strong>History of where you've been</strong> — the app doesn't record or transmit your movements.</li>
+    <li>🚫 <strong>Behavioral analytics</strong> — no tracking of screens, taps, or usage patterns.</li>
+    <li>🚫 <strong>Data for advertising</strong> — we don't share data with ad networks.</li>
+  </ul>
+
+  <h2>Pro Subscription (RevenueCat)</h2>
+  <p>If you subscribe to the Pro plan, payments are processed by the App Store (Apple) or Google Play. We use <strong>RevenueCat</strong> to manage subscription status. RevenueCat receives an anonymous purchase identifier — not your name or payment details.</p>
+  <p>RevenueCat privacy policy: <a href="https://www.revenuecat.com/privacy" target="_blank" rel="noopener">revenuecat.com/privacy</a></p>
 
   <h2>External services</h2>
-  <p>The app uses two Google services for one thing only: searching addresses.</p>
   <ul>
-    <li><strong>Google Places / Geocoding</strong> — when you search for an address to add a place, the text you typed is sent to Google to find the location. That's it, only at that moment.</li>
+    <li><strong>Firebase (Google)</strong> — authentication, data sync, and push notifications. Used only for users with an account. <a href="https://firebase.google.com/support/privacy" target="_blank" rel="noopener">Privacy policy</a></li>
+    <li><strong>Google Places / Geocoding</strong> — when you search for an address, the text you typed is sent to Google to find the location. That's it, only at that moment.</li>
     <li><strong>Apple Maps / Google Maps</strong> — to display the map. It only receives the visible region on screen.</li>
+    <li><strong>RevenueCat</strong> — Pro subscription management.</li>
   </ul>
-  <p>Google's privacy policy: <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">policies.google.com/privacy</a></p>
 
   <h2>Permissions</h2>
   <p>The app only asks for what's necessary:</p>
   <ul>
-    <li>📍 <strong>Location</strong> — to know when you're near a saved place, even with the app closed.</li>
+    <li>📍 <strong>Location</strong> — to know when you're near a saved place, even with the app closed. Never sent to servers.</li>
     <li>🔔 <strong>Notifications</strong> — to notify you when an alert fires.</li>
     <li>📳 <strong>Vibration</strong> — for vibration-type alerts.</li>
   </ul>
   <p>You can revoke any permission in your phone settings at any time.</p>
 
   <h2>Security</h2>
-  <p>Your data is protected by your phone's operating system (iOS or Android). We recommend keeping a password or biometrics enabled on your device.</p>
+  <p>Cloud data is protected by Firebase with encryption in transit (TLS) and at rest. Access is authenticated — only you can see your data. We recommend keeping a password or biometrics enabled on your device.</p>
 
   <h2>Children</h2>
   <p>The app is not directed to children under 13 years of age.</p>
 
   <h2>Changes to this page</h2>
-  <p>If we change anything important here, we'll let you know in an app update.</p>
+  <p>If we change anything important here, we'll let you know in an app update. The update date always appears at the top of this page.</p>
 
   <h2>Contact</h2>
   <p>Questions? Send an email: <a href="mailto:contato@geoalert.com.br">contato@geoalert.com.br</a></p>
 
   <div class="highlight-box">
-    <p>✅ <strong>In short:</strong> Geo Alert is 100% local. No servers, no data collection, no tracking. Your location never leaves your phone. Your data is yours — period.</p>
-  </div>
-</main>
-
-<footer>
-  <p>Geo Alert v2.0.0 — Made with ❤️ in Brazil</p>
-  <p style="margin-top:8px"><a href="index.html">Home</a> · <a href="mailto:contato@geoalert.com.br">Contact</a></p>
- — for vibration-type alerts.</li>
-  </ul>
-  <p>You can revoke any permission in your phone settings at any time.</p>
-
-  <h2>Security</h2>
-  <p>Your data is protected by your phone's operating system (iOS or Android). We recommend keeping a password or biometrics enabled on your device.</p>
-
-  <h2>Children</h2>
-  <p>The app is not directed to children under 13 years of age.</p>
-
-  <h2>Changes to this page</h2>
-  <p>If we change anything important here, we'll let you know in an app update.</p>
-
-  <h2>Contact</h2>
-  <p>Questions? Send an email: <a href="mailto:contato@geoalert.com.br">contato@geoalert.com.br</a></p>
-
-  <div class="highlight-box">
-    <p>✅ <strong>In short:</strong> Geo Alert is 100% local. No servers, no data collection, no tracking. Your location never leaves your phone. Your data is yours — period.</p>
+    <p>✅ <strong>In short:</strong> Your location never leaves your phone. Without an account, the app is 100% local. With an account, your places are synced securely — and you have full control to delete everything whenever you want.</p>
   </div>
 </main>
 
