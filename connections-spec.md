@@ -71,6 +71,8 @@ ID = `${ownerUid}_${subscriberUid}_${placeId}_${ringId}`.
   toUid: string,
   fromUid: string,
   fromName: string,
+  placeId: string,
+  ringId: string,
   placeName: string,
   event: 'enter' | 'exit',
   ringDistance: number,
