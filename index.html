@@ -441,6 +441,7 @@
     .templates { display:flex;gap:6px;overflow-x:auto; }
     .templates::-webkit-scrollbar { display:none; }
     .tpl { padding:6px 12px;border-radius:8px;background:#252525;font-size:11px;font-weight:600;white-space:nowrap;color:#F5F5F5;flex-shrink:0; }
+    .tpl.sel { background:#6B8AFF;color:#fff; }
     /* Config rings screen */
     .cfg-hdr { display:flex;align-items:center;gap:10px;padding:10px 14px;background:#1A1A1A; }
     .cfg-back { width:34px;height:34px;border-radius:50%;background:#252525;display:flex;align-items:center;justify-content:center;font-size:15px;color:#F5F5F5;border:1px solid #333; }
@@ -1246,6 +1247,11 @@
         <h3>Único ou recorrente</h3>
         <p>Alertas únicos desligam sozinhos após disparar — perfeito para tarefas pontuais. Recorrentes funcionam para sempre, sem precisar reconfigurar. Você decide o comportamento de cada alerta individualmente.</p>
       </div>
+      <div class="feature-card-a animate delay-4" style="grid-column: 1 / -1">
+        <div class="feature-icon fi-green"><ion-icon name="search-outline"></ion-icon></div>
+        <h3>Novo: zonas de categoria</h3>
+        <p>Não sabe o endereço exato? Crie uma zona por categoria — farmácia, posto, caixa eletrônico, restaurante, transporte público e mais — ou digite sua própria busca. O Geo Alert avisa quando tiver uma opção perto, não importa onde você esteja. Disponível também no plano grátis.</p>
+      </div>
     </div>
 
     <p class="features-group-label" style="color: var(--subtle)">Mais detalhes</p>
@@ -1320,6 +1326,52 @@
         <li><ion-icon name="flash-outline"></ion-icon> Funciona com o app fechado, mesmo no bolso.</li>
       </ul>
       <p class="video-context" style="margin-top:20px">Veja como funciona na prática →</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════════ NOVIDADES — ZONAS DE CATEGORIA ════════ -->
+<section id="demo-categoria" class="demo-section">
+  <div class="container demo-container">
+    <div class="demo-text">
+      <span class="section-label"><span class="badge-new">Novidade</span> Zonas de categoria</span>
+      <h2 class="section-title">Procurando algo?<br>Não precisa saber onde fica.</h2>
+      <p class="section-subtitle">Esqueça o endereço exato. Crie uma zona por categoria — farmácia, posto, caixa eletrônico, restaurante, transporte público e mais — ou digite sua própria busca, e seja avisado assim que tiver uma opção por perto.</p>
+      <ul class="demo-bullets">
+        <li><ion-icon name="pricetags-outline"></ion-icon> Mais de uma dezena de categorias prontas, ou texto livre.</li>
+        <li><ion-icon name="navigate-outline"></ion-icon> A notificação avisa quantas opções existem por perto.</li>
+        <li><ion-icon name="map-outline"></ion-icon> Um toque abre o mapa já buscando perto de você.</li>
+      </ul>
+    </div>
+    <div class="demo-frame-wrap">
+      <div class="sc-frame-outer" style="width:280px;height:606px">
+        <div class="sc-slide active" style="transform:scale(0.7467)">
+          <div class="screen map-bg">
+            <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+            <div class="float-bar">
+              <div class="float-back">‹</div>
+              <div class="float-search" style="color:#F5F5F5"><ion-icon name="search"></ion-icon> Categoria</div>
+            </div>
+            <div class="geo-circles">
+              <div class="c" style="width:220px;height:220px;border-color:rgba(107,138,255,.35);background:rgba(107,138,255,.05)"></div>
+              <div class="c" style="width:130px;height:130px;border-color:rgba(107,138,255,.5);background:rgba(107,138,255,.08)"></div>
+            </div>
+            <div class="map-pin"></div>
+            <div class="edit-sheet">
+              <div class="sheet-handle"></div>
+              <div class="edit-label">ESCOLHA UMA CATEGORIA</div>
+              <div class="templates" style="margin-bottom:14px">
+                <div class="tpl sel"><ion-icon name="medkit-outline" style="font-size:12px"></ion-icon> Farmácia</div>
+                <div class="tpl"><ion-icon name="cash-outline" style="font-size:12px"></ion-icon> Caixa eletrônico</div>
+                <div class="tpl"><ion-icon name="car-outline" style="font-size:12px"></ion-icon> Posto</div>
+                <div class="tpl"><ion-icon name="restaurant-outline" style="font-size:12px"></ion-icon> Restaurante</div>
+              </div>
+              <div class="edit-addr" style="font-size:11px;font-weight:500;color:#A0A0A0">Ou digite sua própria busca: <b style="color:#F5F5F5">"cemitério"</b></div>
+              <div class="edit-btn">Criar zona de categoria</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -1458,6 +1510,7 @@
             <tr><td>Templates prontos</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
             <tr><td>Histórico de alertas</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
             <tr><td>Avisar amigos quando chegam</td><td><span class="check">✓</span> Conexões</td><td><span class="cross">✕</span></td></tr>
+            <tr><td>Zonas de categoria (farmácia, posto, caixa eletrônico...)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
             <tr><td>Sincronização entre celulares</td><td><span class="check">✓</span> Opcional (login)</td><td><span class="check">✓</span></td></tr>
             <tr><td>Tema claro/escuro</td><td><span class="check">✓</span></td><td><span class="check">✓</span></td></tr>
             <tr><td>Modo 100% local (sem cadastro)</td><td><span class="check">✓</span></td><td><span class="cross">✕</span></td></tr>
@@ -1483,6 +1536,7 @@
           <tr><td>Histórico de alertas</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">100</td></tr>
           <tr><td>Sincronização entre celulares</td><td style="text-align:center"><span class="cross">✕</span></td><td style="text-align:center"><span class="check">✓</span></td><td style="text-align:center"><span class="check">✓</span></td></tr>
           <tr><td>Conexões (avisar amigos)</td><td style="text-align:center"><span class="cross">✕</span></td><td style="text-align:center"><span class="check">✓</span> até 2 perímetros/amigo</td><td style="text-align:center"><span class="check">✓</span> até 2 perímetros/amigo</td></tr>
+          <tr><td>Zonas de categoria (farmácia, posto...)</td><td style="text-align:center"><span class="cross">✕</span></td><td style="text-align:center"><span class="check">✓</span> até 3 zonas · 1 raio</td><td style="text-align:center"><span class="check">✓</span> até 3 zonas · 2 raios</td></tr>
           <tr><td>Modo 100% local</td><td style="text-align:center"><span class="check">✓</span></td><td style="text-align:center">—</td><td style="text-align:center">—</td></tr>
           <tr><td colspan="4" style="font-size:11px;color:var(--muted);padding-top:10px;border:none"><ion-icon name="information-circle-outline" style="vertical-align:-2px;margin-right:3px"></ion-icon>Cada alerta = 1 geofence nativa. iOS: máx 20 simultâneas (Apple). Android: sem limite fixo.</td></tr>
         </tbody>

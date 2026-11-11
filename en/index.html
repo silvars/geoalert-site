@@ -334,6 +334,24 @@
     .tab-bar { position:absolute;bottom:0;left:0;right:0;height:60px;background:#1A1A1A;border-top:1px solid #333;display:flex;align-items:center;justify-content:space-around; }
     .tab { font-size:11px;font-weight:600;color:#666;display:flex;flex-direction:column;align-items:center;gap:4px; }
     .tab.active { color:#FFF; }
+
+    /* CATEGORY ZONES mockup */
+    .map-bg { background:linear-gradient(135deg,#1a2332,#162029,#1d2b38);height:100%;position:relative; }
+    .geo-circles { position:absolute;top:45%;left:50%;transform:translate(-50%,-50%); }
+    .geo-circles .c { border-radius:50%;position:absolute;transform:translate(-50%,-50%);border-style:dashed;border-width:2px; }
+    .map-pin { position:absolute;top:42%;left:50%;transform:translate(-50%,-100%);width:20px;height:20px;border-radius:50%;background:#EF4444;border:3px solid #fff;box-shadow:0 2px 8px rgba(0,0,0,.3); }
+    .float-bar { position:absolute;top:12px;left:12px;right:12px;display:flex;gap:8px;z-index:5; }
+    .float-back { width:36px;height:36px;border-radius:50%;background:rgba(30,40,55,.9);display:flex;align-items:center;justify-content:center;font-size:16px;color:#F5F5F5; }
+    .float-search { flex:1;height:36px;border-radius:10px;background:rgba(30,40,55,.9);display:flex;align-items:center;padding:0 12px;font-size:12px;color:#666; }
+    .edit-sheet { position:absolute;bottom:0;left:0;right:0;background:#1A1A1A;border-radius:20px 20px 0 0;padding:10px 20px 24px; }
+    .sheet-handle { width:36px;height:4px;border-radius:2px;background:#333;margin:0 auto 12px; }
+    .edit-label { font-size:9px;font-weight:700;color:#666;letter-spacing:1px;margin-bottom:6px; }
+    .edit-addr { font-size:13px;font-weight:600;color:#F5F5F5;margin-bottom:14px;line-height:1.4; }
+    .edit-btn { width:100%;padding:12px;border-radius:10px;background:#FFF;color:#0D0D0D;font-size:13px;font-weight:700;text-align:center; }
+    .templates { display:flex;gap:6px;overflow-x:auto; }
+    .templates::-webkit-scrollbar { display:none; }
+    .tpl { padding:6px 12px;border-radius:8px;background:#252525;font-size:11px;font-weight:600;white-space:nowrap;color:#F5F5F5;flex-shrink:0; }
+    .tpl.sel { background:#6B8AFF;color:#fff; }
   </style>
 
 <script type="application/ld+json">
@@ -561,6 +579,11 @@
         <h3>One-time or recurring</h3>
         <p>One-time alerts auto-disable after firing — ideal for one-off tasks. Recurring ones work forever, no reconfiguration needed.</p>
       </div>
+      <div class="feature-card-a animate delay-4" style="grid-column: 1 / -1">
+        <div class="feature-icon fi-green"><ion-icon name="search-outline"></ion-icon></div>
+        <h3>New: category zones</h3>
+        <p>Don't know the exact address? Create a zone by category — pharmacy, gas station, ATM, restaurant, public transit and more — or type your own search. Geo Alert notifies you as soon as there's an option nearby, wherever you are. Also available on the free plan.</p>
+      </div>
     </div>
 
     <div class="features-group-b">
@@ -634,6 +657,52 @@
         <li><ion-icon name="flash-outline"></ion-icon> Works with the app closed, even in your pocket.</li>
       </ul>
       <p class="video-context" style="margin-top:20px">See how it works in practice &rarr;</p>
+    </div>
+  </div>
+</section>
+
+<!-- ════ CATEGORY ZONES ════ -->
+<section id="demo-category" class="demo-section">
+  <div class="container demo-container">
+    <div class="demo-text">
+      <span class="section-label"><span class="badge-new">New</span> Category zones</span>
+      <h2 class="section-title">Looking for something?<br>You don't need to know where it is.</h2>
+      <p class="section-subtitle">Forget the exact address. Create a zone by category — pharmacy, gas station, ATM, restaurant, public transit and more — or type your own search, and get notified as soon as there's an option nearby.</p>
+      <ul class="demo-bullets">
+        <li><ion-icon name="pricetags-outline"></ion-icon> A dozen+ ready-made categories, or free text.</li>
+        <li><ion-icon name="navigate-outline"></ion-icon> The alert tells you how many options are nearby.</li>
+        <li><ion-icon name="map-outline"></ion-icon> One tap opens the map already searching near you.</li>
+      </ul>
+    </div>
+    <div class="demo-frame-wrap">
+      <div class="hero-phone" style="width:280px;height:606px;margin:0 auto">
+        <div class="hero-phone-inner" style="transform:scale(0.7467)">
+          <div class="screen map-bg">
+            <div class="status-bar"><span class="status-time">9:41</span><div class="status-icons"><div class="batt"></div></div></div>
+            <div class="float-bar">
+              <div class="float-back">‹</div>
+              <div class="float-search" style="color:#F5F5F5"><ion-icon name="search"></ion-icon> Category</div>
+            </div>
+            <div class="geo-circles">
+              <div class="c" style="width:220px;height:220px;border-color:rgba(107,138,255,.35);background:rgba(107,138,255,.05)"></div>
+              <div class="c" style="width:130px;height:130px;border-color:rgba(107,138,255,.5);background:rgba(107,138,255,.08)"></div>
+            </div>
+            <div class="map-pin"></div>
+            <div class="edit-sheet">
+              <div class="sheet-handle"></div>
+              <div class="edit-label">CHOOSE A CATEGORY</div>
+              <div class="templates" style="margin-bottom:14px">
+                <div class="tpl sel"><ion-icon name="medkit-outline" style="font-size:12px"></ion-icon> Pharmacy</div>
+                <div class="tpl"><ion-icon name="cash-outline" style="font-size:12px"></ion-icon> ATM</div>
+                <div class="tpl"><ion-icon name="car-outline" style="font-size:12px"></ion-icon> Gas station</div>
+                <div class="tpl"><ion-icon name="restaurant-outline" style="font-size:12px"></ion-icon> Restaurant</div>
+              </div>
+              <div class="edit-addr" style="font-size:11px;font-weight:500;color:#A0A0A0">Or type your own search: <b style="color:#F5F5F5">"cemetery"</b></div>
+              <div class="edit-btn">Create category zone</div>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -751,6 +820,7 @@
             <tr><td>Ready-made templates</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
             <tr><td>Alert history</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
             <tr><td>Notify friends on arrival</td><td><span class="check">&#10003;</span> Connections</td><td><span class="cross">&#10005;</span></td></tr>
+            <tr><td>Category zones (pharmacy, gas station, ATM...)</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
             <tr><td>Sync across devices</td><td><span class="check">&#10003;</span> Optional (login)</td><td><span class="check">&#10003;</span></td></tr>
             <tr><td>Light/dark theme</td><td><span class="check">&#10003;</span></td><td><span class="check">&#10003;</span></td></tr>
             <tr><td>100% local mode (no sign-up)</td><td><span class="check">&#10003;</span></td><td><span class="cross">&#10005;</span></td></tr>
@@ -777,6 +847,7 @@
           <tr><td>Alert history</td><td style="text-align:center">10</td><td style="text-align:center">10</td><td style="text-align:center">100</td></tr>
           <tr><td>Sync across devices</td><td style="text-align:center"><span class="cross">&#10005;</span></td><td style="text-align:center"><span class="check">&#10003;</span></td><td style="text-align:center"><span class="check">&#10003;</span></td></tr>
           <tr><td>Connections (notify friends)</td><td style="text-align:center"><span class="cross">&#10005;</span></td><td style="text-align:center"><span class="check">&#10003;</span> up to 2 alerts/friend</td><td style="text-align:center"><span class="check">&#10003;</span> up to 2 alerts/friend</td></tr>
+          <tr><td>Category zones (pharmacy, gas station...)</td><td style="text-align:center"><span class="cross">&#10005;</span></td><td style="text-align:center"><span class="check">&#10003;</span> up to 3 zones · 1 ring</td><td style="text-align:center"><span class="check">&#10003;</span> up to 3 zones · 2 rings</td></tr>
           <tr><td>100% local mode</td><td style="text-align:center"><span class="check">&#10003;</span></td><td style="text-align:center">&mdash;</td><td style="text-align:center">&mdash;</td></tr>
           <tr><td colspan="4" style="font-size:11px;color:var(--muted);padding-top:10px;border:none"><ion-icon name="information-circle-outline" style="vertical-align:-2px;margin-right:3px"></ion-icon>Each alert = 1 native geofence. iOS: max 20 simultaneous (Apple). Android: no fixed limit.</td></tr>
         </tbody>
